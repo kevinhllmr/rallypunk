@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ilamo81r2ajd"]
+
+[ext_resource type="PackedScene" path="res://main.tscn" id="1_u8j07"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Main" parent="." instance=ExtResource("1_u8j07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.690459, 1.74046e-05, 0.795565)
