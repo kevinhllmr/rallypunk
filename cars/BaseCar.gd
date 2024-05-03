@@ -5,6 +5,8 @@ extends VehicleBody3D
 @export var STEER_LIMIT = 0.6
 var steer_target = 0
 @export var engine_force_value = 40
+@onready var menu_scene = preload("res://Menu/menu.tscn") as PackedScene
+
 
 
 func _physics_process(delta):
@@ -44,7 +46,8 @@ func _physics_process(delta):
 		$wheal2.wheel_friction_slip=3
 		$wheal3.wheel_friction_slip=3
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
-
+	if Input.is_action_pressed("Quit"):
+		get_tree().change_scene_to_packed(menu_scene)
 
 
 func traction(speed):
