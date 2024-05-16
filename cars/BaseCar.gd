@@ -8,11 +8,13 @@ var steer_target = 0
 var engine_health = 100
 var brake_health = 100
 
+
 func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
 	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"
-
+	$Hud/engine.text="Engine: " + str(round(engine_health)) +"%"
+	$Hud/brake.text="Brake: " + str(round(brake_health)) +"%"
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
@@ -22,7 +24,7 @@ func _physics_process(delta):
 		if speed < 20 and speed != 0:
 			engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
 			brake_health = brake_health-(0.004*speed)
-			$Hud/brake.text=str(round(brake_health))
+			
 			print(brake_health)
 		else:
 			engine_force = engine_force_value
@@ -34,7 +36,6 @@ func _physics_process(delta):
 			if speed < 30 and speed != 0:
 				engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
 				engine_health = engine_health-(0.004*speed)
-				$Hud/engine.text=str(round(engine_health))
 				print(engine_health)
 			else:
 				engine_force = -engine_force_value
