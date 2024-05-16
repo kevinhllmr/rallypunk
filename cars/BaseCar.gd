@@ -5,7 +5,8 @@ extends VehicleBody3D
 @export var STEER_LIMIT = 0.6
 var steer_target = 0
 @export var engine_force_value = 40
-
+var engine_health = 100
+var brake_health = 100
 
 func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
@@ -20,6 +21,9 @@ func _physics_process(delta):
 
 		if speed < 20 and speed != 0:
 			engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
+			brake_health = brake_health-(0.004*speed)
+			$Hud/brake.text=str(round(brake_health))
+			print(brake_health)
 		else:
 			engine_force = engine_force_value
 	else:
@@ -29,6 +33,9 @@ func _physics_process(delta):
 		if fwd_mps >= -1:
 			if speed < 30 and speed != 0:
 				engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
+				engine_health = engine_health-(0.004*speed)
+				$Hud/engine.text=str(round(engine_health))
+				print(engine_health)
 			else:
 				engine_force = -engine_force_value
 		else:
