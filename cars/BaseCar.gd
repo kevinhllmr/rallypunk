@@ -6,7 +6,16 @@ extends VehicleBody3D
 var steer_target = 0
 @export var engine_force_value = 40
 
+func _ready():
+	# Ensure the VehicleBody3D node has an Area3D as a child for detecting collisions
+	var area = $CollisionArea  # Adjust the path to your Area3D node
+	area.connect("body_entered", Callable(self, "_on_body_entered"))
+	add_to_group("car")
 
+func _on_body_entered(body):
+	if body is StaticBody3D:
+		print("Collision with: ", body.name)
+		
 func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
@@ -38,13 +47,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("ui_select"):
 		brake=3
-		$wheal2.wheel_friction_slip=0.8
-		$wheal3.wheel_friction_slip=0.8
+		$wheal2.wheel_friction_slip=2
+		$wheal3.wheel_friction_slip=2
 	else:
-		$wheal2.wheel_friction_slip=3
-		$wheal3.wheel_friction_slip=3
+		$wheal2.wheel_friction_slip=4
+		$wheal3.wheel_friction_slip=4
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
-
 
 
 func traction(speed):
