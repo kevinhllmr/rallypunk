@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs4xdyx3mglt2"]
+[gd_scene load_steps=13 format=3 uid="uid://bkg0ptc0nnhe3"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_mdet3"]
 [ext_resource type="Texture2D" uid="uid://cpwiyoo7664vj" path="res://cars/Models/texture_10.png" id="2_4uho4"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_7g8rb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7tlo"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -23,6 +25,10 @@ ssao_power = 32.7849
 ssil_enabled = true
 sdfgi_y_scale = 2
 glow_enabled = true
+fog_density = 0.0
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2da72"]
 albedo_texture = ExtResource("2_4uho4")
@@ -34,7 +40,30 @@ uv1_triplanar = true
 radial_segments = 20
 rings = 1
 
+[sub_resource type="Animation" id="Animation_mkxuv"]
+resource_name = "fog_move"
+length = 15.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FogVolume")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 64.6976, 14.8, 1, 0, 0, 26.5625)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddybj"]
+_data = {
+"fog_move": SubResource("Animation_mkxuv")
+}
+
+[sub_resource type="GDScript" id="GDScript_dq11g"]
+
 [node name="Main" type="Node3D"]
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64.6976)
+size = Vector3(222.91, 2, 60)
+material = SubResource("FogMaterial_7g8rb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8dxyn")
@@ -114,3 +143,9 @@ size = Vector3(0.3, 0.14044, 10.8715)
 [node name="box10" type="CSGBox3D" parent="CSGCombiner3D/bumps"]
 transform = Transform3D(-0.00242604, 0, -0.999997, 0, 2.55802, 0, 0.999997, 0, -0.00242604, 1.59131, 0.169201, -18.9048)
 size = Vector3(0.3, 0.14044, 10.8715)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ddybj")
+}
+script = SubResource("GDScript_dq11g")
