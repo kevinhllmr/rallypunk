@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb5ubkdsckji7"]
+
+[ext_resource type="Script" path="res://RepairMenu.gd" id="1_8j4ox"]
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8j4ox")
+
+[node name="VBC" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Close" type="Button" parent="VBC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "X"
+
+[node name="Repair" type="Button" parent="VBC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Repair Car"
+
+[node name="ScrapCount" type="Label" parent="VBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Scrap: 0"
+vertical_alignment = 2
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="pressed" from="VBC/Close" to="." method="_on_close_pressed"]
+[connection signal="ready" from="VBC/Close" to="." method="_on_close_ready"]
+[connection signal="pressed" from="VBC/Repair" to="." method="_on_repair_pressed"]
