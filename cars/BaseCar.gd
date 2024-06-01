@@ -1,17 +1,35 @@
 extends VehicleBody3D
 
-
 @export var STEER_SPEED = 1.5
 @export var STEER_LIMIT = 0.6
 var steer_target = 0
 @export var engine_force_value = 40
+var engine_health = 100
+var brake_health = 100
+var chassis_health = 100
+var wheels_health = 100
 
+var speed = 0
+var last_velocity = Vector3.ZERO
 
+func _ready():
+	# Ensure the VehicleBody3D node has an Area3D as a child for detecting collisions
+	var area = $CollisionArea  # Adjust the path to your Area3D node
+	area.connect("body_entered", Callable(self, "_on_body_entered"))
+	add_to_group("car")
+
+func _on_body_entered(body):
+	if body is StaticBody3D:
+		print("Collision with: ", body.name)
+		
 func _physics_process(delta):
-	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
+	speed = linear_velocity.length()
 	traction(speed)
-	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"
-
+	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
+	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
+	$Hud/brake.text="Bremsen: " + str(round(brake_health)) +"%"
+	$Hud/chassis.text = "Chassis: " + str(round(chassis_health)) + "%"
+	$Hud/wheels.text = "Räder: " + str(round(wheels_health)) + "%"
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
@@ -20,6 +38,11 @@ func _physics_process(delta):
 
 		if speed < 20 and speed != 0:
 			engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
+			#Schaden für Bremsen
+			brake_health = brake_health-(0.004*speed)
+			if brake_health < 0:
+					brake_health = 0
+			print(brake_health)
 		else:
 			engine_force = engine_force_value
 	else:
@@ -29,6 +52,11 @@ func _physics_process(delta):
 		if fwd_mps >= -1:
 			if speed < 30 and speed != 0:
 				engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
+				#Schaden für Motor wenn Geschwindigkeit zu hoch
+				engine_health = engine_health-(0.004*speed)
+				if engine_health < 0:
+					engine_health = 0
+				print(engine_health)
 			else:
 				engine_force = -engine_force_value
 		else:
@@ -40,16 +68,39 @@ func _physics_process(delta):
 		brake=3
 		$wheal2.wheel_friction_slip=0.8
 		$wheal3.wheel_friction_slip=0.8
+		#Schaden für Räder wenn Handbremse gezogen wird, vllt lieber noch ne Geschwindigkeitsabfrage machen (oder linearer Geschwindigkeit sonst Abtrag in der Luft)
+		wheels_health = wheels_health-(0.004*speed)
+		if wheels_health < 0:
+			wheels_health = 0
 	else:
 		$wheal2.wheel_friction_slip=3
 		$wheal3.wheel_friction_slip=3
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
 
-
 func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)
 
+func _integrate_forces(state):
+	var current_velocity = state.get_linear_velocity()
+	var collision_impact = (current_velocity - last_velocity).length()
+	if collision_impact > 2.77:  # 10 km/h in m/s
+		apply_damage(collision_impact)
+	last_velocity = current_velocity
 
-
-
+# Aufgerufen wenn Kollision auftritt
+func _on_body_shape_entered(body_id, body, body_shape, area_shape):
+	if speed > 10:
+		apply_damage(speed)
+#Schadensanwendung für Kollisionen, erst Schaden an Chassis, dann geht alles auf Motor
+func apply_damage(impact):
+	var damage = (impact / 2)
+	chassis_health -= damage
+	if chassis_health < 0:
+		chassis_health = 0
+		engine_health -= damage
+		if engine_health < 0:
+			engine_health = 0
+	print("Geschwindigkeit: ", speed)
+	print("Kollisionskraft: ", impact)
+	print("Chassis Schaden: ", damage)
