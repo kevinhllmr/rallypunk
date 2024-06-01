@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=12 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_om8jj"]
 [ext_resource type="PackedScene" uid="uid://bkuw7wxvhu31j" path="res://Wheel_1_003.glb" id="3_son6u"]
 [ext_resource type="PackedScene" uid="uid://kj1shhjrlmdy" path="res://Vehicle_1_003.glb" id="5_ba78u"]
+[ext_resource type="PackedScene" uid="uid://c4rm5pu606j36" path="res://RepairMenu.tscn" id="6_tr0yq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
+font_size = 32
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7qdn"]
 radius = 0.291194
@@ -23,17 +27,17 @@ STEER_LIMIT = 0.4
 engine_force_value = 50
 
 [node name="wheal0" parent="." index="0"]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0.997421, 0.340338, -1.50006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.997421, 0.340338, -1.50006)
 wheel_radius = 0.37
 wheel_rest_length = 0.095
 suspension_travel = 0.357
 
 [node name="Wheel" parent="wheal0" index="0" instance=ExtResource("2_eoiid")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -0.142656, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142656, 0, 0)
+visible = false
 
 [node name="Wheel_1_003" parent="wheal0" index="1" instance=ExtResource("3_son6u")]
 transform = Transform3D(-0.55, 0, 0, 0, -0.55, 0, 0, 0, -0.55, -0.05, 0, 0)
-visible = false
 
 [node name="wheal1" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02668, 0.340338, -1.50006)
@@ -80,6 +84,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026385, 0.827398, 0.719927
 target_distance = 5
 speed = 10.0
 
+[node name="ScrapCount" type="Label" parent="Hud" index="6"]
+offset_top = 416.0
+offset_right = 122.0
+offset_bottom = 461.0
+text = "Scrap: 0"
+label_settings = SubResource("LabelSettings_yc8e5")
+
 [node name="doge-body" parent="." index="7" instance=ExtResource("3_om8jj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
@@ -104,3 +115,5 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101013, 0.625977, 0.193787)
 shape = SubResource("BoxShape3D_00ayj")
+
+[node name="RepairShopPanel" parent="." index="13" instance=ExtResource("6_tr0yq")]

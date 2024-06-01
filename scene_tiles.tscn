@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=20 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://ml_roadtiles.tres" id="3_ug0lm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://RacetrackGenerator.gd" id="4_io2yy"]
 [ext_resource type="PackedScene" uid="uid://4ihcy5roww12" path="res://roadTiles/roadTile_036.gltf" id="5_c70vy"]
 [ext_resource type="PackedScene" uid="uid://jfconaciq20a" path="res://roadTiles/roadTile_025.gltf" id="6_unuqi"]
+[ext_resource type="Script" path="res://RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://ItemSpawner.gd" id="8_d1rq0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
@@ -103,6 +104,11 @@ _data = {
 }
 point_count = 18
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_isv20"]
+size = Vector3(6.66052, 4.57916, 7.33346)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eiknm"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -162,3 +168,15 @@ shape = SubResource("ConcavePolygonShape3D_rhblw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28726, 6.21177, -8.65581)
 curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9364, 5.69168, -76.8654)
+script = ExtResource("8_37jrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 1.78958, 2.90188)
+shape = SubResource("BoxShape3D_isv20")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(6.86444, 0, 0, 0, 5.3176, 0, 0, 0, 7.15421, -1.97537, 1.46836, 2.92492)
+mesh = SubResource("BoxMesh_eiknm")

@@ -12,11 +12,15 @@ var wheels_health = 100
 var speed = 0
 var last_velocity = Vector3.ZERO
 
+var scrap_count: int = 0
+var scrap_count_label: Label = null
+
 func _ready():
 	# Ensure the VehicleBody3D node has an Area3D as a child for detecting collisions
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
+	scrap_count_label = get_node("Hud/ScrapCount")
 
 func _on_body_entered(body):
 	if body is StaticBody3D:
@@ -104,3 +108,26 @@ func apply_damage(impact):
 	print("Geschwindigkeit: ", speed)
 	print("Kollisionskraft: ", impact)
 	print("Chassis Schaden: ", damage)
+
+func get_speed() -> float:
+	return linear_velocity.length()
+
+func pick_up_scrap():
+	scrap_count += 1
+	update_scrap_count()
+	
+func get_scrap_count() -> int:
+	return scrap_count
+	
+func update_scrap_count():
+	if scrap_count_label:
+		scrap_count_label.text = "Scrap: " + str(scrap_count)
+
+func remove_scrap(change_amount):
+	if !scrap_count - change_amount < 0:
+		scrap_count = scrap_count - change_amount
+		scrap_count_label.text = "Scrap: " + str(scrap_count)
+		get_node("RepairShopPanel").get_node("VBC").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
+		print("used " + str(change_amount) + " scrap to repair car!")
+	else:
+		print("not enough scrap!")
