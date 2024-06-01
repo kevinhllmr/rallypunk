@@ -5,19 +5,22 @@ extends VehicleBody3D
 @export var STEER_LIMIT = 0.6
 var steer_target = 0
 @export var engine_force_value = 40
+var scrap_count: int = 0
+var scrap_count_label: Label = null
 
 func _ready():
 	# Ensure the VehicleBody3D node has an Area3D as a child for detecting collisions
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
+	scrap_count_label = get_node("Hud/ScrapCount")
 
 func _on_body_entered(body):
 	if body is StaticBody3D:
 		print("Collision with: ", body.name)
 		
 func _physics_process(delta):
-	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
+	var speed = linear_velocity.length()
 	traction(speed)
 	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"
 
@@ -54,10 +57,28 @@ func _physics_process(delta):
 		$wheal3.wheel_friction_slip=4
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
-
 func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)
+	
+func get_speed() -> float:
+	return linear_velocity.length()
 
+func pick_up_scrap():
+	scrap_count += 1
+	update_scrap_count()
+	
+func get_scrap_count() -> int:
+	return scrap_count
+	
+func update_scrap_count():
+	if scrap_count_label:
+		scrap_count_label.text = "Scrap: " + str(scrap_count)
 
-
-
+func remove_scrap(change_amount):
+	if !scrap_count - change_amount < 0:
+		scrap_count = scrap_count - change_amount
+		scrap_count_label.text = "Scrap: " + str(scrap_count)
+		get_node("RepairShopPanel").get_node("VBC").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
+		print("used " + str(change_amount) + " scrap to repair car!")
+	else:
+		print("not enough scrap!")

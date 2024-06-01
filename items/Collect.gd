@@ -5,5 +5,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("car"):
+		body.pick_up_scrap()
 		print("Item collected!")
 		queue_free() 
