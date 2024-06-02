@@ -63,3 +63,6 @@ func spawn_item(position):
 	var item_instance = item_scene.instantiate()
 	item_instance.global_transform.origin = position
 	add_child(item_instance)
+
+func _process(delta):
+	$PathFollow3D.progress += 10.0*delta

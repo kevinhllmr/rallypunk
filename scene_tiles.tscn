@@ -176,8 +176,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.996796, 0.00101746, -0.0799557, -1.74623e-10, 0.999916, 0.0127243, 0.0799621, -0.0126835, 0.996716, 294.333, 0.851368, 35.8293)
-h_offset = 300.0
+transform = Transform3D(0.996793, 0.00101746, -0.0799557, -1.74622e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, -1.05546e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 3.74475, -0.69633, -12.1889)
