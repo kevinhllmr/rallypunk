@@ -120,3 +120,12 @@ offset_right = 111.0
 offset_bottom = 645.0
 text = "Wheels"
 label_settings = SubResource("LabelSettings_yc8e5")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud"]
+offset_left = 1088.0
+offset_top = 470.0
+offset_right = 1438.0
+offset_bottom = 514.0
+rotation = -1.5708
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 2

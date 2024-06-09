@@ -37,6 +37,7 @@ func _physics_process(delta):
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
+	
 	if Input.is_action_pressed("ui_down"):
 	# Increase engine force at low speeds to make the initial acceleration faster.
 

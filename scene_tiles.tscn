@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=23 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://ml_roadtiles.tres" id="3_ug0lm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jfconaciq20a" path="res://roadTiles/roadTile_025.gltf" id="6_unuqi"]
 [ext_resource type="Script" path="res://RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://ItemSpawner.gd" id="8_d1rq0"]
+[ext_resource type="Script" path="res://ui.gd" id="8_j768l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -110,12 +111,15 @@ point_count = 18
 density = 3.6791
 edge_fade = 0.131951
 
+[sub_resource type="GDScript" id="GDScript_siapo"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_isv20"]
 size = Vector3(6.66052, 4.57916, 7.33346)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiknm"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("8_j768l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_76sc4")
@@ -126,7 +130,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34812, 5.73509, 7.17576)
+transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, 123.187, 5.73509, -147.496)
 engine_force_value = 200
 
 [node name="RacetrackContainer" type="Node3D" parent="."]
@@ -176,12 +180,13 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.996793, 0.00101746, -0.0799557, -1.74622e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
+transform = Transform3D(0.996793, 0.00101746, -0.0799556, -1.74622e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, -1.05546e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 3.74475, -0.69633, -12.1889)
 size = Vector3(66, 23.33, 2)
 material = SubResource("FogMaterial_qahue")
+script = SubResource("GDScript_siapo")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9364, 5.69168, -76.8654)
