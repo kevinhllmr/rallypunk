@@ -61,6 +61,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026385, 0.827398, 0.719927
 target_distance = 5
 speed = 10.0
 
+[node name="Hud" parent="." index="6"]
+visible = false
+
 [node name="Label" parent="Hud" index="1"]
 text = "Arrow keys to drive
 Space to drift and break
