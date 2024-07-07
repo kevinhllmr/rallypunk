@@ -72,13 +72,13 @@ func get_scrap_count() -> int:
 	
 func update_scrap_count():
 	if scrap_count_label:
-		scrap_count_label.text = "Scrap: " + str(scrap_count)
+		scrap_count_label.text = str(scrap_count)
 
 func remove_scrap(change_amount):
 	if !scrap_count - change_amount < 0:
 		scrap_count = scrap_count - change_amount
-		scrap_count_label.text = "Scrap: " + str(scrap_count)
-		get_node("RepairShopPanel").get_node("VBC").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
+		scrap_count_label.text = str(scrap_count)
+		get_node("RepairShopPanel").get_node("VBC").get_node("TitlebarContainer").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
 		print("used " + str(change_amount) + " scrap to repair car!")
 	else:
 		print("not enough scrap!")

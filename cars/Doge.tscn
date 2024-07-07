@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=12 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://bmvkdbrta2t45" path="res://wheel.tscn" id="2_fx6u8"]
 [ext_resource type="PackedScene" uid="uid://cb5ubkdsckji7" path="res://RepairMenu.tscn" id="3_8w5im"]
+[ext_resource type="Texture2D" uid="uid://bhh5k8ldkt30" path="res://UI Elements/ScrapBG.png" id="3_42oed"]
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_om8jj"]
+[ext_resource type="FontFile" uid="uid://bqq16fvgto2e2" path="res://High Speed.ttf" id="4_j0wrb"]
 [ext_resource type="PackedScene" uid="uid://dxhyhobcpd1dq" path="res://Vehicle_1_002.glb" id="4_tlorf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7qdn"]
@@ -61,26 +63,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026385, 0.827398, 0.719927
 target_distance = 5
 speed = 10.0
 
-[node name="Hud" parent="." index="6"]
-visible = false
+[node name="speed" parent="Hud" index="0"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -183.0
+offset_top = 4.0
+offset_right = -11.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 1
+theme_override_fonts/font = ExtResource("4_j0wrb")
+theme_override_font_sizes/font_size = 25
+text = "125 km/h"
+horizontal_alignment = 2
 
 [node name="Label" parent="Hud" index="1"]
+visible = false
 text = "Arrow keys to drive
 Space to drift and break
 "
 
-[node name="ScrapCount" type="Label" parent="Hud" index="2"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -26.0
-offset_right = 61.0
-offset_bottom = 3.0
-grow_vertical = 0
-text = "Scrap: 0"
+[node name="ScrapBg" type="Sprite2D" parent="Hud" index="2"]
+position = Vector2(53, 45)
+scale = Vector2(0.545802, 0.545802)
+texture = ExtResource("3_42oed")
+
+[node name="ScrapCount" type="Label" parent="Hud" index="3"]
+offset_left = 39.0
+offset_top = 30.0
+offset_right = 69.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_j0wrb")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="Hud" index="4"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_top = 1.0
+offset_right = 28.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_j0wrb")
+text = "2:25"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RepairShopPanel" parent="." index="7" instance=ExtResource("3_8w5im")]
+visible = false
 
 [node name="doge-body" parent="." index="8" instance=ExtResource("3_om8jj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

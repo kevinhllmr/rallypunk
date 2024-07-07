@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=23 format=3 uid="uid://bl5pbit0uif4y"]
 
+[ext_resource type="Script" path="res://fullscreen.gd" id="1_u5okl"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://ml_roadtiles.tres" id="3_ug0lm"]
 [ext_resource type="MeshLibrary" uid="uid://btxp8lt6153sl" path="res://ml_roadTilesV2.tres" id="4_hf5jy"]
@@ -8,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jfconaciq20a" path="res://roadTiles/roadTile_025.gltf" id="6_unuqi"]
 [ext_resource type="Script" path="res://RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://ItemSpawner.gd" id="8_d1rq0"]
-[ext_resource type="Shader" path="res://shaders/grayscal.gdshader" id="9_6kcha"]
+[ext_resource type="Shader" path="res://shaders/motionblur.gdshader" id="9_fqwd0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -111,9 +112,11 @@ size = Vector3(6.66052, 4.57916, 7.33346)
 [sub_resource type="BoxMesh" id="BoxMesh_eiknm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2jh8"]
-shader = ExtResource("9_6kcha")
+shader = ExtResource("9_fqwd0")
+shader_parameter/blur_amount = 0.8
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_u5okl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_76sc4")
@@ -124,7 +127,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34812, 5.73509, 7.17576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01896, 6.034, -0.095108)
 engine_force_value = 200
 
 [node name="RacetrackContainer" type="Node3D" parent="."]
@@ -186,10 +189,8 @@ transform = Transform3D(6.86444, 0, 0, 0, 5.3176, 0, 0, 0, 7.15421, -1.97537, 1.
 mesh = SubResource("BoxMesh_eiknm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_v2jh8")
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,3 +198,4 @@ anchor_bottom = 1.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

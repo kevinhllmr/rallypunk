@@ -1,0 +1,554 @@
+[gd_scene load_steps=12 format=3 uid="uid://cb5ubkdsckji7"]
+
+[ext_resource type="Script" path="res://RepairMenu.gd" id="1_8j4ox"]
+[ext_resource type="Theme" uid="uid://pwygkskg3t10" path="res://UI Elements/CloseBotton.tres" id="2_oqpi6"]
+[ext_resource type="FontFile" uid="uid://b6182tft604ie" path="res://UI Elements/High Speed.ttf" id="3_6a3ut"]
+[ext_resource type="Theme" uid="uid://bde0ytnnygxqh" path="res://UI Elements/MenuBorder.tres" id="4_givx1"]
+[ext_resource type="Theme" uid="uid://cjketn2y8c3tc" path="res://UI Elements/BuyButton.tres" id="5_8egf1"]
+[ext_resource type="FontFile" uid="uid://bqq16fvgto2e2" path="res://High Speed.ttf" id="6_baexr"]
+[ext_resource type="Texture2D" uid="uid://bpril3sidbga7" path="res://UI Elements/Car@0.5x.png" id="7_3cwom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyrhq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hsnr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irgab"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22mmh"]
+bg_color = Color(0.94902, 0.380392, 0.568627, 1)
+border_color = Color(1, 1, 1, 1)
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_8j4ox")
+
+[node name="VBC" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="MarginContainerV" type="MarginContainer" parent="VBC"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="CloseBContainer" type="HBoxContainer" parent="VBC"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="Close" type="Button" parent="VBC/CloseBContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_oqpi6")
+icon_alignment = 1
+
+[node name="MarginContainerH5" type="MarginContainer" parent="VBC/CloseBContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="MarginContainerV2" type="MarginContainer" parent="VBC"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="TitlebarContainer" type="HBoxContainer" parent="VBC"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MarginContainerH50" type="MarginContainer" parent="VBC/TitlebarContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBC/TitlebarContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 30
+text = "Shop"
+
+[node name="MarginContainerH50_2" type="MarginContainer" parent="VBC/TitlebarContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ScrapCount" type="Label" parent="VBC/TitlebarContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 20
+text = "Scrap: 29"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ShopContainer" type="HBoxContainer" parent="VBC"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainerH50" type="MarginContainer" parent="VBC/ShopContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBC/ShopContainer"]
+custom_minimum_size = Vector2(400, 450)
+layout_mode = 2
+mouse_filter = 0
+theme = ExtResource("4_givx1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nyrhq")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ItemContainer" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Repair"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "2 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Repair" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(360, 3)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6hsnr")
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer2" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Upgrade 1"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "5 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Buy1" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer3" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Upgrade 2"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "10 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Buy2" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer4" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Upgrade 3"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "15 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Buy3" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer5" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Upgrade 4"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "30 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Buy4" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer7" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer6" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Upgrade 5"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "50 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 0
+
+[node name="Buy5" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("5_8egf1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_baexr")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainerH52" type="MarginContainer" parent="VBC/ShopContainer"]
+custom_minimum_size = Vector2(325, 0)
+layout_mode = 2
+
+[node name="PercentagesC" type="VBoxContainer" parent="VBC/ShopContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+
+[node name="Chassis" type="Label" parent="VBC/ShopContainer/PercentagesC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.94902, 0.380392, 0.568627, 1)
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Chassis 28%"
+horizontal_alignment = 2
+
+[node name="Wheels" type="Label" parent="VBC/ShopContainer/PercentagesC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Wheels 72%"
+horizontal_alignment = 2
+
+[node name="Brakes" type="Label" parent="VBC/ShopContainer/PercentagesC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Brakes 65%"
+horizontal_alignment = 2
+
+[node name="Motor" type="Label" parent="VBC/ShopContainer/PercentagesC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_6a3ut")
+theme_override_font_sizes/font_size = 15
+text = "Motor 28%"
+horizontal_alignment = 2
+
+[node name="MarginContainerH53" type="MarginContainer" parent="VBC/ShopContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="CarC" type="HBoxContainer" parent="VBC/ShopContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBC/ShopContainer/CarC"]
+layout_mode = 2
+texture = ExtResource("7_3cwom")
+stretch_mode = 2
+
+[node name="MarginContainerH54" type="MarginContainer" parent="VBC/ShopContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBC/ShopContainer"]
+custom_minimum_size = Vector2(20, 450)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_irgab")
+theme_override_styles/fill = SubResource("StyleBoxFlat_22mmh")
+min_value = 20.0
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="MarginContainerH51" type="MarginContainer" parent="VBC/ShopContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="pressed" from="VBC/CloseBContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="ready" from="VBC/CloseBContainer/Close" to="." method="_on_close_ready"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer/BuyC/Repair" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/BuyC/Buy1" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/BuyC/Buy2" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/BuyC/Buy3" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/BuyC/Buy4" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC/Buy5" to="." method="_on_repair_pressed"]
