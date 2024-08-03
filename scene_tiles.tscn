@@ -127,7 +127,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01896, 6.034, -0.095108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -196.557, 6.034, -14.1414)
 engine_force_value = 200
 
 [node name="RacetrackContainer" type="Node3D" parent="."]
