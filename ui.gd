@@ -12,5 +12,5 @@ func distanceFog():
 	var dist = fog_volume.position - player.position
 	dist = dist.length()
 	var loading_bar = $car/Hud/ProgressBar
-	print (dist)
+	#print (dist)
 	loading_bar.value = 100-dist/3+5
