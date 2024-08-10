@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=29 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://ml_roadtiles.tres" id="3_ug0lm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://ItemSpawner.gd" id="8_d1rq0"]
 [ext_resource type="Script" path="res://ui.gd" id="8_j768l"]
 [ext_resource type="Script" path="res://FogDamage.gd" id="9_j1v3u"]
+[ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://PauseMenu.tscn" id="11_anxlf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -198,7 +199,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.996793, 0.00101746, -0.0799556, -1.16415e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
+transform = Transform3D(0.996793, 0.00101746, -0.0799556, -1.74622e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, 2.85251e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 43.9433, -7.07262, 488.878)
@@ -244,3 +245,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/off-road"]
 shape = SubResource("ConcavePolygonShape3D_hlt7t")
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_anxlf")]
+visible = false
