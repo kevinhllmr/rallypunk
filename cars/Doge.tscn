@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_om8jj"]
 [ext_resource type="PackedScene" uid="uid://bkuw7wxvhu31j" path="res://Wheel_1_003.glb" id="3_son6u"]
 [ext_resource type="PackedScene" uid="uid://kj1shhjrlmdy" path="res://Vehicle_1_003.glb" id="5_ba78u"]
-[ext_resource type="PackedScene" uid="uid://c4rm5pu606j36" path="res://RepairMenu.tscn" id="6_tr0yq"]
+[ext_resource type="PackedScene" uid="uid://c4rm5pu606j36" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
 font_size = 32
@@ -116,4 +116,4 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101013, 0.625977, 0.193787)
 shape = SubResource("BoxShape3D_00ayj")
 
-[node name="RepairShopPanel" parent="." index="13" instance=ExtResource("6_tr0yq")]
+[node name="RepairShopPanel" parent="." index="13" instance=ExtResource("6_h0tlw")]
