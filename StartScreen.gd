@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var start_scene = "res://scene_tiles.tscn"
+@onready var start_scene = preload("res://scene_tiles.tscn") as PackedScene
+
 
 func _on_start_pressed():
 	get_tree().change_scene_to_packed(start_scene)
