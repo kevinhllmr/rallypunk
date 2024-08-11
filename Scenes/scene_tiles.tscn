@@ -140,7 +140,7 @@ script = ExtResource("8_j768l")
 environment = SubResource("Environment_76sc4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.80696, 0.183487, -0.56138, 0, 0.950516, 0.310676, 0.590606, -0.250704, 0.767029, 0, 43.5687, 0)
+transform = Transform3D(0.80696, 0.183487, -0.56138, 0, 0.950516, 0.310677, 0.590606, -0.250704, 0.767028, 0, 43.5687, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
@@ -199,7 +199,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.996792, 0.00101746, -0.0799556, -1.74622e-10, 0.999912, 0.0127243, 0.0799619, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
+transform = Transform3D(0.996792, 0.00101746, -0.0799556, -1.74622e-10, 0.999912, 0.0127243, 0.0799618, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, 2.85251e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 43.9433, -7.07262, 488.878)

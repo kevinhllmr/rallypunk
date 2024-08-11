@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bexjopfowqek2"]
+[gd_scene load_steps=5 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
 [ext_resource type="Texture2D" uid="uid://hbi3jr4ufguw" path="res://Graphics/MenuThumbnail.png" id="2_fd6o7"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="3_04wai"]
+[ext_resource type="Texture2D" uid="uid://chqvn1ywdxgvj" path="res://Unknowngtx.png" id="4_uj7wk"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_jo1o7")
@@ -29,6 +30,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 text = "exit
 "
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1170, 590)
+texture = ExtResource("4_uj7wk")
 
 [connection signal="pressed" from="Sprite2D/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/exit" to="." method="_on_exit_pressed"]

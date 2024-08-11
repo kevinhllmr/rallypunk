@@ -10,7 +10,7 @@ func _physics_process(delta):
 	var constant = 0.5
 	if car.speed <= 20 * factor:
 		gear.text = "1"
-		pitch_scale = constant+car.speed/5
+		pitch_scale = constant+car.speed/10
 	if car.speed >= 20 * factor:
 		gear.text = "2"
 		pitch_scale = constant+car.speed/20
