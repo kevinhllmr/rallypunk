@@ -1,13 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=16 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_om8jj"]
-[ext_resource type="PackedScene" uid="uid://bkuw7wxvhu31j" path="res://Wheel_1_003.glb" id="3_son6u"]
-[ext_resource type="PackedScene" uid="uid://kj1shhjrlmdy" path="res://Vehicle_1_003.glb" id="5_ba78u"]
+[ext_resource type="PackedScene" uid="uid://4fyanndboueo" path="res://Graphics/Wheel_1_003.glb" id="3_son6u"]
+[ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="4_6bvq2"]
+[ext_resource type="PackedScene" uid="uid://bjg850eb3wvql" path="res://Graphics/Vehicle_1_003.glb" id="5_ba78u"]
 [ext_resource type="PackedScene" uid="uid://c4rm5pu606j36" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
+[ext_resource type="AudioStream" uid="uid://ccdepjp6i8nu4" path="res://Sounds/4000.ogg" id="7_mdsms"]
+[ext_resource type="Script" path="res://cars/AudioStreamPlayer.gd" id="8_8wai4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5jjw"]
 font_size = 32
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7qdn"]
@@ -84,12 +90,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026385, 0.827398, 0.719927
 target_distance = 5
 speed = 10.0
 
+[node name="speed" parent="Hud" index="0"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
+[node name="Label" parent="Hud" index="1"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
+[node name="chassis" parent="Hud" index="2"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
+[node name="engine" parent="Hud" index="3"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
+[node name="brake" parent="Hud" index="4"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
+[node name="wheels" parent="Hud" index="5"]
+theme_override_fonts/font = ExtResource("4_6bvq2")
+
 [node name="ScrapCount" type="Label" parent="Hud" index="6"]
 offset_top = 416.0
 offset_right = 122.0
 offset_bottom = 461.0
+theme_override_fonts/font = ExtResource("4_6bvq2")
 text = "Scrap: 0"
 label_settings = SubResource("LabelSettings_yc8e5")
+
+[node name="Gear" type="Label" parent="Hud" index="8"]
+offset_left = 1099.0
+offset_top = 595.0
+offset_right = 1298.0
+offset_bottom = 643.0
+theme_override_fonts/font = ExtResource("4_6bvq2")
+text = "1"
+label_settings = SubResource("LabelSettings_f5jjw")
 
 [node name="doge-body" parent="." index="7" instance=ExtResource("3_om8jj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -117,3 +151,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101013, 0.625977, 0.19378
 shape = SubResource("BoxShape3D_00ayj")
 
 [node name="RepairShopPanel" parent="." index="13" instance=ExtResource("6_h0tlw")]
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("7_mdsms")
+volume_db = -3.095
+pitch_scale = 0.5
+script = ExtResource("8_8wai4")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

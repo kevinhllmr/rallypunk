@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/RepairMenu.gd" id="1_8j4ox"]
 
 [node name="Panel" type="Panel"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
