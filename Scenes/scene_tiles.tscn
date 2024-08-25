@@ -145,7 +145,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, 99.3628, 7.93084, -148.705)
+transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, 99.3628, 7.38506, -145.919)
 engine_force_value = 200
 
 [node name="RayCast3D" type="RayCast3D" parent="car"]
