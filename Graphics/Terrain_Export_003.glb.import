@@ -33,10 +33,16 @@ _subresources={
 "nodes": {
 "PATH:Road": {
 "generate/physics": true,
+"mesh_instance/layers": 3,
+"physics/layer": 3,
+"physics/mask": 3,
 "physics/shape_type": 2
 },
 "PATH:Road_001": {
 "generate/physics": true,
+"mesh_instance/layers": 3,
+"physics/layer": 3,
+"physics/mask": 3,
 "physics/shape_type": 2
 }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=31 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://Graphics/ml_roadtiles.tres" id="3_ug0lm"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="8_j768l"]
 [ext_resource type="Script" path="res://Scripts/FogDamage.gd" id="9_j1v3u"]
 [ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="11_anxlf"]
+[ext_resource type="PackedScene" uid="uid://b13xstj6uq4i0" path="res://Graphics/Terrain_006.glb" id="12_hn2oh"]
+[ext_resource type="PackedScene" uid="uid://btyedglsichkn" path="res://Graphics/Cohwheel_001.glb" id="13_64lcr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -145,7 +147,9 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, 99.3628, 7.38506, -145.919)
+transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, -95.1898, 56.9567, -291.601)
+collision_layer = 15
+collision_mask = 15
 engine_force_value = 200
 
 [node name="RayCast3D" type="RayCast3D" parent="car"]
@@ -159,6 +163,7 @@ script = ExtResource("4_io2yy")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
+visible = false
 mesh_library = ExtResource("3_ug0lm")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -168,6 +173,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="GridMap2" type="GridMap" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.1093, -3.58888, 1.1858)
+visible = false
 mesh_library = ExtResource("4_hf5jy")
 data = {
 "cells": PackedInt32Array(65525, 65524, 3, 65526, 65524, 3, 65527, 65524, 3, 131063, 65525, 0, 65528, 65526, 3, 131062, 65523, 1179651, 131063, 65523, 1179651, 131064, 65523, 1179651, 65528, 65534, 3, 65527, 65534, 3, 65527, 65535, 3)
@@ -176,15 +182,18 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="roadTile_0362" parent="." instance=ExtResource("5_c70vy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.626, 0, -94.5663)
+visible = false
 
 [node name="roadTile_0252" parent="." instance=ExtResource("6_unuqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.506, -2.77867, -90.2284)
+visible = false
 
 [node name="roadTile_0252" parent="roadTile_0252" instance=ExtResource("6_unuqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98809, -1.90735e-06, 0.00726318)
 
 [node name="roadTile_019" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.66978, 5.25003, -72.5274)
+visible = false
 mesh = SubResource("ArrayMesh_jahdx")
 skeleton = NodePath("")
 
@@ -248,3 +257,9 @@ shape = SubResource("ConcavePolygonShape3D_hlt7t")
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_anxlf")]
 visible = false
+
+[node name="Terrain_006" parent="." instance=ExtResource("12_hn2oh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.1226, 0)
+
+[node name="Cohwheel_001" parent="." instance=ExtResource("13_64lcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.403, 39.3002, -151.545)
