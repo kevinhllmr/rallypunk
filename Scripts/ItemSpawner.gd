@@ -1,8 +1,7 @@
 extends Path3D
 
 func _ready():
-	print("PathReady")
-
+	spawn_items()
 
 #func spawn_items():
 	#var curve = get_curve()  # Access the curve property of the Path3D node
@@ -71,4 +70,4 @@ func spawn_item(position):
 	print(str(position))
 
 func _process(delta):
-	$"../Path3D2/PathFollow3D2".progress += 10.0*delta
+	$"../Path3D/PathFollow3D".progress += 10.0*delta
