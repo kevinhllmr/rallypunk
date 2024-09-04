@@ -14,6 +14,10 @@ config/name="RallyPunk"
 run/main_scene="res://Scenes/scene_tiles.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[autoload]
+
+StatsManager="*res://Scripts/StatsManager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

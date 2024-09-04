@@ -17,6 +17,7 @@ offset_bottom = 651.0
 theme_override_constants/margin_top = 150
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 
@@ -29,13 +30,20 @@ theme_override_font_sizes/font_size = 40
 text = "Resume"
 
 [node name="settings" type="Button" parent="MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_1cc41")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
+
+[node name="statistics" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 40
+text = "Statistics"
 
 [node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,5 +53,66 @@ theme_override_fonts/font = ExtResource("1_1cc41")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="back" type="Button" parent="MarginContainer/StatsContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1cc41")
+text = "back"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/StatsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+
+[node name="TextContainer" type="VBoxContainer" parent="MarginContainer/StatsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="totalDistance" type="Label" parent="MarginContainer/StatsContainer/HBoxContainer/TextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 24
+text = "Total Distance"
+
+[node name="totalSrap" type="Label" parent="MarginContainer/StatsContainer/HBoxContainer/TextContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 24
+text = "Total Scrap"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/StatsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+
+[node name="ValueContainer" type="VBoxContainer" parent="MarginContainer/StatsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="totalDistance_value" type="Label" parent="MarginContainer/StatsContainer/HBoxContainer/ValueContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="totalScrap_value" type="Label" parent="MarginContainer/StatsContainer/HBoxContainer/ValueContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/statistics" to="." method="_on_statistics_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/StatsContainer/HBoxContainer2/back" to="." method="_on_back_pressed"]

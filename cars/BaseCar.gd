@@ -13,12 +13,19 @@ var speed = 0
 var last_velocity = Vector3.ZERO
 
 var scrap_count: int = 0
+var total_scrap: int = 0
 var scrap_count_label: Label = null
 
 var raycast: RayCast3D
 var slowing_down = false
 
+var distance: float = 0.0
+var total_distance = 0.0
+
 func _ready():
+	total_distance = StatsManager.total_distance
+	total_scrap = StatsManager.total_scrap
+		
 	raycast = $RayCast3D 
 	raycast.enabled = true
 	
@@ -39,7 +46,7 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		surface_type = collider.name
-		print(surface_type)	
+		#print(surface_type)	
 	
 	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
 	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
@@ -103,6 +110,9 @@ func _physics_process(delta):
 		$wheal2.wheel_friction_slip=3
 		$wheal3.wheel_friction_slip=3
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
+	
+	total_distance += speed * delta
+	StatsManager.save_total_distance(total_distance)
 
 func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)
@@ -150,8 +160,11 @@ func get_engine_health() -> int:
 
 func pick_up_scrap():
 	scrap_count += 1
+	total_scrap += 1
 	update_scrap_count()
-	
+	StatsManager.save_total_scrap(total_scrap)
+	#print(StatsManager.total_scrap)
+		
 func get_scrap_count() -> int:
 	return scrap_count
 	

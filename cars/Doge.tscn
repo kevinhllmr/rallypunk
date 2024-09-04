@@ -94,6 +94,7 @@ speed = 10.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="Label" parent="Hud" index="1"]
+visible = false
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="chassis" parent="Hud" index="2"]
