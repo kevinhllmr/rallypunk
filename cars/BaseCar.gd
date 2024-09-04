@@ -8,6 +8,9 @@ var engine_health = 100
 var brake_health = 100
 var chassis_health = 100
 var wheels_health = 100
+var engine_degradation = 0.004
+var brake_degradation = 0.004
+var wheels_degradation = 0.004
 
 var speed = 0
 var last_velocity = Vector3.ZERO
@@ -53,55 +56,63 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_down"):
 	# Increase engine force at low speeds to make the initial acceleration faster.
-
-		if speed < 20 and speed != 0:
-			if surface_type != "off-road":
-				engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
-			else:
-				engine_force = clamp(engine_force_value / speed, 0, 20)
+		if fwd_mps > 0:
+			brake = 1 * (round(brake_health)/100)
 			#Schaden für Bremsen
-			brake_health = brake_health-(0.004*speed)
+			brake_health = brake_health-(brake_degradation*speed)
 			if brake_health < 0:
-					brake_health = 0
+				brake_health = 0
 			#print(brake_health)
 		else:
-			engine_force = engine_force_value
+			if surface_type != "off-road":
+				engine_force = clamp(engine_force_value * 3 / speed, 0, 300)*(round(engine_health)/100)
+			else:
+				engine_force = clamp(engine_force_value / speed, 0, 20)*(round(engine_health)/100)
+			#Schaden für Motor
+			engine_health = engine_health-(engine_degradation*speed)
+			if engine_health < 0:
+				engine_health = 0
+			#print(engine_health)
 	else:
 		engine_force = 0
 		
 	if Input.is_action_pressed("ui_up"):
 		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= -1:
+		if fwd_mps >= 0:
 			if speed < 30 and speed != 0:
 				if surface_type != "off-road":
-					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
+					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
 				else:
-					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)
-				#Schaden für Motor wenn Geschwindigkeit zu hoch
-				engine_health = engine_health-(0.004*speed)
-				if engine_health < 0:
-					engine_health = 0
-				#print(engine_health)
+					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)*(round(engine_health)/100)
 			else:
 				engine_force = -engine_force_value
-			
+			#Schaden für Motor
+			engine_health = engine_health-(engine_degradation*speed)
+			if engine_health < 0:
+				engine_health = 0
+			#print(engine_health)
 		else:
-			brake = 1
-				
+			brake = 1 * (round(brake_health)/100)
+			#Schaden für Bremsen
+			brake_health = brake_health-(brake_degradation*speed)
+			if brake_health < 0:
+				brake_health = 0
+			#print(brake_health)
+
 	else:
 		brake = 0.0
 		
 	if Input.is_action_pressed("ui_select"):
 		brake=3
-		$wheal2.wheel_friction_slip=0.8
-		$wheal3.wheel_friction_slip=0.8
+		$wheal2.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
+		$wheal3.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		#Schaden für Räder wenn Handbremse gezogen wird, vllt lieber noch ne Geschwindigkeitsabfrage machen (oder linearer Geschwindigkeit sonst Abtrag in der Luft)
-		wheels_health = wheels_health-(0.004*speed)
+		wheels_health = wheels_health-(wheels_degradation*speed)
 		if wheels_health < 0:
 			wheels_health = 0
 	else:
-		$wheal2.wheel_friction_slip=3
-		$wheal3.wheel_friction_slip=3
+		$wheal2.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
+		$wheal3.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
 func traction(speed):
@@ -167,3 +178,5 @@ func remove_scrap(change_amount):
 		print("used " + str(change_amount) + " scrap to repair car!")
 	else:
 		print("not enough scrap!")
+
+

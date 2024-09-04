@@ -88,7 +88,7 @@ curve = SubResource("Curve3D_iglup")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.012711, -8.61045e-06, 0.999913, -1.36423e-12, 0.999989, 8.61119e-06, -0.99991, 1.09456e-07, -0.012711, 12.3403, 0.400535, -503.087)
+transform = Transform3D(-0.0127094, -8.61711e-06, 0.999913, -4.54743e-13, 0.999989, 8.61784e-06, -0.99991, 1.09528e-07, -0.0127095, 12.3403, 0.400535, -503.087)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, 2.85251e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 43.9433, -7.07262, 488.878)
