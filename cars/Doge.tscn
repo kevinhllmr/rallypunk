@@ -97,30 +97,61 @@ theme_override_fonts/font = ExtResource("4_6bvq2")
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="chassis" parent="Hud" index="2"]
+offset_left = 7.0
+offset_top = 902.0
+offset_right = 206.0
+offset_bottom = 950.0
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="engine" parent="Hud" index="3"]
+offset_left = 7.0
+offset_top = 942.0
+offset_right = 171.0
+offset_bottom = 990.0
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="brake" parent="Hud" index="4"]
+offset_left = 7.0
+offset_top = 982.0
+offset_right = 159.0
+offset_bottom = 1030.0
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="wheels" parent="Hud" index="5"]
+offset_left = 7.0
+offset_top = 1022.0
+offset_right = 192.0
+offset_bottom = 1070.0
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="ScrapCount" type="Label" parent="Hud" index="6"]
-offset_top = 416.0
-offset_right = 122.0
-offset_bottom = 461.0
+offset_left = 7.0
+offset_top = 838.0
+offset_right = 217.0
+offset_bottom = 886.0
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 text = "Scrap: 0"
 label_settings = SubResource("LabelSettings_yc8e5")
 
+[node name="ProgressBar" parent="Hud" index="7"]
+offset_left = 1840.0
+offset_top = 607.0
+offset_right = 2190.0
+offset_bottom = 651.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
 [node name="Gear" type="Label" parent="Hud" index="8"]
-offset_left = 1099.0
-offset_top = 595.0
-offset_right = 1298.0
-offset_bottom = 643.0
+offset_left = 1857.0
+offset_top = 651.0
+offset_right = 2056.0
+offset_bottom = 699.0
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("4_6bvq2")
 text = "1"
 label_settings = SubResource("LabelSettings_f5jjw")
