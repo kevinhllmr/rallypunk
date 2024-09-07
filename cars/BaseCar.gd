@@ -43,9 +43,9 @@ func _physics_process(delta):
 	
 	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
 	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
-	$Hud/brake.text="Bremsen: " + str(round(brake_health)) +"%"
+	$Hud/brake.text="Brakes: " + str(round(brake_health)) +"%"
 	$Hud/chassis.text = "Chassis: " + str(round(chassis_health)) + "%"
-	$Hud/wheels.text = "Räder: " + str(round(wheels_health)) + "%"
+	$Hud/wheels.text = "Wheels: " + str(round(wheels_health)) + "%"
 	
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
@@ -135,14 +135,14 @@ func get_speed() -> float:
 	return linear_velocity.length()
 	
 func set_chassis_health(value: int):
-	chassis_health = clamp(value, 0, 100)
+	chassis_health = max(value, 0)
 	print("ChassisHealth updated: ", chassis_health)
 
 func get_chassis_health() -> int:
 	return chassis_health
 	
 func set_engine_health(value: int):
-	engine_health = clamp(value, 0, 100)
+	engine_health = max(value, 0)
 	print("EngineHealth updated: ", engine_health)
 
 func get_engine_health() -> int:
@@ -157,13 +157,16 @@ func get_scrap_count() -> int:
 	
 func update_scrap_count():
 	if scrap_count_label:
-		scrap_count_label.text = "Scrap: " + str(scrap_count)
+		scrap_count_label.text = str(scrap_count)
 
 func remove_scrap(change_amount):
 	if !scrap_count - change_amount < 0:
 		scrap_count = scrap_count - change_amount
-		scrap_count_label.text = "Scrap: " + str(scrap_count)
-		get_node("RepairShopPanel").get_node("VBC").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
+		scrap_count_label.text = str(scrap_count)
+		get_node("RepairShopPanel").get_node("VBC").get_node("TitlebarContainer").get_node("ScrapCount").text = "Scrap: " + str(get_scrap_count())
 		print("used " + str(change_amount) + " scrap to repair car!")
+		return true
+
 	else:
 		print("not enough scrap!")
+		return false

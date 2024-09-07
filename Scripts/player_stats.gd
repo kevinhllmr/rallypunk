@@ -9,7 +9,6 @@ var uprank = (pow(2,rank))*500
 
 
 func rankupgrade():
-
 	if xp>=uprank:
 		xp = 0
 		rank += 1

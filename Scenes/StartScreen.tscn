@@ -25,6 +25,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 text = "Start"
 
+[node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_04wai")
+text = "Upgrade"
+
 [node name="exit" type="Button" parent="Sprite2D/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")

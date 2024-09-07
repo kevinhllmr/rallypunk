@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=17 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://4fyanndboueo" path="res://Graphics/Wheel_1_003.glb" id="3_son6u"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="4_6bvq2"]
 [ext_resource type="PackedScene" uid="uid://bjg850eb3wvql" path="res://Graphics/Vehicle_1_003.glb" id="5_ba78u"]
-[ext_resource type="PackedScene" uid="uid://c4rm5pu606j36" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
+[ext_resource type="Texture2D" uid="uid://m4vr1twlel64" path="res://UI Elements/ScrapBG.png" id="5_obpt6"]
+[ext_resource type="PackedScene" uid="uid://cb5ubkdsckji7" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
 [ext_resource type="AudioStream" uid="uid://ccdepjp6i8nu4" path="res://Sounds/4000.ogg" id="7_mdsms"]
 [ext_resource type="Script" path="res://cars/AudioStreamPlayer.gd" id="8_8wai4"]
 
@@ -91,32 +92,70 @@ target_distance = 5
 speed = 10.0
 
 [node name="speed" parent="Hud" index="0"]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -56.5
+offset_top = 0.0
+offset_right = 56.5
+offset_bottom = 75.0
+grow_vertical = 1
 theme_override_fonts/font = ExtResource("4_6bvq2")
+theme_override_font_sizes/font_size = 45
+text = "xx kmh"
 
 [node name="Label" parent="Hud" index="1"]
+visible = false
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="chassis" parent="Hud" index="2"]
+offset_left = 18.0
+offset_top = 474.0
+offset_right = 217.0
+offset_bottom = 522.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="engine" parent="Hud" index="3"]
+offset_left = 18.0
+offset_top = 514.0
+offset_right = 182.0
+offset_bottom = 562.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
 [node name="brake" parent="Hud" index="4"]
+offset_left = 18.0
+offset_top = 554.0
+offset_right = 200.0
+offset_bottom = 602.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
+text = "Brakes"
 
 [node name="wheels" parent="Hud" index="5"]
+offset_left = 18.0
+offset_top = 594.0
+offset_right = 203.0
+offset_bottom = 642.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 
-[node name="ScrapCount" type="Label" parent="Hud" index="6"]
-offset_top = 416.0
-offset_right = 122.0
-offset_bottom = 461.0
+[node name="TextureRect" type="TextureRect" parent="Hud" index="6"]
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 126.0
+offset_bottom = 110.0
+texture = ExtResource("5_obpt6")
+expand_mode = 1
+
+[node name="ScrapCount" type="Label" parent="Hud" index="7"]
+offset_left = 55.0
+offset_top = 39.0
+offset_right = 90.0
+offset_bottom = 87.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
-text = "Scrap: 0"
+theme_override_font_sizes/font_size = 20
+text = "0"
 label_settings = SubResource("LabelSettings_yc8e5")
 
-[node name="Gear" type="Label" parent="Hud" index="8"]
+[node name="Gear" type="Label" parent="Hud" index="9"]
 offset_left = 1099.0
 offset_top = 595.0
 offset_right = 1298.0
@@ -150,16 +189,13 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101013, 0.625977, 0.193787)
 shape = SubResource("BoxShape3D_00ayj")
 
-[node name="RepairShopPanel" parent="." index="13" instance=ExtResource("6_h0tlw")]
-offset_left = -2.0
-offset_top = 1.0
-offset_right = -2.0
-offset_bottom = 1.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="14"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource("7_mdsms")
 volume_db = -19.345
 pitch_scale = 1.05
 script = ExtResource("8_8wai4")
+
+[node name="RepairShopPanel" parent="." index="14" instance=ExtResource("6_h0tlw")]
+visible = false
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
