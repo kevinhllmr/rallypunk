@@ -13,8 +13,8 @@
 script = ExtResource("1_kb4pw")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(955.5, 535)
-scale = Vector2(1.0401, 1.03704)
+position = Vector2(575.5, 324)
+scale = Vector2(0.600521, 0.6)
 texture = ExtResource("2_j4uw3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]

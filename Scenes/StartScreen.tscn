@@ -11,8 +11,8 @@
 script = ExtResource("1_jo1o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(973.001, 547.5)
-scale = Vector2(1.89258, 1.8941)
+position = Vector2(583, 328)
+scale = Vector2(1.13971, 1.14063)
 texture = ExtResource("2_fd6o7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D"]
@@ -44,6 +44,7 @@ position = Vector2(1170, 590)
 texture = ExtResource("4_uj7wk")
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("5_sc8jh")]
+visible = false
 
 [node name="Playerstats" type="Node" parent="."]
 script = ExtResource("6_j66xh")
