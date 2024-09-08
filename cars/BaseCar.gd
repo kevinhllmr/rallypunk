@@ -8,7 +8,7 @@ var engine_health = 100
 var brake_health = 100
 var chassis_health = 100
 var wheels_health = 100
-var engine_degradation = 0.0005
+var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
 
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		print("fwd_mps: ",fwd_mps)
 	# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= 1:
+		if fwd_mps >= 5:
 			brake = 1 * (round(brake_health)/100)
 			#Schaden für Bremsen
 			brake_health = brake_health-(brake_degradation*speed)
@@ -79,7 +79,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("ui_up"):
 		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= -1:
+		if fwd_mps >= -5:
 			if speed < 30 and speed != 0:
 				if surface_type != "off-road":
 					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
