@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1mu1o2mp1exr"]
+
+[ext_resource type="PackedScene" uid="uid://b13xstj6uq4i0" path="res://Graphics/Terrain_006.glb" id="1_iabkn"]
+
+[node name="Terrain_006" instance=ExtResource("1_iabkn")]

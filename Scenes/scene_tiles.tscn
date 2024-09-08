@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bl5pbit0uif4y"]
+[gd_scene load_steps=32 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="MeshLibrary" uid="uid://03xsmtfi2vag" path="res://Graphics/ml_roadtiles.tres" id="3_ug0lm"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/ItemSpawner.gd" id="8_d1rq0"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="8_j768l"]
 [ext_resource type="Script" path="res://Scripts/FogDamage.gd" id="9_j1v3u"]
+[ext_resource type="PackedScene" uid="uid://b0m4cp0krmog8" path="res://Scenes/Terrain_Level.tscn" id="11_4mp4m"]
 [ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="11_anxlf"]
+[ext_resource type="Script" path="res://Scenes/Path3D2.gd" id="12_vcift"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -104,24 +106,13 @@ data = PackedVector3Array(-0.2345, 2.3129, -0.1354, 0, 2.3129, 0, 0, 2.5309, 0, 
 
 [sub_resource type="Curve3D" id="Curve3D_dajaj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.70662, 0.851368, 11.8406, 0, 0, 0, 0, 0, 0, 1.2334, -0.0939384, -62.2068, 0, 0, 0, 0, 0, 0, -0.56383, 0.147757, -87.429, 0, 0, 0, 0, 0, 0, 6.92633, -0.59004, -114.586, 0, 0, 0, 0, 0, 0, 18.1405, 0.633162, -128.064, 0, 0, 0, 0, 0, 0, 64.5937, 0.660952, -144.292, 0, 0, 0, 0, 0, 0, 93.0087, -0.719285, -145.88, 0, 0, 0, 0, 0, 0, 134.151, -0.232554, -145.52, 0, 0, 0, 0, 0, 0, 355.322, 1.35652, -143.312, 0, 0, 0, 0, 0, 0, 358.507, 1.07966, -181.195, 0, 0, 0, 0, 0, 0, 363.553, 0.761385, -199.234, 0, 0, 0, 0, 0, 0, 479.159, 0.297098, -198.704, 0, 0, 0, 0, 0, 0, 477.81, 0.572811, 126.001, 0, 0, 0, 0, 0, 0, 332.746, 3.42627, 127.318, 0, 0, 0, 0, 0, 0, 286.248, 11.5475, 129.604, 0, 0, 0, 0, 0, 0, 249.698, 1.1313, 128.607, 0, 0, 0, 0, 0, 0, 3.03598, 0.453107, 126.263, 0, 0, 0, 0, 0, 0, 1.84802, 1.49564, 18.2128),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.70662, 0.851368, 11.8406, 0, 0, 0, 0, 0, 0, -125.093, -8.63749, -336.823, 0, 0, 0, 0, 0, 0, -100.139, -2.16254, -309.061, 0, 0, 0, 0, 0, 0, -86.552, -6.5787, -285.304, 0, 0, 0, 0, 0, 0, -74.9866, -4.62446, -258.704, 0, 0, 0, 0, 0, 0, -41.7104, -4.68445, -258.604, 0, 0, 0, 0, 0, 0, -36.1808, -7.2551, -268.798, 0, 0, 0, 0, 0, 0, -34.4739, -8.78925, -277.298, 0, 0, 0, 0, 0, 0, -30.8517, -9.3905, -296.263, 0, 0, 0, 0, 0, 0, -15.8002, -5.12624, -314.53, 0, 0, 0, 0, 0, 0, -2.773, -2.42216, -324.131, 0, 0, 0, 0, 0, 0, 32.8651, -7.27882, -328.026, 0, 0, 0, 0, 0, 0, 477.81, 0.572811, 126.001, 0, 0, 0, 0, 0, 0, 332.746, 3.42627, 127.318, 0, 0, 0, 0, 0, 0, 286.248, 11.5475, 129.604, 0, 0, 0, 0, 0, 0, 249.698, 1.1313, 128.607, 0, 0, 0, 0, 0, 0, 3.03598, 0.453107, 126.263, 0, 0, 0, 0, 0, 0, 1.84802, 1.49564, 18.2128),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 18
 
-[sub_resource type="FogMaterial" id="FogMaterial_qahue"]
-density = 0.25
-albedo = Color(0.796078, 0.741176, 0.576471, 1)
-emission = Color(0.796078, 0.741176, 0.576471, 1)
-edge_fade = 0.131951
-
-[sub_resource type="GDScript" id="GDScript_siapo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m0uy5"]
-size = Vector3(500, 200, 1000)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_isv20"]
-size = Vector3(10, 0.5, 10)
+size = Vector3(10, 6.49365, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiknm"]
 
@@ -132,6 +123,24 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_16vgr"]
 material = SubResource("StandardMaterial3D_ymprj")
+
+[sub_resource type="Curve3D" id="Curve3D_ttuuq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 324.8, 52.6321, -307.282, 0, 0, 0, 0, 0, 0, -1391.64, 24.5211, 1417.61),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="FogMaterial" id="FogMaterial_qahue"]
+density = 0.1
+albedo = Color(0.796078, 0.741176, 0.576471, 1)
+emission = Color(0.796078, 0.741176, 0.576471, 1)
+edge_fade = 0.131951
+
+[sub_resource type="GDScript" id="GDScript_siapo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0uy5"]
+size = Vector3(2004.36, 200, 990.847)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("8_j768l")
@@ -145,7 +154,9 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("2_pfrbg")]
-transform = Transform3D(-0.316725, 0, -0.948517, 0, 1, 0, 0.948517, 0, -0.316725, 99.3628, 7.93084, -148.705)
+transform = Transform3D(-0.0805992, 0, 0.996746, 0, 1, 0, -0.996746, 0, -0.0805992, 463.674, 33.5566, -196.432)
+collision_layer = 15
+collision_mask = 15
 engine_force_value = 200
 
 [node name="RayCast3D" type="RayCast3D" parent="car"]
@@ -159,6 +170,7 @@ script = ExtResource("4_io2yy")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
+visible = false
 mesh_library = ExtResource("3_ug0lm")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -168,6 +180,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="GridMap2" type="GridMap" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.1093, -3.58888, 1.1858)
+visible = false
 mesh_library = ExtResource("4_hf5jy")
 data = {
 "cells": PackedInt32Array(65525, 65524, 3, 65526, 65524, 3, 65527, 65524, 3, 131063, 65525, 0, 65528, 65526, 3, 131062, 65523, 1179651, 131063, 65523, 1179651, 131064, 65523, 1179651, 65528, 65534, 3, 65527, 65534, 3, 65527, 65535, 3)
@@ -176,15 +189,18 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="roadTile_0362" parent="." instance=ExtResource("5_c70vy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.626, 0, -94.5663)
+visible = false
 
 [node name="roadTile_0252" parent="." instance=ExtResource("6_unuqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.506, -2.77867, -90.2284)
+visible = false
 
 [node name="roadTile_0252" parent="roadTile_0252" instance=ExtResource("6_unuqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98809, -1.90735e-06, 0.00726318)
 
 [node name="roadTile_019" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.66978, 5.25003, -72.5274)
+visible = false
 mesh = SubResource("ArrayMesh_jahdx")
 skeleton = NodePath("")
 
@@ -194,35 +210,46 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_rhblw")
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28726, 6.21177, -8.65581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28726, 40.2551, -8.65581)
 curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.996792, 0.00101746, -0.0799556, -1.74622e-10, 0.999912, 0.0127243, 0.0799618, -0.0126835, 0.996715, -4.70662, 0.851368, 11.8406)
-
-[node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
-transform = Transform3D(0.996798, 2.85251e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 43.9433, -7.07262, 488.878)
-size = Vector3(500, 200, 1000)
-material = SubResource("FogMaterial_qahue")
-script = SubResource("GDScript_siapo")
-
-[node name="Area3D" type="Area3D" parent="Path3D/PathFollow3D/FogVolume"]
-script = ExtResource("9_j1v3u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/FogVolume/Area3D"]
-transform = Transform3D(1, -1.50996e-07, -1.50996e-07, -1.50996e-07, -1, 2.84217e-14, -1.50996e-07, 3.55271e-14, -1, 0, 0, 0)
-shape = SubResource("BoxShape3D_m0uy5")
+transform = Transform3D(0.945232, -0.00839293, 0.326263, 0, 0.999655, 0.025716, -0.326369, -0.0243076, 0.944923, -4.70662, 0.851368, 11.8406)
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9364, 5.69168, -76.8654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.6144, 35.612, -313.934)
 script = ExtResource("8_37jrt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 1.78958, 2.90188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 0.960724, 2.90189)
 shape = SubResource("BoxShape3D_isv20")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(6.86444, 0, 0, 0, 5.3176, 0, 0, 0, 7.15421, -1.97537, 1.46836, 2.92492)
+mesh = SubResource("BoxMesh_eiknm")
+
+[node name="Area3D" type="Area3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 334.362, 2.83534, -75.2393)
+script = ExtResource("8_37jrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 0.960724, 2.90189)
+shape = SubResource("BoxShape3D_isv20")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Area3D"]
+transform = Transform3D(6.86444, 0, 0, 0, 5.3176, 0, 0, 0, 7.15421, -1.97537, 1.46836, 2.92492)
+mesh = SubResource("BoxMesh_eiknm")
+
+[node name="Area3D" type="Area3D" parent="Area3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -486.397, 10.3483, 360.804)
+script = ExtResource("8_37jrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Area3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 0.960724, 2.90189)
+shape = SubResource("BoxShape3D_isv20")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Area3D/Area3D"]
 transform = Transform3D(6.86444, 0, 0, 0, 5.3176, 0, 0, 0, 7.15421, -1.97537, 1.46836, 2.92492)
 mesh = SubResource("BoxMesh_eiknm")
 
@@ -248,3 +275,29 @@ shape = SubResource("ConcavePolygonShape3D_hlt7t")
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_anxlf")]
 visible = false
+
+[node name="Terrain_007" parent="." instance=ExtResource("11_4mp4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(0.989037, 0, 0.147671, 0, 1, 0, -0.147671, 0, 0.989037, 350.784, 57.0645, -693.654)
+curve = SubResource("Curve3D_ttuuq")
+script = ExtResource("12_vcift")
+metadata/_edit_group_ = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(-0.708837, -0.00814792, 0.705319, 0, 0.999926, 0.0115514, -0.705363, 0.00818805, -0.708793, 324.8, 52.6321, -307.282)
+
+[node name="FogVolume" type="FogVolume" parent="Path3D2/PathFollow3D"]
+transform = Transform3D(0.999994, -9.76236e-05, -0.0032742, 5.59646e-05, 0.999919, -0.0127205, 0.00327522, 0.0127202, 0.999913, 43.9433, -7.07261, 488.878)
+size = Vector3(2000, 500, 1750)
+material = SubResource("FogMaterial_qahue")
+script = SubResource("GDScript_siapo")
+
+[node name="Area3D" type="Area3D" parent="Path3D2/PathFollow3D/FogVolume"]
+transform = Transform3D(1, 1.94026e-10, 2.38419e-07, -1.94026e-10, 1, -5.43272e-10, -2.38419e-07, 5.43271e-10, 1, 0, 0, 0)
+script = ExtResource("9_j1v3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D2/PathFollow3D/FogVolume/Area3D"]
+transform = Transform3D(1.77158, -2.66416e-07, -1.43051e-06, -2.23285e-07, -1.77158, 6.71716e-08, -1.32322e-05, -2.16532e-08, -1.77157, -1.14844, -1.52588e-05, 1.04517)
+shape = SubResource("BoxShape3D_m0uy5")

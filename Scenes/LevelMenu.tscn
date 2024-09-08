@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwdrfftcqrwx4"]
+
+[ext_resource type="Script" path="res://Scenes/LevelMenu.gd" id="1_kb4pw"]
+[ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="1_lb62y"]
+[ext_resource type="Texture2D" uid="uid://brke7qo6lv81g" path="res://Graphics/Screenshot 2024-08-17 at 09.38.14.png" id="2_brko3"]
+[ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_j4uw3"]
+[ext_resource type="Script" path="res://Scripts/player_stats.gd" id="3_onmon"]
+[ext_resource type="Texture2D" uid="uid://kaymleewqv6q" path="res://Graphics/istockphoto-1345388323-612x612.png" id="6_5demd"]
+[ext_resource type="Texture2D" uid="uid://7jaqmw4hlw8v" path="res://Graphics/Forests_Roads_From_above_Trees_527799_1600x1200.jpg" id="6_vhb7c"]
+
+[node name="Levelmenu" type="Node2D"]
+script = ExtResource("1_kb4pw")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(581, 326)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_j4uw3")
+
+[node name="Level1" type="Button" parent="Background"]
+offset_left = -781.539
+offset_top = -224.615
+offset_right = -550.539
+offset_bottom = 38.3846
+
+[node name="Level1" type="Sprite2D" parent="Background/Level1"]
+position = Vector2(114, 108)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_brko3")
+
+[node name="Label" type="Label" parent="Background/Level1/Level1"]
+offset_left = -355.0
+offset_top = 500.0
+offset_right = -198.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 140
+text = "Level 1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(743.077, -369.231)
+scale = Vector2(0.307692, 0.307692)
+texture = ExtResource("6_5demd")
+
+[node name="Label" type="Label" parent="Background/Sprite2D"]
+offset_left = -1080.0
+offset_top = -265.0
+offset_right = -366.0
+offset_bottom = -43.0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 150
+text = "Rank 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Background/Sprite2D"]
+offset_left = -1090.0
+offset_top = -15.0
+offset_right = -376.0
+offset_bottom = 207.0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 150
+text = "0 XP"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Level2" type="Button" parent="Background"]
+offset_left = -490.769
+offset_top = -224.615
+offset_right = -259.769
+offset_bottom = 38.3846
+
+[node name="Level1" type="Sprite2D" parent="Background/Level2"]
+position = Vector2(118.462, 107.692)
+scale = Vector2(0.109615, 0.153846)
+texture = ExtResource("6_vhb7c")
+
+[node name="Label" type="Label" parent="Background/Level2/Level1"]
+offset_left = -575.439
+offset_top = 680.0
+offset_right = 547.561
+offset_bottom = 975.0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 200
+text = "Level 2"
+
+[node name="Playerstats" type="Node" parent="."]
+script = ExtResource("3_onmon")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 30
+text = "Scrap: 0"
+
+[connection signal="pressed" from="Background/Level1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/Level2" to="." method="_on_button_pressed"]

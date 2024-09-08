@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c26emnmr85an"]
+[gd_scene load_steps=6 format=3 uid="uid://c26emnmr85an"]
 
 [ext_resource type="PackedScene" uid="uid://wqhm01slrpxk" path="res://items/tomato.glb" id="1_msbk1"]
 [ext_resource type="Script" path="res://items/Collect.gd" id="1_tt8k8"]
+[ext_resource type="PackedScene" uid="uid://btyedglsichkn" path="res://items/Cogwheel.glb" id="3_l3l4v"]
+[ext_resource type="Script" path="res://items/Cogwheel.gd" id="4_out8h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdlmr"]
 
@@ -11,7 +13,12 @@ script = ExtResource("1_tt8k8")
 
 [node name="tomato" parent="." instance=ExtResource("1_msbk1")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.655496, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.5, 0)
 shape = SubResource("SphereShape3D_vdlmr")
+
+[node name="Cogwheel" parent="." instance=ExtResource("3_l3l4v")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0)
+script = ExtResource("4_out8h")

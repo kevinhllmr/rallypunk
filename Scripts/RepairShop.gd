@@ -12,7 +12,7 @@ func _on_body_entered(body):
 		if body.get_speed() < 30.0:  
 			body.get_node("Hud").hide()
 			body.get_node("RepairShopPanel").show()
-			body.get_node("RepairShopPanel").get_node("VBC").get_node("ScrapCount").text = "Scrap: " + str(body.get_scrap_count())
+			body.get_node("RepairShopPanel").get_node("VBC").get_node("TitlebarContainer").get_node("ScrapCount").text = "Scrap: " + str(body.get_scrap_count())
 			slowing_down = true
 
 func _physics_process(delta):
@@ -26,6 +26,7 @@ func _physics_process(delta):
 			slowing_down = false
 
 func _on_body_exited(body):
-	if body.is_in_group("car"):
+	if body.get_node("RepairShopPanel"):
 		body.get_node("RepairShopPanel").hide()
+	if body.get_node("Hud"):
 		body.get_node("Hud").show()
