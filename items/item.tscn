@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c26emnmr85an"]
 
 [ext_resource type="Script" path="res://items/Collect.gd" id="1_tt8k8"]
-[ext_resource type="PackedScene" uid="uid://btyedglsichkn" path="res://items/Cohwheel_001.glb" id="2_bjgd5"]
+[ext_resource type="PackedScene" path="res://items/Cogwheel_001.glb" id="2_bjgd5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdlmr"]
 
