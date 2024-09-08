@@ -8,9 +8,9 @@ var engine_health = 100
 var brake_health = 100
 var chassis_health = 100
 var wheels_health = 100
-var engine_degradation = 0.004
-var brake_degradation = 0.004
-var wheels_degradation = 0.004
+var engine_degradation = 0.0005
+var brake_degradation = 0.003
+var wheels_degradation = 0.003
 
 var speed = 0
 var last_velocity = Vector3.ZERO
@@ -42,21 +42,21 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		surface_type = collider.name
-		print(surface_type)	
+		#print(surface_type)
 	
 	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
 	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
 	$Hud/brake.text="Bremsen: " + str(round(brake_health)) +"%"
 	$Hud/chassis.text = "Chassis: " + str(round(chassis_health)) + "%"
 	$Hud/wheels.text = "Räder: " + str(round(wheels_health)) + "%"
-	
-	var fwd_mps = transform.basis.x.x
+	var fwd_mps = -linear_velocity.dot(transform.basis.z)
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
 	
 	if Input.is_action_pressed("ui_down"):
+		print("fwd_mps: ",fwd_mps)
 	# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps > 0:
+		if fwd_mps >= 1:
 			brake = 1 * (round(brake_health)/100)
 			#Schaden für Bremsen
 			brake_health = brake_health-(brake_degradation*speed)
@@ -74,18 +74,19 @@ func _physics_process(delta):
 				engine_health = 0
 			#print(engine_health)
 	else:
-		engine_force = 0
+		if not Input.is_action_just_pressed("ui_select"):
+			brake = 0
 		
 	if Input.is_action_pressed("ui_up"):
 		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= 0:
+		if fwd_mps >= -1:
 			if speed < 30 and speed != 0:
 				if surface_type != "off-road":
 					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
 				else:
 					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)*(round(engine_health)/100)
 			else:
-				engine_force = -engine_force_value
+				engine_force = -clamp(engine_force_value * 1 / speed, 0, 30)*(round(engine_health)/100)
 			#Schaden für Motor
 			engine_health = engine_health-(engine_degradation*speed)
 			if engine_health < 0:
@@ -100,7 +101,8 @@ func _physics_process(delta):
 			#print(brake_health)
 
 	else:
-		brake = 0.0
+		if not Input.is_action_pressed("ui_down"):
+			engine_force = 0
 		
 	if Input.is_action_pressed("ui_select"):
 		brake=3
@@ -138,23 +140,23 @@ func apply_damage(impact):
 		engine_health -= damage
 		if engine_health < 0:
 			engine_health = 0
-	print("Geschwindigkeit: ", speed)
-	print("Kollisionskraft: ", impact)
-	print("Chassis Schaden: ", damage)
+	#print("Geschwindigkeit: ", speed)
+	#print("Kollisionskraft: ", impact)
+	#print("Chassis Schaden: ", damage)
 
 func get_speed() -> float:
 	return linear_velocity.length()
 	
 func set_chassis_health(value: int):
 	chassis_health = clamp(value, 0, 100)
-	print("ChassisHealth updated: ", chassis_health)
+	#print("ChassisHealth updated: ", chassis_health)
 
 func get_chassis_health() -> int:
 	return chassis_health
 	
 func set_engine_health(value: int):
 	engine_health = clamp(value, 0, 100)
-	print("EngineHealth updated: ", engine_health)
+	#print("EngineHealth updated: ", engine_health)
 
 func get_engine_health() -> int:
 	return engine_health

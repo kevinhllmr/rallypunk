@@ -80,7 +80,6 @@ visible = false
 
 [node name="Terrain_006" parent="." instance=ExtResource("12_hn2oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -452.113, 49.7924, -342.123)
-visible = false
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28726, 6.21177, -33.8492)
