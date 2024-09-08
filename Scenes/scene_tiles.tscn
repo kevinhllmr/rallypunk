@@ -2,23 +2,23 @@
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="Script" path="res://Scripts/RacetrackGenerator.gd" id="4_io2yy"]
+[ext_resource type="PackedScene" uid="uid://b13xstj6uq4i0" path="res://Graphics/Maps/Terrain_006.glb" id="5_06g01"]
 [ext_resource type="Script" path="res://Scripts/ItemSpawner.gd" id="8_d1rq0"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="8_j768l"]
 [ext_resource type="Script" path="res://Scripts/FogDamage.gd" id="9_j1v3u"]
 [ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="11_anxlf"]
-[ext_resource type="PackedScene" uid="uid://b13xstj6uq4i0" path="res://Graphics/Terrain_006.glb" id="12_hn2oh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
 sky_horizon_color = Color(0.654902, 0.679505, 0.688152, 1)
 ground_horizon_color = Color(0.654902, 0.679505, 0.688152, 1)
 
-[sub_resource type="Sky" id="Sky_1hegq"]
+[sub_resource type="Sky" id="Sky_2ld5y"]
 sky_material = SubResource("ProceduralSkyMaterial_stkyv")
 
 [sub_resource type="Environment" id="Environment_76sc4"]
 background_mode = 2
-sky = SubResource("Sky_1hegq")
+sky = SubResource("Sky_2ld5y")
 tonemap_mode = 2
 ssr_enabled = true
 ssao_enabled = true
@@ -78,7 +78,7 @@ script = ExtResource("4_io2yy")
 [node name="PauseMenu" parent="." instance=ExtResource("11_anxlf")]
 visible = false
 
-[node name="Terrain_006" parent="." instance=ExtResource("12_hn2oh")]
+[node name="Terrain_006" parent="." instance=ExtResource("5_06g01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -452.113, -17.3111, -342.123)
 
 [node name="Path3D" type="Path3D" parent="."]
@@ -87,13 +87,16 @@ curve = SubResource("Curve3D_iglup")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.999989, 0, 0, 0, 0.999986, 0, 0, 0, 0.999992, -101.833, 0.966446, -502.039)
+<<<<<<< HEAD
+transform = Transform3D(0.999989, 0, 0, 0, 0.999986, 0, 0, 0, 0.999992, -101.637, 0.40004, -502.357)
 progress = 113.986
 rotation_mode = 0
+=======
+transform = Transform3D(-0.0127094, -8.61711e-06, 0.999913, -4.54743e-13, 0.999989, 8.61784e-06, -0.99991, 1.09528e-07, -0.0127095, 12.3403, 0.400535, -503.087)
+>>>>>>> parent of 81ab03b (Auflösung und Fahrzeugposition geändert)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D/PathFollow3D"]
 transform = Transform3D(0.996798, 2.85251e-10, 0.0799623, 0.00101747, 0.999919, -0.0126836, -0.0799558, 0.0127243, 0.996717, 43.9433, -7.07262, 488.878)
-visible = false
 size = Vector3(500, 200, 1000)
 material = SubResource("FogMaterial_qahue")
 script = SubResource("GDScript_siapo")
