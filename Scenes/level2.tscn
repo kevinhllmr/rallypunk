@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://quw31bc15tjd"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_30w24"]
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_k5jtn"]
+[ext_resource type="Script" path="res://Scripts/RacetrackGenerator.gd" id="2_hxjfs"]
+[ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="3_l5g0c"]
+[ext_resource type="PackedScene" uid="uid://dlfs4eoayi2xk" path="res://Graphics/Maps/Level_2_007.glb" id="4_obojp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gp5g0"]
+sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
+sky_horizon_color = Color(0.654902, 0.679505, 0.688152, 1)
+ground_horizon_color = Color(0.654902, 0.679505, 0.688152, 1)
+
+[sub_resource type="Sky" id="Sky_1hegq"]
+sky_material = SubResource("ProceduralSkyMaterial_gp5g0")
+
+[sub_resource type="Environment" id="Environment_f131l"]
+background_mode = 2
+sky = SubResource("Sky_1hegq")
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.5
+ssao_intensity = 0.6
+ssao_power = 32.7849
+ssil_enabled = true
+sdfgi_y_scale = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_30w24")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f131l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.80696, 0.183487, -0.56138, 0, 0.950516, 0.310677, 0.590606, -0.250704, 0.767028, 0, 43.5687, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 200.0
+
+[node name="car" parent="." instance=ExtResource("1_k5jtn")]
+transform = Transform3D(0.899343, 0, 0.437242, 0, 1, 0, -0.437242, 0, 0.899343, 498.509, 181.095, -382.42)
+collision_layer = 15
+collision_mask = 15
+engine_force_value = 200
+
+[node name="RayCast3D" type="RayCast3D" parent="car"]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 0, 0)
+target_position = Vector3(0, -2, 0)
+
+[node name="RacetrackContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25867, 0)
+visible = false
+script = ExtResource("2_hxjfs")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_l5g0c")]
+visible = false
+
+[node name="Level_2_007" parent="." instance=ExtResource("4_obojp")]

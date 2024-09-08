@@ -6,7 +6,6 @@ extends Node
 var paused = false
 
 func _process(delta):
-	distanceFog()
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 	

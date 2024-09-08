@@ -158,9 +158,8 @@ offset_bottom = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="14"]
 stream = ExtResource("7_mdsms")
-volume_db = -3.095
-pitch_scale = 0.5
-autoplay = true
+volume_db = -19.345
+pitch_scale = 1.05
 script = ExtResource("8_8wai4")
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

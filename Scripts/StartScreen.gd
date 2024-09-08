@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var start_scene = preload("res://Scenes/scene_tiles.tscn") as PackedScene
+@onready var start_scene = preload("res://Scenes/LevelMenu.tscn") as PackedScene
 
 
 func _on_start_pressed():
