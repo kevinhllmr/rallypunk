@@ -112,7 +112,7 @@ _data = {
 point_count = 18
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isv20"]
-size = Vector3(10, 6.49365, 10)
+size = Vector3(9.5957, 6.49365, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eiknm"]
 
@@ -246,7 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -486.397, 10.3483, 360.804)
 script = ExtResource("8_37jrt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Area3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80548, 0.960724, 2.90189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60333, 0.960724, 2.90189)
 shape = SubResource("BoxShape3D_isv20")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Area3D/Area3D"]
