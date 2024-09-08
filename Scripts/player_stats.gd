@@ -13,7 +13,7 @@ func rankupgrade():
 		xp = 0
 		rank += 1
 		rankupgrade()
-		
+
 func addXP(amount):
 	xp =+ amount
 	totalXP =+ amount
@@ -41,8 +41,9 @@ func load_game_data():
 		totalXP = save_data["totalXP"]
 	else:
 		# For testing, set the scrap to 1000 if no save file exists
-		scrap = 1000
+		scrap = 0
 		xp = 0
 		rank = 0
 		totalXP = 0
+
 

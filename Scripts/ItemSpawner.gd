@@ -61,8 +61,13 @@ func get_position_from_distance(points, distance):
 func spawn_item(position):
 	var item_scene = load("res://items/item.tscn")
 	var item_instance = item_scene.instantiate()
-	item_instance.global_transform.origin = position
+	
+	# Füge die Instanz zuerst dem Szenenbaum hinzu
 	add_child(item_instance)
 
+	item_instance.global_transform.origin = position
+	
+	print(str(position))
+
 func _process(delta):
-	$PathFollow3D.progress += 10.0*delta
+	$"../Path3D/PathFollow3D".progress += 10.0*delta

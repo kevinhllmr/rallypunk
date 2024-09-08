@@ -4,12 +4,21 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://btyedglsichkn"
+<<<<<<<< HEAD:items/Cogwheel.glb.import
 path="res://.godot/imported/Cogwheel.glb-6c7dbe9e0574ba5af98c370076a2e7ee.scn"
 
 [deps]
 
 source_file="res://items/Cogwheel.glb"
 dest_files=["res://.godot/imported/Cogwheel.glb-6c7dbe9e0574ba5af98c370076a2e7ee.scn"]
+========
+path="res://.godot/imported/Cohwheel_001.glb-2d8f81432bdbf0b3c091d439d832c48c.scn"
+
+[deps]
+
+source_file="res://items/Cohwheel_001.glb"
+dest_files=["res://.godot/imported/Cohwheel_001.glb-2d8f81432bdbf0b3c091d439d832c48c.scn"]
+>>>>>>>> 24ceb5293865cd5f05fd19f6f45b58561b744dc0:items/Cohwheel_001.glb.import
 
 [params]
 
