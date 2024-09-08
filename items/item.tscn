@@ -1,17 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://c26emnmr85an"]
+[gd_scene load_steps=6 format=3 uid="uid://c26emnmr85an"]
 
 [ext_resource type="Script" path="res://items/Collect.gd" id="1_tt8k8"]
 [ext_resource type="PackedScene" uid="uid://btyedglsichkn" path="res://items/Cohwheel_001.glb" id="2_bjgd5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdlmr"]
 
+[sub_resource type="Animation" id="Animation_n2erm"]
+resource_name = "item_rotation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 1, 1.5, 1, 2.08165e-12, 1, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhn6n"]
+_data = {
+"item_rotation": SubResource("Animation_n2erm")
+}
+
 [node name="Item" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000168324, 0.00905132, 0)
 script = ExtResource("1_tt8k8")
 
-[node name="Cohwheel_001" parent="." instance=ExtResource("2_bjgd5")]
-transform = Transform3D(0.00143118, 0.999999, 0, -0.999999, 0.00143118, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.655496, 0)
+transform = Transform3D(-2.1159, 8.80913e-12, 2.12672, 2.13441e-11, 3, 8.80913e-12, -2.12672, 2.13441e-11, -2.1159, 0, 0.655496, 0)
 shape = SubResource("SphereShape3D_vdlmr")
+
+[node name="Cohwheel_001" parent="CollisionShape3D" instance=ExtResource("2_bjgd5")]
+transform = Transform3D(0.333333, 0, -5.08199e-24, -5.08199e-24, -1.45705e-08, -0.333333, 0, 0.333333, -1.45705e-08, 0, 0, 2.08165e-12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qhn6n")
+}
