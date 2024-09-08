@@ -210,7 +210,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_rhblw")
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.28726, 40.2551, -8.65581)
+transform = Transform3D(1, 0, 0, 0, 0.993423, -0.114504, 0, 0.114504, 0.993423, 9.28726, 28.1798, -8.65581)
 curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 

@@ -9,4 +9,7 @@ func _ready():
 	$Background/ProgressBar.value = PlayerStats.xp
 	$Background/VBoxContainer/collected_Scrap.text = "Scrap: " + str(PlayerStats.collectedScrap)
 	$Background/VBoxContainer/collected_XP.text = "XP: " + str(PlayerStats.xp)
-	
+
+
+func _on_start_pressed():
+	pass # Replace with function body.

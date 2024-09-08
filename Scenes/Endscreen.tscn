@@ -126,3 +126,5 @@ text = "Next"
 
 [node name="Playerstats" type="Node" parent="."]
 script = ExtResource("7_e0rnl")
+
+[connection signal="pressed" from="Background/start" to="." method="_on_start_pressed"]
