@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=18 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5ubkdsckji7" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
 [ext_resource type="AudioStream" uid="uid://ccdepjp6i8nu4" path="res://Sounds/4000.ogg" id="7_mdsms"]
 [ext_resource type="Script" path="res://cars/AudioStreamPlayer.gd" id="8_8wai4"]
+[ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="11_ddqbi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
 font_size = 32
@@ -196,6 +197,9 @@ pitch_scale = 1.05
 script = ExtResource("8_8wai4")
 
 [node name="RepairShopPanel" parent="." index="14" instance=ExtResource("6_h0tlw")]
+visible = false
+
+[node name="UpgradeMenu" parent="." index="15" instance=ExtResource("11_ddqbi")]
 visible = false
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
