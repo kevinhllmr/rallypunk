@@ -72,7 +72,6 @@ target_position = Vector3(0, -2, 0)
 
 [node name="RacetrackContainer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25867, 0)
-visible = false
 script = ExtResource("4_io2yy")
 
 [node name="PauseMenu" parent="." instance=ExtResource("11_anxlf")]
