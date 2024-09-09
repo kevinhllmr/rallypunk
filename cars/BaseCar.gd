@@ -59,8 +59,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		print("fwd_mps: ",fwd_mps)
 	# Increase engine force at low speeds to make the initial acceleration faster.
-
-		if fwd_mps >= 5:
+		if fwd_mps >= 5 && engine_health >=20 || fwd_mps >=0 && engine_health < 20:
 			brake = 1 * (round(brake_health)/100)
 			#Schaden für Bremsen
 			brake_health = brake_health-(brake_degradation*speed)
@@ -78,12 +77,19 @@ func _physics_process(delta):
 				engine_health = 0
 			#print(engine_health)
 	else:
-		if not Input.is_action_just_pressed("ui_select"):
+		if not Input.is_action_pressed("ui_select"):
 			brake = 0
 		
 	if Input.is_action_pressed("ui_up"):
 		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= -5:
+		if fwd_mps <= -5 && engine_health >=20 || fwd_mps <=0 && engine_health < 20:
+			brake = 1 * (round(brake_health)/100)
+			#Schaden für Bremsen
+			brake_health = brake_health-(brake_degradation*speed)
+			if brake_health < 0:
+				brake_health = 0
+			#print(brake_health)
+		else:
 			if speed < 30 and speed != 0:
 
 				if surface_type != "off-road" || upgrade_manager.has_upgrade("off-road"):
@@ -97,20 +103,13 @@ func _physics_process(delta):
 			if engine_health < 0:
 				engine_health = 0
 			#print(engine_health)
-		else:
-			brake = 1 * (round(brake_health)/100)
-			#Schaden für Bremsen
-			brake_health = brake_health-(brake_degradation*speed)
-			if brake_health < 0:
-				brake_health = 0
-			#print(brake_health)
 
 	else:
 		if not Input.is_action_pressed("ui_down"):
 			engine_force = 0
 		
 	if Input.is_action_pressed("ui_select"):
-		brake=3
+		brake=5
 		$wheal2.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		$wheal3.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		#Schaden für Räder wenn Handbremse gezogen wird, vllt lieber noch ne Geschwindigkeitsabfrage machen (oder linearer Geschwindigkeit sonst Abtrag in der Luft)
