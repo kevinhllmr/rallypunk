@@ -22,6 +22,8 @@ scale = Vector2(0.307692, 0.307692)
 texture = ExtResource("6_5demd")
 
 [node name="rank" type="Label" parent="Background/Sprite2D"]
+anchors_preset = -1
+anchor_left = -3.88024
 offset_left = -1080.0
 offset_top = -265.0
 offset_right = -366.0
@@ -29,9 +31,12 @@ offset_bottom = -43.0
 theme_override_fonts/font = ExtResource("1_lb62y")
 theme_override_font_sizes/font_size = 150
 text = "Rank 1"
+horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="xp" type="Label" parent="Background/Sprite2D"]
+anchors_preset = -1
+anchor_left = -3.68663
 offset_left = -1090.0
 offset_top = -15.0
 offset_right = -376.0
@@ -125,8 +130,10 @@ scale = Vector2(0.344747, 0.21823)
 texture = ExtResource("7_2ql5n")
 
 [node name="Scrap" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 83.0
+offset_top = 52.0
+offset_right = 280.0
+offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("1_lb62y")
 theme_override_font_sizes/font_size = 30
 text = "Scrap: 0"

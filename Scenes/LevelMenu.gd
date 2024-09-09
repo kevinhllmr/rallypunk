@@ -7,9 +7,11 @@ extends Node2D
 
 func _ready():
 	Engine.time_scale = 0
-	$Scrap.text = "Scrap: " + PlayerStats.scrap
-
-
+	PlayerStats.load_game_data()
+	$Scrap.text = "Scrap: " + str(PlayerStats.scrap)
+	$Background/Sprite2D/rank.text = "Rank " + str(PlayerStats.rank)
+	$Background/Sprite2D/xp.text = str(PlayerStats.totalXP) + " XP"
+	$Scrap.text = "Scrap: " + str(PlayerStats.scrap)
 func _on_level_2_pressed():
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(level2)
