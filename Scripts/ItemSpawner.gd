@@ -1,7 +1,7 @@
 extends Path3D
 
-func _ready():
-	spawn_items()
+#func _ready():
+	#spawn_items()
 
 #func spawn_items():
 	#var curve = get_curve()  # Access the curve property of the Path3D node
@@ -18,7 +18,7 @@ func _ready():
 
 var MIN_DISTANCE = 20
 var MAX_DISTANCE = 100
-var MAX_OFFSET = 5
+var MAX_OFFSET = 0
 
 
 func spawn_items():
@@ -70,4 +70,4 @@ func spawn_item(position):
 	print(str(position))
 
 func _process(delta):
-	$"../Path3D/PathFollow3D".progress += 10.0*delta
+	$"../ItemPath/PathFollow3D".progress += 10.0*delta
