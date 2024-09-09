@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwdrfftcqrwx4"]
+[gd_scene load_steps=8 format=3 uid="uid://cwdrfftcqrwx4"]
 
 [ext_resource type="Script" path="res://Scenes/LevelMenu.gd" id="1_kb4pw"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="1_lb62y"]
 [ext_resource type="Texture2D" uid="uid://brke7qo6lv81g" path="res://Graphics/Screenshot 2024-08-17 at 09.38.14.png" id="2_brko3"]
 [ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_j4uw3"]
-[ext_resource type="Script" path="res://Scripts/player_stats.gd" id="3_onmon"]
 [ext_resource type="Texture2D" uid="uid://c6m04amod5ebx" path="res://Graphics/Maps/Screenshot 2024-09-08 at 08.07.53.png" id="5_dtf82"]
 [ext_resource type="Texture2D" uid="uid://kaymleewqv6q" path="res://Graphics/istockphoto-1345388323-612x612.png" id="6_5demd"]
 [ext_resource type="Texture2D" uid="uid://ktt63kyls5hy" path="res://Graphics/Maps/Screenshot 2024-09-08 at 08.07.31.png" id="7_2ql5n"]
@@ -22,7 +21,7 @@ position = Vector2(743.077, -369.231)
 scale = Vector2(0.307692, 0.307692)
 texture = ExtResource("6_5demd")
 
-[node name="Label" type="Label" parent="Background/Sprite2D"]
+[node name="rank" type="Label" parent="Background/Sprite2D"]
 offset_left = -1080.0
 offset_top = -265.0
 offset_right = -366.0
@@ -32,7 +31,7 @@ theme_override_font_sizes/font_size = 150
 text = "Rank 1"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Background/Sprite2D"]
+[node name="xp" type="Label" parent="Background/Sprite2D"]
 offset_left = -1090.0
 offset_top = -15.0
 offset_right = -376.0
@@ -44,10 +43,10 @@ horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Level2" type="Button" parent="Background"]
-offset_left = -171.617
-offset_top = -91.6072
-offset_right = 172.383
-offset_bottom = 290.393
+offset_left = -187.337
+offset_top = -90.0
+offset_right = 156.663
+offset_bottom = 292.0
 
 [node name="Label" type="Label" parent="Background/Level2"]
 layout_mode = 1
@@ -99,10 +98,10 @@ scale = Vector2(0.290449, 0.260865)
 texture = ExtResource("2_brko3")
 
 [node name="Level3" type="Button" parent="Background"]
-offset_left = 286.99
-offset_top = -80.0358
-offset_right = 630.99
-offset_bottom = 301.964
+offset_left = 240.624
+offset_top = -90.0
+offset_right = 584.624
+offset_bottom = 292.0
 
 [node name="Label" type="Label" parent="Background/Level3"]
 layout_mode = 1
@@ -125,10 +124,7 @@ position = Vector2(172, 157)
 scale = Vector2(0.344747, 0.21823)
 texture = ExtResource("7_2ql5n")
 
-[node name="Playerstats" type="Node" parent="."]
-script = ExtResource("3_onmon")
-
-[node name="Label" type="Label" parent="."]
+[node name="Scrap" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("1_lb62y")

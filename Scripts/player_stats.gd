@@ -6,18 +6,24 @@ var collectedScrap = 0
 var collectedXP = 0
 var rank = 0
 var totalXP = 0
-var uprank = (pow(2,rank))*500
+var uprank = (pow(1.5,rank))*500
 
 func rankupgrade():
+	uprank = (pow(1.5,rank))*500
 	if xp>=uprank:
-		xp = 0
+		xp = xp - uprank
 		rank += 1
+		save_game_data()
 		rankupgrade()
 
-func addXP(amount):
-	xp =+ amount
-	totalXP =+ amount
+func addXP():
+	load_game_data()
+	xp += collectedXP
+	totalXP += collectedXP
+	collectedXP = 0
+	save_game_data()
 	rankupgrade()
+
 	
 func save_game_data():
 	var save_data = {
