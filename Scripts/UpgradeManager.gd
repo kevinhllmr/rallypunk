@@ -41,8 +41,8 @@ func _on_upgrade_menu_visible():
 
 func print_player_data():
 	print("Player Data:")
-	print("Scrap: ", player_data.scrap)
-	print("XP: ", player_data.xp)
+	print("Scrap: ", PlayerStats.scrap)
+	print("XP: ", PlayerStats.xp)
 	print("Collected Scrap: ", player_data.collectedScrap)
 	print("Collected XP: ", player_data.collectedXP)
 	print("Rank: ", player_data.rank)

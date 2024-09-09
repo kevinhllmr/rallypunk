@@ -37,6 +37,14 @@ theme_override_fonts/font = ExtResource("1_1cc41")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 
+[node name="restart" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_1cc41")
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
 [node name="toMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -54,5 +62,7 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/restart" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/toMenu" to="." method="_on_to_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

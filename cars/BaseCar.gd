@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		surface_type = collider.name
-		#print(surface_type)
+		print(surface_type)
 	
 	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
 	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
@@ -181,9 +181,12 @@ func get_engine_health() -> int:
 func pick_up_scrap():
 	if upgrade_manager.has_upgrade("scrap_multiplier_2"):
 		scrap_count += 2
+		PlayerStats.collectScrap(2)
 	else:
 		scrap_count += 1
+		PlayerStats.collectScrap(1)
 	update_scrap_count()
+	PlayerStats.collectedXP += 50
 	
 func get_scrap_count() -> int:
 	return scrap_count

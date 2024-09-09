@@ -6,6 +6,7 @@ extends Node
 var paused = false
 
 func _process(delta):
+	distanceFog()
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 	
@@ -17,7 +18,7 @@ func distanceFog():
 	dist = dist.length()
 	var loading_bar = $car/Hud/ProgressBar
 	#print (dist)
-	loading_bar.value = 100-dist/3+5
+	loading_bar.value = 100-(dist/3)+30
 
 
 

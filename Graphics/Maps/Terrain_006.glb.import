@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b13xstj6uq4i0"
+uid="uid://c6nt7w8vh3eqv"
 path="res://.godot/imported/Terrain_006.glb-25869db637be5d314729a351d04b8f32.scn"
 
 [deps]
@@ -36,6 +36,14 @@ _subresources={
 "physics/shape_type": 2
 },
 "PATH:Road_001": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Rockgenerator_019": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:back": {
 "generate/physics": true,
 "physics/shape_type": 2
 }

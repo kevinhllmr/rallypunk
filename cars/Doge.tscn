@@ -147,14 +147,17 @@ texture = ExtResource("5_obpt6")
 expand_mode = 1
 
 [node name="ScrapCount" type="Label" parent="Hud" index="7"]
-offset_left = 55.0
-offset_top = 39.0
-offset_right = 90.0
-offset_bottom = 87.0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 126.0
+offset_bottom = 111.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 theme_override_font_sizes/font_size = 20
-text = "0"
+text = "1
+"
 label_settings = SubResource("LabelSettings_yc8e5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Gear" type="Label" parent="Hud" index="9"]
 offset_left = 1099.0

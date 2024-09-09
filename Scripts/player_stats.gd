@@ -51,5 +51,15 @@ func load_game_data():
 		xp = 0
 		rank = 0
 		totalXP = 0
+		
+func collectScrap(amount):
+	collectedScrap += amount
+	
+func addScrap():
+	load_game_data()
+	scrap += collectedScrap
+	collectedScrap = 0
+	save_game_data()
+	
 
 
