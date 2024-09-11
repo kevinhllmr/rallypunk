@@ -17,3 +17,10 @@ func _on_exit_pressed():
 func _on_upgrade_pressed():
 	upgrade_menu.show_menu(true) 
 	buttons.visible = false
+	
+
+
+
+func _on_settings_pressed():
+	$Settings.show_menu(true)
+	buttons.visible=false
