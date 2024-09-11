@@ -71,6 +71,9 @@ func _physics_process(delta):
 				engine_force = clamp(engine_force_value * 3 / speed, 0, 300)*(round(engine_health)/100)
 			else:
 				engine_force = clamp(engine_force_value / speed, 0, 20)*(round(engine_health)/100)
+				wheels_health = wheels_health-(wheels_degradation*speed)
+				if wheels_health < 0:
+					wheels_health = 0
 			#Schaden für Motor
 			engine_health = engine_health-(engine_degradation*speed)
 			if engine_health < 0:
@@ -96,6 +99,9 @@ func _physics_process(delta):
 					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
 				else:
 					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)*(round(engine_health)/100)
+					wheels_health = wheels_health-(wheels_degradation*speed)
+					if wheels_health < 0:
+						wheels_health = 0
 			else:
 				engine_force = -clamp(engine_force_value * 1 / speed, 0, 30)*(round(engine_health)/100)
 			#Schaden für Motor
