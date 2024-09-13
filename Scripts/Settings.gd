@@ -33,7 +33,7 @@ func changeResolution(index):
 func changeVolume(value):
 	volume = value
 	print(volume)
-	#slider.value = volume funktioniert nicht
+	#slider.value = volume
 	save_settings()
 
 func save_settings():

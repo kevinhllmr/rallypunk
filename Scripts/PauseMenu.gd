@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var main = $"../"
 @onready var start_scene = load("res://Scenes/StartScreen.tscn") as PackedScene
-@onready var restart = load("res://Scenes/scene_tiles.tscn") as PackedScene
+@onready var restart = load(PlayerStats.currentLevel) as PackedScene
 
 
 func _on_resume_pressed():

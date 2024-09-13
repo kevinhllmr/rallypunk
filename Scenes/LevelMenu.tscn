@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/LevelMenu.gd" id="1_kb4pw"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="1_lb62y"]
-[ext_resource type="Texture2D" uid="uid://brke7qo6lv81g" path="res://Graphics/Screenshot 2024-08-17 at 09.38.14.png" id="2_brko3"]
 [ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_j4uw3"]
-[ext_resource type="Texture2D" uid="uid://c6m04amod5ebx" path="res://Graphics/Maps/Screenshot 2024-09-08 at 08.07.53.png" id="5_dtf82"]
+[ext_resource type="Texture2D" uid="uid://db3v8onprxu7x" path="res://Graphics/Level-2-Selection.png" id="5_gu1wh"]
 [ext_resource type="Texture2D" uid="uid://kaymleewqv6q" path="res://Graphics/istockphoto-1345388323-612x612.png" id="6_5demd"]
-[ext_resource type="Texture2D" uid="uid://ktt63kyls5hy" path="res://Graphics/Maps/Screenshot 2024-09-08 at 08.07.31.png" id="7_2ql5n"]
+[ext_resource type="Texture2D" uid="uid://ceus5dso7s1yb" path="res://Graphics/Level-1-Selection 2.png" id="6_qctyu"]
+[ext_resource type="Texture2D" uid="uid://segaoj1sda1i" path="res://Graphics/Level-3-Selection.png" id="7_80hg0"]
 
 [node name="Levelmenu" type="Node2D"]
 script = ExtResource("1_kb4pw")
@@ -48,10 +48,10 @@ horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Level2" type="Button" parent="Background"]
-offset_left = -187.337
-offset_top = -90.0
-offset_right = 156.663
-offset_bottom = 292.0
+offset_left = -283.92
+offset_top = -101.667
+offset_right = 231.08
+offset_bottom = 473.333
 
 [node name="Label" type="Label" parent="Background/Level2"]
 layout_mode = 1
@@ -70,15 +70,15 @@ theme_override_font_sizes/font_size = 50
 text = "Level 2"
 
 [node name="Level1" type="Sprite2D" parent="Background/Level2"]
-position = Vector2(172, 157)
-scale = Vector2(0.344747, 0.21823)
-texture = ExtResource("5_dtf82")
+position = Vector2(259.774, 158.333)
+scale = Vector2(0.246101, 0.247695)
+texture = ExtResource("5_gu1wh")
 
 [node name="Level1" type="Button" parent="Background"]
-offset_left = -616.765
-offset_top = -89.6786
-offset_right = -272.765
-offset_bottom = 292.321
+offset_left = -896.721
+offset_top = -101.667
+offset_right = -305.721
+offset_bottom = 473.333
 button_mask = 3
 
 [node name="Label" type="Label" parent="Background/Level1"]
@@ -98,15 +98,15 @@ theme_override_font_sizes/font_size = 50
 text = "Level 1"
 
 [node name="Level1" type="Sprite2D" parent="Background/Level1"]
-position = Vector2(171.137, 156.214)
+position = Vector2(293.079, 165)
 scale = Vector2(0.290449, 0.260865)
-texture = ExtResource("2_brko3")
+texture = ExtResource("6_qctyu")
 
 [node name="Level3" type="Button" parent="Background"]
-offset_left = 240.624
-offset_top = -90.0
-offset_right = 584.624
-offset_bottom = 292.0
+offset_left = 253.946
+offset_top = -101.667
+offset_right = 944.946
+offset_bottom = 468.333
 
 [node name="Label" type="Label" parent="Background/Level3"]
 layout_mode = 1
@@ -125,9 +125,9 @@ theme_override_font_sizes/font_size = 50
 text = "Level 3"
 
 [node name="Level1" type="Sprite2D" parent="Background/Level3"]
-position = Vector2(172, 157)
-scale = Vector2(0.344747, 0.21823)
-texture = ExtResource("7_2ql5n")
+position = Vector2(344.701, 160)
+scale = Vector2(0.344747, 0.246533)
+texture = ExtResource("7_80hg0")
 
 [node name="Scrap" type="Label" parent="."]
 offset_left = 83.0

@@ -26,10 +26,10 @@ text = "Settings"
 
 [node name="Close" type="Button" parent="Label"]
 custom_minimum_size = Vector2(30, 30)
-offset_left = 895.0
-offset_top = 3.0
-offset_right = 926.0
-offset_bottom = 34.0
+offset_left = 886.0
+offset_top = -12.0
+offset_right = 917.0
+offset_bottom = 19.0
 size_flags_horizontal = 10
 mouse_force_pass_scroll_events = false
 theme = ExtResource("3_57u6d")
@@ -85,7 +85,6 @@ theme_override_fonts/font = ExtResource("2_lk6jw")
 theme_override_font_sizes/font_size = 30
 text = "Volume"
 
-[connection signal="pressed" from="Label/Close" to="." method="_on_close_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

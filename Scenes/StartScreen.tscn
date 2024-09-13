@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
-[ext_resource type="Texture2D" uid="uid://hbi3jr4ufguw" path="res://Graphics/MenuThumbnail.png" id="2_fd6o7"]
+[ext_resource type="Texture2D" uid="uid://be66fmvq27x0w" path="res://Graphics/MenuThumbnail-2.png" id="2_2m6lk"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="3_04wai"]
 [ext_resource type="Texture2D" uid="uid://chqvn1ywdxgvj" path="res://Unknowngtx.png" id="4_uj7wk"]
 [ext_resource type="PackedScene" uid="uid://csm1kajj2v5k2" path="res://Scenes/Settings.tscn" id="5_31ua7"]
@@ -12,35 +12,39 @@
 script = ExtResource("1_jo1o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(583, 328)
-scale = Vector2(1.13971, 1.14063)
-texture = ExtResource("2_fd6o7")
+position = Vector2(574.426, 320.624)
+scale = Vector2(0.285436, 0.291125)
+texture = ExtResource("2_2m6lk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D"]
-offset_left = -488.0
-offset_top = -276.0
-offset_right = -256.0
-offset_bottom = -63.0
+offset_left = -1925.0
+offset_top = -1050.0
+offset_right = -856.0
+offset_bottom = -407.0
 theme_override_constants/separation = 20
 
 [node name="start" type="Button" parent="Sprite2D/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
 text = "Start"
 
 [node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
 text = "Upgrade"
 
 [node name="settings" type="Button" parent="Sprite2D/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
 text = "Settings"
 
 [node name="exit" type="Button" parent="Sprite2D/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
 text = "exit
 "
 

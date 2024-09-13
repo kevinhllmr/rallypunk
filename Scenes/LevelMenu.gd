@@ -14,15 +14,18 @@ func _ready():
 	$Scrap.text = "Scrap: " + str(PlayerStats.scrap)
 func _on_level_2_pressed():
 	Engine.time_scale = 1
+	PlayerStats.currentLevel = "res://Scenes/level2.tscn"
 	get_tree().change_scene_to_packed(level2)
 
 
 func _on_level_3_pressed():
+	PlayerStats.currentLevel = "res://Scenes/level3.tscn"
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(level3)
 
 
 
 func _on_level_1_pressed():
+	PlayerStats.currentLevel = "res://Scenes/scene_tiles.tscn"
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(level1)

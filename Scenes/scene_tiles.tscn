@@ -91,7 +91,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ItemPath"]
-transform = Transform3D(0.00990276, -0.134117, 0.990909, -7.4505e-09, 0.99095, 0.134124, -0.99994, -0.00132821, 0.00981332, 366.838, -14.9437, -185.819)
+transform = Transform3D(0.00990275, -0.134117, 0.990909, -7.45049e-09, 0.99095, 0.134124, -0.999939, -0.00132821, 0.00981332, 366.838, -14.9437, -185.819)
 
 [node name="RepairShop" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.614, -18.388, -313.934)

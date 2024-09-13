@@ -26,6 +26,7 @@ var slowing_down = false
 func _ready():
 	raycast = $RayCast3D 
 	raycast.enabled = true
+	PlayerStats.time = 0
 	
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -39,6 +40,8 @@ func _on_body_entered(body):
 func _physics_process(delta):
 	speed = linear_velocity.length()
 	traction(speed)
+	
+	PlayerStats.time+=1
 	
 	var surface_type = null;
 	if raycast.is_colliding():
