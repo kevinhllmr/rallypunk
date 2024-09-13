@@ -11,6 +11,7 @@ var wheels_health = 100
 var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
+var chassis_degradation = 1
 
 var speed = 0
 var last_velocity = Vector3.ZERO
@@ -156,7 +157,7 @@ func _on_body_shape_entered(body_id, body, body_shape, area_shape):
 #Schadensanwendung für Kollisionen, erst Schaden an Chassis, dann geht alles auf Motor
 func apply_damage(impact):
 	var damage = (impact / 2)
-	chassis_health -= damage
+	chassis_health -= damage * chassis_degradation
 	if chassis_health < 0:
 		chassis_health = 0
 		engine_health -= damage
