@@ -8,6 +8,7 @@ var engine_health = 100
 var brake_health = 100
 var chassis_health = 100
 var wheels_health = 100
+var chassis_degradation = 1
 var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
@@ -35,10 +36,12 @@ func _ready():
 	scrap_count_label = get_node("Hud/ScrapCount")
 	
 	if upgrade_manager.has_upgrade("better_chassis"):
-		chassis_health = 250
+		chassis_degradation = 0.5
 		
 	if upgrade_manager.has_upgrade("better_engine"):
 		engine_degradation = 0.00025
+	
+	MusicManager.set_volume(Settings.volume)
 
 func _on_body_entered(body):
 	if body is StaticBody3D:

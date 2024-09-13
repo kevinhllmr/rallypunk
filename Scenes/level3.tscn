@@ -99,7 +99,7 @@ curve = SubResource("Curve3D_4fa07")
 script = ExtResource("6_5w43q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.707375, -0.0093116, 0.706771, -4.65658e-10, 0.999904, 0.0131738, -0.706829, 0.00931878, -0.707316, 324.8, 52.6321, -307.282)
+transform = Transform3D(-0.707374, -0.0093116, 0.706771, 0, 0.999904, 0.0131737, -0.70683, 0.00931877, -0.707316, 324.8, 52.6321, -307.282)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D2/PathFollow3D"]
 transform = Transform3D(0.999994, -9.76236e-05, -0.0032742, 5.59646e-05, 0.999919, -0.0127205, 0.00327522, 0.0127202, 0.999913, 43.9434, 85.5964, 489.949)

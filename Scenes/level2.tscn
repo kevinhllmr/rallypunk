@@ -112,7 +112,7 @@ curve = SubResource("Curve3D_bj4mp")
 script = ExtResource("8_e82nt")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.70451, -0.00415663, 0.709675, -5.78347e-07, 0.999969, 0.00585647, -0.709684, 0.00412551, -0.704501, -5128.95, 7.62601, 5106.71)
+transform = Transform3D(-0.704511, -0.00404625, 0.709675, 0.000156092, 0.999969, 0.00585646, -0.709683, 0.0042367, -0.704501, -5128.96, 7.62598, 5106.71)
 progress = 7684.84
 
 [node name="FogVolume" type="FogVolume" parent="Path3D2/PathFollow3D"]
