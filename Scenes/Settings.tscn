@@ -74,10 +74,10 @@ theme_override_fonts/font = ExtResource("2_lk6jw")
 theme_override_font_sizes/font_size = 30
 text = "Resolution"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+[node name="VolumeMusic" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HSlider"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VolumeMusic"]
 layout_mode = 0
 offset_left = -288.0
 offset_top = -14.0
@@ -85,9 +85,22 @@ offset_right = -31.0
 offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("2_lk6jw")
 theme_override_font_sizes/font_size = 30
-text = "Volume"
+text = "Music"
+
+[node name="VolumeEffekts" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VolumeEffekts"]
+layout_mode = 0
+offset_left = -288.0
+offset_top = -14.0
+offset_right = -31.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_lk6jw")
+theme_override_font_sizes/font_size = 30
+text = "SFX"
 
 [connection signal="pressed" from="Label/Close" to="." method="_on_close_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="drag_ended" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeMusic" to="." method="_on_volume_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeEffekts" to="." method="_on_volume_effekts_value_changed"]

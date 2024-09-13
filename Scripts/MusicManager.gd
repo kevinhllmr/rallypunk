@@ -1,34 +1,42 @@
 extends Node
 
-@export var music_volume_db: float = 0  # Default volume
-@onready var audio_player = $AudioStreamPlayer2D  # Reference to the audio player node
+@export var music_volume_db: float = 0 
+@onready var audio_music = $AudioStreamPlayer2D 
+@onready var audio_button = $ButtonPlayer
 var defaultpath = null
+
+func _input(event):
+	if event is InputEventMouseButton:
+		play_button()
+
+func get_all_buttons(node):
+	var buttons = []
+	if node is Button:
+		buttons.append(node)
+	for child in node.get_children():
+		buttons += get_all_buttons(child)
+	return buttons
 
 
 func play_music(stream_path: String):
 	defaultpath = stream_path
 	var stream = load_music(stream_path)
 	if stream:
-		audio_player.stream = stream
-		audio_player.play()
-	
+		audio_music.stream = stream
+		audio_music.play()
 
 func stop_music():
-	audio_player.stop()
+	audio_music.stop()
 
-
-func set_volume(volume_db: float):
+func set_music(volume_db: float):
 	if(volume_db <= 1.0):
 		stop_music()
-	else:
-		if(!audio_player.has_stream_playback()):
-			play_music("res://Sounds/Menu.wav")
-	audio_player.volume_db = volume_db / 7.5
+	audio_music.volume_db = volume_db / 7.5
 
-func fade_out_music(duration: float):
-	# Use a timer or Tween to gradually decrease volume over 'duration'
-	var tween = create_tween()
-	tween.tween_property(audio_player, "volume_db", -80, duration)  # -80 dB for fade-out
+func set_sfx(volume_db: float):
+	if(volume_db <= 1.0):
+		stop_music()
+	audio_button.volume_db = volume_db / 7.5
 
 func load_music(stream_path: String) -> AudioStream:
 	var stream = ResourceLoader.load(stream_path)
@@ -37,16 +45,14 @@ func load_music(stream_path: String) -> AudioStream:
 	else:
 		print("Error loading audio stream: " + stream_path)
 		return null
-		
-
-
 
 func _on_audio_stream_player_2d_finished():
-	play_music(defaultpath)
-	print("Replay Music")
+	if defaultpath != null:
+		play_music(defaultpath)
+		print("Replay Music")
 	
 func play_button():
-	var stream = load_music("res://Sounds/buttonClick.wav")
+	var stream = ResourceLoader.load("res://Sounds/buttonClick.wav")
 	if stream:
-		audio_player.stream = stream
-		audio_player.play()
+		audio_button.stream = stream
+		audio_button.play()
