@@ -6,7 +6,7 @@ extends Node
 func _ready():
 	# Optional: Start playing music on ready
 	play_music("res://path/to/your/music/file.ogg")
-
+	
 func play_music(stream_path: String):
 	var stream = load_music(stream_path)
 	if stream:
@@ -17,7 +17,12 @@ func stop_music():
 	audio_player.stop()
 
 func set_volume(volume_db: float):
-	audio_player.volume_db = volume_db
+	if(volume_db <= 1.0):
+		stop_music()
+	else:
+		if(!audio_player.has_stream_playback()):
+			play_music("res://Sounds/Menu.wav")
+	audio_player.volume_db = volume_db / 7.5
 
 func fade_out_music(duration: float):
 	# Use a timer or Tween to gradually decrease volume over 'duration'

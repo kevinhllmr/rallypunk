@@ -1,7 +1,7 @@
 extends Node2D
 var resolution = 0
 var volume = 100
-@onready var slider = $MarginContainer/VBoxContainer/HSlider
+
 func _ready():
 	setUP()
 
@@ -31,9 +31,12 @@ func changeResolution(index):
 			DisplayServer.window_set_size(Vector2i(3840,2160))
 	#$MarginContainer/VBoxContainer/OptionButton.selected(index)
 func changeVolume(value):
+	var slider = $MarginContainer/VBoxContainer/HSlider
 	volume = value
 	print(volume)
-	#slider.value = volume
+	if(slider):
+		slider.value = value
+		MusicManager.set_volume(value)
 	save_settings()
 
 func save_settings():
@@ -59,9 +62,6 @@ func load_settings():
 		
 func show_menu(visible: bool):
 	self.visible = visible
-
-
-
 
 
 func _on_close_pressed():
