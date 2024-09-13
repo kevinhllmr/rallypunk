@@ -27,6 +27,7 @@ func _ready():
 	raycast = $RayCast3D 
 	raycast.enabled = true
 	PlayerStats.time = 0
+	PlayerStats.collectedScrap = 0
 	
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
