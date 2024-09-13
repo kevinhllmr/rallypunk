@@ -4,18 +4,18 @@ extends AudioStreamPlayer
 @onready var gear = $"../Hud/Gear"
 
 var current_gear = 1
-var max_gears = 6
+var max_gears = 5
 var is_accelerating = false
 var gear_shift_timer = 0.0  # Timer to control the brief pause for gear shift
 var gear_shift_pause_duration = 0.03  # Duration of the pause in seconds
 
 func _physics_process(delta):
 	var factor = 0.6
-	var constant = 0.5
+	var constant = 0
 	var speed = car.speed * factor
 
 	# Determine the gear based on speed
-	var new_gear = clamp(floor(speed / 5) + 1, 1, max_gears)  # Divide speed to determine gear, clamp between 1 and max_gears
+	var new_gear = clamp(floor(speed / 3) + 1, 1, max_gears)  # Divide speed to determine gear, clamp between 1 and max_gears
 	
 	# Check for gear change and initiate a brief pause
 	if new_gear != current_gear:
@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 	# Adjust pitch scale for the sound
 	if current_gear > 1:  # Prevent division by zero for the first gear
-		pitch_scale = constant + speed / (2 * (current_gear - 1))  # Dynamic pitch scaling
+		pitch_scale = constant + speed / (5 * (current_gear - 1))  # Dynamic pitch scaling
 	else:
 		pitch_scale = constant
 

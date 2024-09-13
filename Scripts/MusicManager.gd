@@ -2,19 +2,20 @@ extends Node
 
 @export var music_volume_db: float = 0  # Default volume
 @onready var audio_player = $AudioStreamPlayer2D  # Reference to the audio player node
+var defaultpath = null
 
-func _ready():
-	# Optional: Start playing music on ready
-	play_music("res://path/to/your/music/file.ogg")
-	
+
 func play_music(stream_path: String):
+	defaultpath = stream_path
 	var stream = load_music(stream_path)
 	if stream:
 		audio_player.stream = stream
 		audio_player.play()
+	
 
 func stop_music():
 	audio_player.stop()
+
 
 func set_volume(volume_db: float):
 	if(volume_db <= 1.0):
@@ -36,3 +37,16 @@ func load_music(stream_path: String) -> AudioStream:
 	else:
 		print("Error loading audio stream: " + stream_path)
 		return null
+		
+
+
+
+func _on_audio_stream_player_2d_finished():
+	play_music(defaultpath)
+	print("Replay Music")
+	
+func play_button():
+	var stream = load_music("res://Sounds/buttonClick.wav")
+	if stream:
+		audio_player.stream = stream
+		audio_player.play()

@@ -23,25 +23,25 @@ offset_right = -856.0
 offset_bottom = -407.0
 theme_override_constants/separation = 20
 
-[node name="start" type="Button" parent="Sprite2D/VBoxContainer"]
+[node name="start" type="Button" parent="Sprite2D/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Start"
 
-[node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer"]
+[node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Upgrade"
 
-[node name="settings" type="Button" parent="Sprite2D/VBoxContainer"]
+[node name="settings" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Settings"
 
-[node name="exit" type="Button" parent="Sprite2D/VBoxContainer"]
+[node name="exit" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
