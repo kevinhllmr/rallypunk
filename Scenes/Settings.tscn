@@ -26,6 +26,7 @@ text = "Settings"
 
 [node name="Close" type="Button" parent="Label"]
 custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
 offset_left = 886.0
 offset_top = -12.0
 offset_right = 917.0
@@ -77,6 +78,7 @@ text = "Resolution"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HSlider"]
+layout_mode = 0
 offset_left = -288.0
 offset_top = -14.0
 offset_right = -31.0
