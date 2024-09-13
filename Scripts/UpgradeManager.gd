@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var notenoughscrap = $VBC/MarginContainerV2/NotEnoughScrap
-@onready var player_data = get_node("Playerstats")  # Ensure the correct path to your Playerstats node
-@onready var scrap_count_label = $VBC/TitlebarContainer/ScrapCount  # Update the path to your scrap count label
+@onready var player_data = get_node("Playerstats") 
+@onready var scrap_count_label = $VBC/TitlebarContainer/ScrapCount  
 
 var upgrade_save_file_path: String = "user://upgrades_data.save"
 var upgrades: Dictionary = {}
@@ -10,14 +10,15 @@ var available_upgrades = {
 	"traction": false,
 	"traction_2": false,
 	"scrap_multiplier_2": false,
+	"better_chassis": false,
+	"better_engine": false,
 	"off-road": false,
 }
 
 func _ready():
-	# Initially hide the menu
 	notenoughscrap.visible = false
-	self.visible = false  # Start with the menu hidden
-	load_upgrades()  # Load upgrades when the menu is ready
+	self.visible = false
+	load_upgrades()
 
 func show_menu(visible: bool):
 	self.visible = visible
@@ -25,31 +26,22 @@ func show_menu(visible: bool):
 		_on_upgrade_menu_visible()
 
 func _on_upgrade_menu_visible():
-	# Handle when the menu is made visible
 	if visible:
-		# Load player data
 		player_data.load_game_data()
-		
-		# Print player data to the console
-		print_player_data()
-		
-		# Update the UI with player data
+		print_player_data()		
 		update_upgrade_menu_ui()
-		
-		# Check if the upgrade button should be visible
 		check_upgrade_button()
 
 func print_player_data():
 	print("Player Data:")
-	print("Scrap: ", PlayerStats.scrap)
-	print("XP: ", PlayerStats.xp)
+	print("Scrap: ", player_data.scrap)
+	print("XP: ", player_data.xp)
 	print("Collected Scrap: ", player_data.collectedScrap)
 	print("Collected XP: ", player_data.collectedXP)
 	print("Rank: ", player_data.rank)
 	print("Total XP: ", player_data.totalXP)
 
 func update_upgrade_menu_ui():
-	# Update the scrap count label or other UI elements
 	if scrap_count_label:
 		scrap_count_label.text = "Scrap: " + str(player_data.scrap)
 	else:
@@ -83,6 +75,20 @@ func check_upgrade_button():
 		if upgrade4:
 			upgrade4.visible = false
 			upgrade4c.visible = false
+			
+	var upgrade5 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC/Buy5
+	var upgrade5c = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/CostC/Cost
+	if has_upgrade("better_chassis"): 
+		if upgrade5:
+			upgrade5.visible = false
+			upgrade5c.visible = false
+			
+	var upgrade6 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/BuyC/Buy6
+	var upgrade6c = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/CostC/Cost
+	if has_upgrade("better_engine"): 
+		if upgrade6:
+			upgrade6.visible = false
+			upgrade6c.visible = false
 
 func notEnough():
 	notenoughscrap.modulate.a = 0
@@ -210,6 +216,56 @@ func _on_buy_4_pressed():
 	check_upgrade_button()
 
 	print("Upgrade 4 purchased! Remaining scrap: ", player_data.scrap)
+	
+func _on_buy_5_pressed():
+	var upgrade_cost = 35 
+	player_data.load_game_data()
+	var player_scrap = player_data.scrap 
+	
+	if player_scrap < upgrade_cost:
+		notEnough()
+		return
+		
+	if has_upgrade("better_chassis"):
+		print("Upgrade already purchased!")
+		return
+
+	player_data.scrap -= upgrade_cost 
+	unlock_upgrade("better_chassis") 
+
+	save_upgrades()
+	player_data.save_game_data()
+
+	update_upgrade_menu_ui()
+
+	check_upgrade_button()
+
+	print("Upgrade 5 purchased! Remaining scrap: ", player_data.scrap)
+
+func _on_buy_6_pressed():
+	var upgrade_cost = 40
+	player_data.load_game_data()
+	var player_scrap = player_data.scrap 
+	
+	if player_scrap < upgrade_cost:
+		notEnough()
+		return
+		
+	if has_upgrade("better_engine"):
+		print("Upgrade already purchased!")
+		return
+
+	player_data.scrap -= upgrade_cost 
+	unlock_upgrade("better_engine") 
+
+	save_upgrades()
+	player_data.save_game_data()
+
+	update_upgrade_menu_ui()
+
+	check_upgrade_button()
+
+	print("Upgrade 6 purchased! Remaining scrap: ", player_data.scrap)
 
 func save_upgrades():
 	var save_file = FileAccess.open(upgrade_save_file_path, FileAccess.WRITE)

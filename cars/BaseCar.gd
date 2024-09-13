@@ -31,6 +31,12 @@ func _ready():
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
 	scrap_count_label = get_node("Hud/ScrapCount")
+	
+	if upgrade_manager.has_upgrade("better_chassis"):
+		chassis_health = 250
+		
+	if upgrade_manager.has_upgrade("better_engine"):
+		engine_degradation = 0.00025
 
 func _on_body_entered(body):
 	if body is StaticBody3D:
@@ -47,7 +53,7 @@ func _physics_process(delta):
 		print(surface_type)
 	
 	$Hud/speed.text=str(round(speed*3.6))+"  KMPH"
-	$Hud/engine.text="Motor: " + str(round(engine_health)) +"%"
+	$Hud/engine.text="Engine: " + str(round(engine_health)) +"%"
 	$Hud/brake.text="Brakes: " + str(round(brake_health)) +"%"
 	$Hud/chassis.text = "Chassis: " + str(round(chassis_health)) + "%"
 
@@ -181,12 +187,16 @@ func get_engine_health() -> int:
 func pick_up_scrap():
 	if upgrade_manager.has_upgrade("scrap_multiplier_2"):
 		scrap_count += 2
-		PlayerStats.collectScrap(2)
 	else:
 		scrap_count += 1
-		PlayerStats.collectScrap(1)
 	update_scrap_count()
-	PlayerStats.collectedXP += 50
+	
+func pick_up_golden_scrap():
+	if upgrade_manager.has_upgrade("scrap_multiplier_2"):
+		scrap_count += 10
+	else:
+		scrap_count += 5
+	update_scrap_count()
 	
 func get_scrap_count() -> int:
 	return scrap_count

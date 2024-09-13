@@ -1,10 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm6ljpeealyfx"]
+[gd_scene load_steps=24 format=3 uid="uid://dm6ljpeealyfx"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_dfi82"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_yg6g3"]
 [ext_resource type="Script" path="res://Scripts/RacetrackGenerator.gd" id="2_s26hf"]
 [ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="3_n4ybl"]
-[ext_resource type="PackedScene" uid="uid://dpxug17uhfx55" path="res://Graphics/Maps/Level_3_009.glb" id="4_r3q0y"]
+[ext_resource type="PackedScene" uid="uid://jvsej03mcdtk" path="res://Scenes/level3_b.tscn" id="5_y5gs6"]
+[ext_resource type="Script" path="res://Scripts/StormLvl3.gd" id="6_5w43q"]
+[ext_resource type="Script" path="res://Scripts/FogDamage.gd" id="7_1byaw"]
+[ext_resource type="Script" path="res://Scripts/RepairShop.gd" id="8_3mas5"]
+[ext_resource type="PackedScene" uid="uid://bu4ch7lxp33gv" path="res://Scenes/Repairshop_Normal.tscn" id="9_slglf"]
+[ext_resource type="Script" path="res://Scripts/FinishLine.gd" id="10_0i56a"]
+[ext_resource type="PackedScene" uid="uid://dd4m85ilus2n3" path="res://Scenes/Finishline_002.glb" id="11_xbpmp"]
+[ext_resource type="PackedScene" uid="uid://c26emnmr85an" path="res://items/item.tscn" id="12_k5o17"]
+[ext_resource type="PackedScene" uid="uid://dgv8m3ryvp0l" path="res://Scenes/TransitionScreen.tscn" id="12_ntow4"]
+[ext_resource type="PackedScene" uid="uid://cbcqk0ohbtroe" path="res://items/item_gold.tscn" id="13_4n5td"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gp5g0"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -29,7 +38,31 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
-[node name="Level2" type="Node2D"]
+[sub_resource type="Curve3D" id="Curve3D_4fa07"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 324.8, 52.6321, -307.282, 0, 0, 0, 0, 0, 0, -5127.27, -48.9909, 5148.99),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="FogMaterial" id="FogMaterial_1bfad"]
+density = 0.1
+albedo = Color(0.796078, 0.741176, 0.576471, 1)
+emission = Color(0.796078, 0.741176, 0.576471, 1)
+edge_fade = 0.131951
+
+[sub_resource type="GDScript" id="GDScript_yun0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1r85"]
+size = Vector3(2004.36, 415.968, 990.847)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wm4h"]
+size = Vector3(15.3217, 17.9083, 14.5824)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0qn8"]
+size = Vector3(14.3306, 16.2014, 14.341)
+
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_dfi82")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -41,7 +74,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="car" parent="." instance=ExtResource("1_yg6g3")]
-transform = Transform3D(0.981816, 0, 0.189833, 0, 1, 0, -0.189833, 0, 0.981816, 1294.64, 243.104, -643.069)
+transform = Transform3D(0.973769, 0, 0.227536, 0, 1, 0, -0.227536, 0, 0.973769, 1293.81, 242.352, -643.069)
 collision_layer = 15
 collision_mask = 15
 engine_force_value = 200
@@ -58,4 +91,158 @@ script = ExtResource("2_s26hf")
 [node name="PauseMenu" parent="." instance=ExtResource("3_n4ybl")]
 visible = false
 
-[node name="Level_3_009" parent="." instance=ExtResource("4_r3q0y")]
+[node name="Level_3_011" parent="." instance=ExtResource("5_y5gs6")]
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(-0.700561, 0, -0.713593, 0, 1, 0, 0.713593, 0, -0.700561, 962.16, 57.0645, -387.967)
+curve = SubResource("Curve3D_4fa07")
+script = ExtResource("6_5w43q")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+transform = Transform3D(-0.707375, -0.0093116, 0.706771, -4.65658e-10, 0.999904, 0.0131738, -0.706829, 0.00931878, -0.707316, 324.8, 52.6321, -307.282)
+
+[node name="FogVolume" type="FogVolume" parent="Path3D2/PathFollow3D"]
+transform = Transform3D(0.999994, -9.76236e-05, -0.0032742, 5.59646e-05, 0.999919, -0.0127205, 0.00327522, 0.0127202, 0.999913, 43.9434, 85.5964, 489.949)
+size = Vector3(2215.78, 755.454, 1750)
+material = SubResource("FogMaterial_1bfad")
+script = SubResource("GDScript_yun0r")
+
+[node name="Area3D" type="Area3D" parent="Path3D2/PathFollow3D/FogVolume"]
+transform = Transform3D(1, 1.94026e-10, 2.38419e-07, -1.94026e-10, 1, -5.43272e-10, -2.38419e-07, 5.43271e-10, 1, 0, 0, 0)
+script = ExtResource("7_1byaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D2/PathFollow3D/FogVolume/Area3D"]
+transform = Transform3D(1.77158, -2.65605e-07, -1.33086e-06, -2.23292e-07, -1.77155, 4.23752e-08, -1.32322e-05, -1.83936e-08, -1.77157, -1.14868, 66.982, 1.04535)
+shape = SubResource("BoxShape3D_r1r85")
+
+[node name="RepairShop" type="Area3D" parent="."]
+transform = Transform3D(-0.976311, 0, 0.216372, 0, 1, 0, -0.216372, 0, -0.976311, 919.173, 290.592, -788.063)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop"]
+transform = Transform3D(0.962076, 0, 0.272784, 0, 1, 0, -0.272784, 0, 0.962076, -10.2941, 2.11185, 15.1692)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="RepairShop2" type="Area3D" parent="."]
+transform = Transform3D(-0.976311, 0, 0.216372, 0, 1, 0, -0.216372, 0, -0.976311, 1318.41, 173.47, -2391.99)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop2"]
+transform = Transform3D(0.962076, 0, 0.272784, 0, 1, 0, -0.272784, 0, 0.962076, -12.7995, 2.11185, 15.6899)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop2" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="RepairShop3" type="Area3D" parent="."]
+transform = Transform3D(0.369763, 0, 0.929126, 0, 1, 0, -0.929126, 0, 0.369763, 1164.25, 129.72, -3383.76)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop3"]
+transform = Transform3D(0.962077, 0, 0.272784, 0, 1, 0, -0.272784, 0, 0.962077, -13.8608, 2.11185, 16.7468)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop3" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="RepairShop4" type="Area3D" parent="."]
+transform = Transform3D(-0.965772, 0, 0.259392, 0, 1, 0, -0.259392, 0, -0.965772, 970.177, 32.4803, -4985.36)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop4"]
+transform = Transform3D(0.962077, 0, 0.272784, 0, 1, 0, -0.272784, 0, 0.962077, -12.1977, 1.25839, 16.2783)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop4" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="RepairShop5" type="Area3D" parent="."]
+transform = Transform3D(0.971147, 0, -0.238483, 0, 1, 0, 0.238483, 0, 0.971147, 887.751, 25.9111, -6406.08)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop5"]
+transform = Transform3D(0.962077, 0, 0.272784, 0, 1, 0, -0.272784, 0, 0.962077, -12.7529, 1.25839, 16.436)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop5" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="RepairShop6" type="Area3D" parent="."]
+transform = Transform3D(-0.857868, 0, -0.513871, 0, 1, 0, 0.513871, 0, -0.857868, 1306.73, 31.7247, -7447.58)
+script = ExtResource("8_3mas5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepairShop6"]
+transform = Transform3D(0.962078, 0, 0.272785, 0, 1, 0, -0.272785, 0, 0.962078, -13.7646, 1.25839, 16.1055)
+shape = SubResource("BoxShape3D_1wm4h")
+
+[node name="RepairshopNormal" parent="RepairShop6" instance=ExtResource("9_slglf")]
+transform = Transform3D(-0.961372, 0, -0.275252, 0, 1, 0, 0.275252, 0, -0.961372, -2.51544, -6.29123, 12.9021)
+
+[node name="FinishLine" type="Area3D" parent="."]
+transform = Transform3D(-0.931032, 0, 0.364943, 0, 1, 0, -0.364943, 0, -0.931032, 610.287, 85.5075, -7908.25)
+script = ExtResource("10_0i56a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishLine"]
+transform = Transform3D(0.635674, 0, 0.771958, 0, 1, 0, -0.771958, 0, 0.635674, -8.83838, 6.53085, 29.6221)
+shape = SubResource("BoxShape3D_m0qn8")
+
+[node name="Finishline_002" parent="FinishLine" instance=ExtResource("11_xbpmp")]
+transform = Transform3D(-0.745696, 0, 0.666285, 0, 1, 0, -0.666285, 0, -0.745696, -13.9561, 3.8927, 25.4704)
+
+[node name="TransitionScreen" parent="FinishLine" instance=ExtResource("12_ntow4")]
+
+[node name="Item" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1059.17, 268.746, -805.029)
+
+[node name="Item2" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 921.684, 277.833, -1106.78)
+
+[node name="Item3" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1403.26, 213.626, -1689.17)
+
+[node name="Item4" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1268.98, 164.699, -2560.09)
+
+[node name="Item5" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1230.53, 133.258, -3040.73)
+
+[node name="Item6" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1230.53, 122.296, -3550.39)
+
+[node name="Item7" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.674, 117.562, -3970.91)
+
+[node name="Item8" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 925.855, 93.8425, -4331.38)
+
+[node name="Item9" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1113.8, 36.5331, -4838)
+
+[node name="Item10" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1109.31, 3.94015, -5287.5)
+
+[node name="Item11" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1099.31, 30.9429, -5687.11)
+
+[node name="Item12" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 795.686, 40.5195, -6151.24)
+
+[node name="Item13" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 871.702, 13.7348, -6605.13)
+
+[node name="Item14" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1285.63, 19.945, -7093.94)
+
+[node name="Item15" parent="." instance=ExtResource("12_k5o17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 592.253, 111.442, -7476.33)
+
+[node name="Item16" parent="." instance=ExtResource("13_4n5td")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1199.71, 34.287, -7372.85)
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1294.16, 243.254, -642.616)
+
+[connection signal="transitioned" from="FinishLine/TransitionScreen" to="FinishLine" method="_on_transition_screen_transitioned"]

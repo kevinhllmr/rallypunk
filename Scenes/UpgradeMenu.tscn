@@ -282,7 +282,115 @@ text = "Buy"
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
+[node name="MarginContainer8" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer6" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 15
+text = "better chassis"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 15
+text = "35 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+
+[node name="Buy5" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_5gu8a")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="MarginContainer6" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer7" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 15
+text = "better engine"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 15
+text = "40 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+
+[node name="Buy6" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_5gu8a")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_giy74")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="MarginContainer9" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
@@ -375,4 +483,6 @@ script = ExtResource("1_5eenh")
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/BuyC/Buy1" to="." method="_on_buy_1_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/BuyC/Buy2" to="." method="_on_buy_2_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/BuyC/Buy3" to="." method="_on_buy_3_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC/Buy5" to="." method="_on_buy_5_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer7/BuyC/Buy6" to="." method="_on_buy_6_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/BuyC/Buy4" to="." method="_on_buy_4_pressed"]
