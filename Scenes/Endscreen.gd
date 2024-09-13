@@ -2,6 +2,7 @@ extends Node2D
 @onready var start = preload("res://Scenes/StartScreen.tscn") as PackedScene
 
 func _ready():
+	MusicManager.play_music("res://Sounds/Menu.wav")
 	PlayerStats.collectedXP += 500
 
 	# Format time as minutes:seconds:milliseconds

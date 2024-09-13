@@ -32,9 +32,9 @@ func _physics_process(delta):
 
 	# Smooth volume change with proper type conversion
 	if Input.is_action_pressed("ui_up"):  # Assuming "ui_up" is for accelerating
-		volume_db = lerp(volume_db, float(0), 0.1)  # Gradually increase volume
+		volume_db = lerp(volume_db, float(-20), 0.1)  # Gradually increase volume
 	else:
-		volume_db = lerp(volume_db, float(-20), 0.05)  # Gradually decrease volume
+		volume_db = lerp(volume_db, float(-30), 0.05) # Gradually decrease volume
 	
 	# Handle gear shift pause and resume playback
 	if gear_shift_timer > 0:

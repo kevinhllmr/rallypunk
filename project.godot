@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 PlayerStats="*res://Scripts/player_stats.gd"
 Settings="*res://Scripts/Settings.gd"
+MusicManager="*res://Scripts/MusicManager.tscn"
 
 [display]
 

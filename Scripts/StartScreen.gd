@@ -6,7 +6,8 @@ extends Node2D
 
 func _ready():
 	upgrade_menu.visible = false
-
+	MusicManager.play_music("res://Sounds/Menu.wav")
+	
 func _on_start_pressed():
 	get_tree().change_scene_to_packed(start_scene)
 
