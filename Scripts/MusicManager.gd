@@ -2,20 +2,16 @@ extends Node
 
 @export var music_volume_db: float = 0 
 @onready var audio_music = $AudioStreamPlayer2D 
-@onready var audio_button = $ButtonPlayer
+@onready var audio_sfx = $ButtonPlayer
 var defaultpath = null
 
 func _input(event):
 	if event is InputEventMouseButton:
-		play_button()
-
-func get_all_buttons(node):
-	var buttons = []
-	if node is Button:
-		buttons.append(node)
-	for child in node.get_children():
-		buttons += get_all_buttons(child)
-	return buttons
+		Settings.load_settings()
+		print(Settings.sfx)
+		if Settings.sfx >= 1.0:
+			
+			play_sfx()
 
 
 func play_music(stream_path: String):
@@ -31,12 +27,21 @@ func stop_music():
 func set_music(volume_db: float):
 	if(volume_db <= 1.0):
 		stop_music()
-	audio_music.volume_db = volume_db / 7.5
+	else:
+		if(audio_music.playing):
+			audio_music.volume_db = volume_db / 7.5
+		elif(defaultpath != null):
+			play_music(defaultpath)
+			
 
 func set_sfx(volume_db: float):
 	if(volume_db <= 1.0):
-		stop_music()
-	audio_button.volume_db = volume_db / 7.5
+		audio_sfx.stop()
+	else:
+		if(audio_sfx.playing):
+			audio_sfx.volume_db = volume_db / 7.5
+		else:
+			play_sfx()
 
 func load_music(stream_path: String) -> AudioStream:
 	var stream = ResourceLoader.load(stream_path)
@@ -51,8 +56,8 @@ func _on_audio_stream_player_2d_finished():
 		play_music(defaultpath)
 		print("Replay Music")
 	
-func play_button():
+func play_sfx():
 	var stream = ResourceLoader.load("res://Sounds/buttonClick.wav")
-	if stream:
-		audio_button.stream = stream
-		audio_button.play()
+	if (stream):
+		audio_sfx.stream = stream
+		audio_sfx.play()

@@ -85,8 +85,11 @@ func show_menu(visible: bool):
 func _on_close_pressed():
 	self.visible = false
 	var start_screen_buttons = get_parent().get_node("Sprite2D/VBoxContainer")
+	var pause_screen_buttons = get_parent().get_node("MarginContainer/VBoxContainer")
 	if start_screen_buttons:
 		start_screen_buttons.visible = true
+	elif pause_screen_buttons:
+		pause_screen_buttons.visible = true
 
 func _on_volume_music_value_changed(value):
 	changeMusic(value)

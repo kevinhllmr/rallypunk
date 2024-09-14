@@ -212,9 +212,8 @@ shape = SubResource("BoxShape3D_00ayj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource("7_mdsms")
-volume_db = -6.943
+volume_db = -30.276
 pitch_scale = 1.05
-autoplay = true
 mix_target = 2
 script = ExtResource("8_8wai4")
 

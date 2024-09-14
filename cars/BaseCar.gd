@@ -29,7 +29,7 @@ func _ready():
 	raycast.enabled = true
 	PlayerStats.time = 0
 	PlayerStats.collectedScrap = 0
-	MusicManager.set_volume(Settings.volume)
+	MusicManager.set_music(Settings.music)
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
@@ -41,8 +41,7 @@ func _ready():
 	if upgrade_manager.has_upgrade("better_engine"):
 		engine_degradation = 0.00025
 	
-	MusicManager.set_volume(Settings.volume)
-
+	MusicManager.set_music(Settings.music)
 func _on_body_entered(body):
 	if body is StaticBody3D:
 		print("Collision with: ", body.name)

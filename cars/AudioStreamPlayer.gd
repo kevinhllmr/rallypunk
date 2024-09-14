@@ -10,10 +10,12 @@ var gear_shift_timer = 0.0  # Timer to control the brief pause for gear shift
 var gear_shift_pause_duration = 0.03  # Duration of the pause in seconds
 
 func _physics_process(delta):
+	Settings.load_settings()
+	volume_db = Settings.sfx
 	var factor = 0.6
 	var constant = 0
 	var speed = car.speed * factor
-
+	print(volume_db)
 	# Determine the gear based on speed
 	var new_gear = clamp(floor(speed / 3) + 1, 1, max_gears)  # Divide speed to determine gear, clamp between 1 and max_gears
 	
@@ -31,10 +33,13 @@ func _physics_process(delta):
 		pitch_scale = constant
 
 	# Smooth volume change with proper type conversion
-	if Input.is_action_pressed("ui_up"):  # Assuming "ui_up" is for accelerating
-		volume_db = lerp(volume_db, float(-20), 0.1)  # Gradually increase volume
+	if(volume_db <= 1.0):
+		stop()
 	else:
-		volume_db = lerp(volume_db, float(-30), 0.05) # Gradually decrease volume
+		if Input.is_action_pressed("ui_up"):
+			volume_db = (lerp(volume_db, float(-20), 0.1)/ 7.5)-20  # Gradually increase volume
+		else:
+			volume_db = (lerp(volume_db, float(-30), 0.05)/7.5)-20 # Gradually decrease volume
 	
 	# Handle gear shift pause and resume playback
 	if gear_shift_timer > 0:
@@ -42,10 +47,5 @@ func _physics_process(delta):
 		if gear_shift_timer <= 0:
 			play()  # Resume playback after pause
 	else:
-		if not is_playing():
+		if not is_playing() and volume_db>=1.0:
 			play()
-	
-	# Ensure playback when speed is 0
-	if car.speed == 0 and not is_playing():
-		volume_db = -20  # Lower volume to simulate idle state
-		play()
