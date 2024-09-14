@@ -12,7 +12,6 @@ var chassis_degradation = 1
 var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
-var chassis_degradation = 1
 var starting = true
 
 var speed = 0
@@ -31,8 +30,9 @@ func _ready():
 	raycast.enabled = true
 	PlayerStats.time = 0
 	PlayerStats.collectedScrap = 0
-	MusicManager.set_music(Settings.music)
 	MusicManager.set_sfx(Settings.sfx)
+	MusicManager.set_music(Settings.music)
+	
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
@@ -63,7 +63,6 @@ func _physics_process(delta):
 	$Hud/engine.text="Engine: " + str(round(engine_health)) +"%"
 	$Hud/brake.text="Brakes: " + str(round(brake_health)) +"%"
 	$Hud/chassis.text = "Chassis: " + str(round(chassis_health)) + "%"
-
 	$Hud/wheels.text = "Wheels: " + str(round(wheels_health)) + "%"
 	var fwd_mps = -linear_velocity.dot(transform.basis.z)
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
@@ -229,6 +228,7 @@ func pick_up_golden_scrap():
 		add_scrap(5)
 	
 func add_scrap(amount):
+	MusicManager.play_scrap()
 	scrap_count += amount
 	PlayerStats.collectedScrap += amount
 	PlayerStats.collectedXP += amount*100

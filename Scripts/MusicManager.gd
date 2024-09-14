@@ -11,7 +11,7 @@ func _input(event):
 		print(Settings.sfx)
 		if Settings.sfx >= 1.0:
 			
-			play_sfx()
+			play_button()
 
 
 func play_music(stream_path: String):
@@ -41,7 +41,7 @@ func set_sfx(volume_db: float):
 		if(audio_sfx.playing):
 			audio_sfx.volume_db = volume_db / 7.5
 		else:
-			play_sfx()
+			play_button()
 
 func load_music(stream_path: String) -> AudioStream:
 	var stream = ResourceLoader.load(stream_path)
@@ -56,8 +56,14 @@ func _on_audio_stream_player_2d_finished():
 		play_music(defaultpath)
 		print("Replay Music")
 	
-func play_sfx():
+func play_button():
 	var stream = ResourceLoader.load("res://Sounds/buttonClick.wav")
+	if (stream):
+		audio_sfx.stream = stream
+		audio_sfx.play()
+
+func play_scrap():
+	var stream = ResourceLoader.load("res://Sounds/scrapCollected.wav")
 	if (stream):
 		audio_sfx.stream = stream
 		audio_sfx.play()

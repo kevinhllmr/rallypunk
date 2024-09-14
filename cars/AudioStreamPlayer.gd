@@ -36,6 +36,7 @@ func _physics_process(delta):
 	if(volume_db <= 1.0):
 		stop()
 	else:
+		play()
 		if Input.is_action_pressed("ui_up"):
 			volume_db = (lerp(volume_db, float(-20), 0.1)/ 7.5)-20  # Gradually increase volume
 		else:

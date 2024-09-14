@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
-[ext_resource type="PackedScene" path="res://Scenes/RepairShop_Desert.tscn" id="5_2w03t"]
+[ext_resource type="PackedScene" uid="uid://bqr68f8s121kc" path="res://Scenes/RepairShop_Desert.tscn" id="5_2w03t"]
 [ext_resource type="PackedScene" uid="uid://deqglkdimb37x" path="res://terrain_006.tscn" id="8_12t3d"]
 [ext_resource type="Script" path="res://Scripts/RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://Scripts/ItemSpawner.gd" id="8_d1rq0"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dd4m85ilus2n3" path="res://Scenes/Finishline_002.glb" id="12_m8rbf"]
 [ext_resource type="PackedScene" uid="uid://c26emnmr85an" path="res://items/item.tscn" id="12_s88ep"]
 [ext_resource type="Script" path="res://Scenes/Path3D2.gd" id="12_vcift"]
-[ext_resource type="PackedScene" path="res://items/item_gold.tscn" id="13_iqn12"]
+[ext_resource type="PackedScene" uid="uid://cbcqk0ohbtroe" path="res://items/item_gold.tscn" id="13_iqn12"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
