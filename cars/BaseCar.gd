@@ -123,7 +123,7 @@ func _physics_process(delta):
 			engine_force = 0
 		
 	if Input.is_action_pressed("ui_select"):
-		brake=5
+		brake= 2 + 3 * (round(wheels_health)/100)
 		$wheal2.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		$wheal3.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		#Schaden für Räder wenn Handbremse gezogen wird, vllt lieber noch ne Geschwindigkeitsabfrage machen (oder linearer Geschwindigkeit sonst Abtrag in der Luft)
@@ -131,8 +131,8 @@ func _physics_process(delta):
 		if wheels_health < 0:
 			wheels_health = 0
 	else:
-		$wheal2.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
-		$wheal3.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
+		$wheal2.wheel_friction_slip=0.75 + 2.25 * (round(wheels_health)/100)
+		$wheal3.wheel_friction_slip=0.75 + 2.25 * (round(wheels_health)/100)
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
 func traction(speed):
