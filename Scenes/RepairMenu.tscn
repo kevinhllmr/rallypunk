@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb5ubkdsckji7"]
+[gd_scene load_steps=14 format=3 uid="uid://cb5ubkdsckji7"]
 
 [ext_resource type="Theme" uid="uid://wxkyex6dmq8d" path="res://UI Elements/CloseBotton.tres" id="1_mouni"]
 [ext_resource type="FontFile" uid="uid://7ma3rbau25hp" path="res://UI Elements/High Speed.ttf" id="1_vcw1g"]
@@ -25,6 +25,14 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0lie"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4qydr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_810ii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4araw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irgab"]
 bg_color = Color(1, 1, 1, 1)
@@ -438,10 +446,10 @@ size_flags_vertical = 8
 [node name="Chassis" type="Label" parent="VBC/ShopContainer/PercentagesC"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.94902, 0.380392, 0.568627, 1)
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
 text = "Chassis 28%"
+label_settings = SubResource("LabelSettings_k0lie")
 horizontal_alignment = 2
 
 [node name="Motor" type="Label" parent="VBC/ShopContainer/PercentagesC"]
@@ -450,6 +458,7 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
 text = "Engine 28%"
+label_settings = SubResource("LabelSettings_4qydr")
 horizontal_alignment = 2
 
 [node name="Brakes" type="Label" parent="VBC/ShopContainer/PercentagesC"]
@@ -458,6 +467,7 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
 text = "Brakes 65%"
+label_settings = SubResource("LabelSettings_810ii")
 horizontal_alignment = 2
 
 [node name="Wheels" type="Label" parent="VBC/ShopContainer/PercentagesC"]
@@ -466,6 +476,7 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
 text = "Wheels 72%"
+label_settings = SubResource("LabelSettings_4araw")
 horizontal_alignment = 2
 
 [node name="MarginContainerH53" type="MarginContainer" parent="VBC/ShopContainer"]

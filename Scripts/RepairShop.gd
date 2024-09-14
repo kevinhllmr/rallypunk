@@ -9,7 +9,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.is_in_group("car"):
 		print(body.get_speed())
-		if body.get_speed() < 30.0:  
+		if body.get_speed() < 25.0:  
 			body.get_node("Hud").hide()
 			body.get_node("RepairShopPanel").show()
 			body.get_node("RepairShopPanel").get_node("VBC").get_node("TitlebarContainer").get_node("ScrapCount").text = "Scrap: " + str(body.get_scrap_count())

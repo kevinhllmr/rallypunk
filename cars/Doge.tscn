@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=24 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
@@ -12,6 +12,18 @@
 [ext_resource type="AudioStream" uid="uid://ccdepjp6i8nu4" path="res://Sounds/4000.ogg" id="7_mdsms"]
 [ext_resource type="Script" path="res://cars/AudioStreamPlayer.gd" id="8_8wai4"]
 [ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="11_ddqbi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1bt5"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2hkfu"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxyuy"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldh8p"]
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
 font_size = 32
@@ -118,6 +130,7 @@ offset_top = 474.0
 offset_right = 217.0
 offset_bottom = 522.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
+label_settings = SubResource("LabelSettings_f1bt5")
 
 [node name="engine" parent="Hud" index="3"]
 offset_left = 18.0
@@ -125,6 +138,7 @@ offset_top = 514.0
 offset_right = 182.0
 offset_bottom = 562.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
+label_settings = SubResource("LabelSettings_2hkfu")
 
 [node name="brake" parent="Hud" index="4"]
 offset_left = 18.0
@@ -133,6 +147,7 @@ offset_right = 200.0
 offset_bottom = 602.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 text = "Brakes"
+label_settings = SubResource("LabelSettings_rxyuy")
 
 [node name="wheels" parent="Hud" index="5"]
 offset_left = 18.0
@@ -140,6 +155,7 @@ offset_top = 594.0
 offset_right = 203.0
 offset_bottom = 642.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
+label_settings = SubResource("LabelSettings_ldh8p")
 
 [node name="TextureRect" type="TextureRect" parent="Hud" index="6"]
 offset_left = 14.0
@@ -156,8 +172,7 @@ offset_right = 126.0
 offset_bottom = 111.0
 theme_override_fonts/font = ExtResource("4_6bvq2")
 theme_override_font_sizes/font_size = 20
-text = "1
-"
+text = "0"
 label_settings = SubResource("LabelSettings_yc8e5")
 horizontal_alignment = 1
 vertical_alignment = 1

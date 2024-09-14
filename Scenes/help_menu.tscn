@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://6ibicot6xxya"]
+
+[ext_resource type="Script" path="res://Scripts/HelpMenu.gd" id="1_bgeof"]
+[ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="2_gj7mq"]
+[ext_resource type="Theme" uid="uid://wxkyex6dmq8d" path="res://UI Elements/CloseBotton.tres" id="3_dablk"]
+[ext_resource type="FontFile" uid="uid://7ma3rbau25hp" path="res://UI Elements/High Speed.ttf" id="4_y5aud"]
+[ext_resource type="Texture2D" uid="uid://duqer3omla0px" path="res://Graphics/collect scrap.png" id="5_cv7i6"]
+[ext_resource type="Texture2D" uid="uid://ccxi14vxc2iuv" path="res://Graphics/breakdown.png" id="6_61jik"]
+[ext_resource type="Texture2D" uid="uid://ds2x84m70as2n" path="res://Graphics/repairshop.png" id="7_qkfjm"]
+[ext_resource type="Texture2D" uid="uid://cg4qo5m5ng8es" path="res://Graphics/escapestorm.png" id="8_1lxep"]
+
+[node name="HelpMenu" type="Node2D"]
+script = ExtResource("1_bgeof")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.854902)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 26.0
+offset_right = 684.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("2_gj7mq")
+theme_override_font_sizes/font_size = 40
+text = "Help"
+
+[node name="Close" type="Button" parent="Label" groups=["Buttons"]]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 1061.0
+offset_top = -16.0
+offset_right = 1092.0
+offset_bottom = 15.0
+size_flags_horizontal = 10
+mouse_force_pass_scroll_events = false
+theme = ExtResource("3_dablk")
+theme_override_fonts/font = ExtResource("4_y5aud")
+icon_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 466.0
+offset_right = 445.0
+offset_bottom = 571.0
+theme_override_fonts/font = ExtResource("4_y5aud")
+theme_override_font_sizes/font_size = 16
+text = "W - Accelerate
+A, D - Steering
+S - Brake / Reverse
+Spacebar - Handbrake / Drift"
+
+[node name="CollectScrap" type="Sprite2D" parent="."]
+position = Vector2(578, 218.64)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("5_cv7i6")
+
+[node name="Breakdown" type="Sprite2D" parent="."]
+position = Vector2(220, 218.64)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_61jik")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 319.0
+offset_right = 373.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("4_y5aud")
+theme_override_font_sizes/font_size = 16
+text = "Your car breaks
+down over time"
+horizontal_alignment = 1
+
+[node name="Repairshop" type="Sprite2D" parent="."]
+position = Vector2(932, 218.64)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("7_qkfjm")
+
+[node name="Escapestorm" type="Sprite2D" parent="."]
+position = Vector2(932, 488)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("8_1lxep")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 529.0
+offset_top = 490.0
+offset_right = 762.0
+offset_bottom = 573.0
+theme_override_fonts/font = ExtResource("4_y5aud")
+theme_override_font_sizes/font_size = 16
+text = "But be careful of
+the storm chasing
+after you!"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 427.0
+offset_top = 319.0
+offset_right = 734.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("4_y5aud")
+theme_override_font_sizes/font_size = 16
+text = "Collect scrap"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 779.0
+offset_top = 319.0
+offset_right = 1086.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("4_y5aud")
+theme_override_font_sizes/font_size = 16
+text = "Stop at repair shops
+to fix up your car"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Label/Close" to="." method="_on_close_pressed"]

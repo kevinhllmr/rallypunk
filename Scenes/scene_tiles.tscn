@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://bl5pbit0uif4y"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
-[ext_resource type="PackedScene" path="res://Scenes/RepairShop_Desert.tscn" id="5_2w03t"]
+[ext_resource type="PackedScene" uid="uid://bqr68f8s121kc" path="res://Scenes/RepairShop_Desert.tscn" id="5_2w03t"]
 [ext_resource type="PackedScene" uid="uid://deqglkdimb37x" path="res://terrain_006.tscn" id="8_12t3d"]
 [ext_resource type="Script" path="res://Scripts/RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://Scripts/ItemSpawner.gd" id="8_d1rq0"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dd4m85ilus2n3" path="res://Scenes/Finishline_002.glb" id="12_m8rbf"]
 [ext_resource type="PackedScene" uid="uid://c26emnmr85an" path="res://items/item.tscn" id="12_s88ep"]
 [ext_resource type="Script" path="res://Scenes/Path3D2.gd" id="12_vcift"]
-[ext_resource type="PackedScene" path="res://items/item_gold.tscn" id="13_iqn12"]
+[ext_resource type="PackedScene" uid="uid://cbcqk0ohbtroe" path="res://items/item_gold.tscn" id="13_iqn12"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_stkyv"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -93,7 +93,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ItemPath"]
-transform = Transform3D(0.00990275, -0.134117, 0.990909, -7.45049e-09, 0.99095, 0.134124, -0.999939, -0.00132821, 0.00981332, 366.838, -14.9437, -185.819)
+transform = Transform3D(0.00990263, -0.134117, 0.990909, 0, 0.99095, 0.134124, -0.999939, -0.00132819, 0.0098132, 366.838, -14.9437, -185.819)
 
 [node name="RepairShop" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.614, -18.388, -313.934)
@@ -139,7 +139,7 @@ curve = SubResource("Curve3D_ttuuq")
 script = ExtResource("12_vcift")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-0.549092, 0.00725012, 0.83572, 6.98481e-10, 0.99994, -0.00867506, -0.835743, -0.0047634, -0.549077, 895.725, -68.1742, -76.9819)
+transform = Transform3D(-0.549092, 0.00725012, 0.83572, 9.31308e-10, 0.99994, -0.00867506, -0.835743, -0.0047634, -0.549077, 895.725, -68.1742, -76.9819)
 
 [node name="FogVolume" type="FogVolume" parent="Path3D2/PathFollow3D"]
 transform = Transform3D(0.999994, -9.76236e-05, -0.0032742, 5.59646e-05, 0.999919, -0.0127205, 0.00327522, 0.0127202, 0.999913, 43.9433, -7.07261, 488.878)

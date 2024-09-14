@@ -22,7 +22,8 @@ MusicManager="*res://Scripts/MusicManager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
