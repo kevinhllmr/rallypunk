@@ -25,7 +25,7 @@ corner_detail = 20
 script = ExtResource("1_2kjx8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.619608)
+modulate = Color(0, 0, 0, 0.854902)
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = SubResource("CanvasTexture_5emrp")

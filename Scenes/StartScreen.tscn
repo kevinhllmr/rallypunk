@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bexjopfowqek2"]
+[gd_scene load_steps=9 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
 [ext_resource type="Texture2D" uid="uid://be66fmvq27x0w" path="res://Graphics/MenuThumbnail-2.png" id="2_2m6lk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csm1kajj2v5k2" path="res://Scenes/Settings.tscn" id="5_31ua7"]
 [ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="5_sc8jh"]
 [ext_resource type="Script" path="res://Scripts/player_stats.gd" id="6_j66xh"]
+[ext_resource type="PackedScene" uid="uid://6ibicot6xxya" path="res://Scenes/help_menu.tscn" id="7_nu6u4"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_jo1o7")
@@ -28,18 +29,32 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Start"
+flat = true
+alignment = 0
 
 [node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Upgrade"
+flat = true
+alignment = 0
 
 [node name="settings" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "Settings"
+flat = true
+alignment = 0
+
+[node name="help" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
+text = "help"
+flat = true
+alignment = 0
 
 [node name="exit" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
@@ -47,6 +62,8 @@ theme_override_fonts/font = ExtResource("3_04wai")
 theme_override_font_sizes/font_size = 90
 text = "exit
 "
+flat = true
+alignment = 0
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
@@ -59,10 +76,14 @@ visible = false
 [node name="UpgradeMenu" parent="." instance=ExtResource("5_sc8jh")]
 visible = false
 
+[node name="HelpMenu" parent="." instance=ExtResource("7_nu6u4")]
+visible = false
+
 [node name="Playerstats" type="Node" parent="."]
 script = ExtResource("6_j66xh")
 
 [connection signal="pressed" from="Sprite2D/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Sprite2D/VBoxContainer/help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/exit" to="." method="_on_exit_pressed"]

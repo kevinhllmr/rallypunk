@@ -15,6 +15,7 @@ func _ready():
 func _process(delta):
 	update_values()
 	update_cost()
+	update_colors()
 
 func _on_close_pressed():
 	hide() 
@@ -201,3 +202,63 @@ func update_values():
 	$VBC/ShopContainer/PercentagesC/Chassis.text = "Chassis: " + str(round(car.chassis_health)) + "%"
 	$VBC/ShopContainer/PercentagesC/Brakes.text = "Brakes: " + str(round(car.brake_health)) + "%"
 	$VBC/ShopContainer/PercentagesC/Motor.text = "Engine: " + str(round(car.engine_health)) + "%"
+	
+@onready var chassis_label = $VBC/ShopContainer/PercentagesC/Chassis
+@onready var brake_label = $VBC/ShopContainer/PercentagesC/Brakes
+@onready var wheels_label = $VBC/ShopContainer/PercentagesC/Wheels
+@onready var engine_label = $VBC/ShopContainer/PercentagesC/Motor
+
+func update_colors():
+	var car = get_parent()
+	
+	if car.chassis_health == 100:
+		chassis_label.label_settings.font_color = Color.WHITE
+	elif car.chassis_health >= 75:
+		chassis_label.label_settings.font_color = Color.PINK
+	elif car.chassis_health >= 50:
+		chassis_label.label_settings.font_color = Color.HOT_PINK
+	elif car.chassis_health >= 25:
+		chassis_label.label_settings.font_color = Color.DEEP_PINK
+	elif car.chassis_health > 0:
+		chassis_label.label_settings.font_color = Color.RED
+	elif car.chassis_health == 0:
+		chassis_label.label_settings.font_color = Color.BLACK
+
+	if car.brake_health == 100:
+		brake_label.label_settings.font_color = Color.WHITE
+	elif car.brake_health >= 75:
+		brake_label.label_settings.font_color = Color.PINK
+	elif car.brake_health >= 50:
+		brake_label.label_settings.font_color = Color.HOT_PINK
+	elif car.brake_health >= 25:
+		brake_label.label_settings.font_color = Color.DEEP_PINK
+	elif car.brake_health > 0:
+		brake_label.label_settings.font_color = Color.RED
+	elif car.brake_health == 0:
+		brake_label.label_settings.font_color = Color.BLACK
+
+	if car.wheels_health == 100:
+		wheels_label.label_settings.font_color = Color.WHITE
+	elif car.wheels_health >= 75:
+		wheels_label.label_settings.font_color = Color.PINK
+	elif car.wheels_health >= 50:
+		wheels_label.label_settings.font_color = Color.HOT_PINK
+	elif car.wheels_health >= 25:
+		wheels_label.label_settings.font_color = Color.DEEP_PINK
+	elif car.wheels_health > 0:
+		wheels_label.label_settings.font_color = Color.RED
+	elif car.wheels_health == 0:
+		wheels_label.label_settings.font_color = Color.BLACK
+
+	if car.engine_health == 100:
+		engine_label.label_settings.font_color = Color.WHITE
+	elif car.engine_health >= 75:
+		engine_label.label_settings.font_color = Color.PINK
+	elif car.engine_health >= 50:
+		engine_label.label_settings.font_color = Color.HOT_PINK
+	elif car.engine_health >= 25:
+		engine_label.label_settings.font_color = Color.DEEP_PINK
+	elif car.engine_health > 0:
+		engine_label.label_settings.font_color = Color.RED
+	elif car.engine_health == 0:
+		engine_label.label_settings.font_color = Color.BLACK

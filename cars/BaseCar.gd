@@ -30,6 +30,7 @@ func _ready():
 	PlayerStats.time = 0
 	PlayerStats.collectedScrap = 0
 	MusicManager.set_music(Settings.music)
+	MusicManager.set_sfx(Settings.sfx)
 	var area = $CollisionArea  # Adjust the path to your Area3D node
 	area.connect("body_entered", Callable(self, "_on_body_entered"))
 	add_to_group("car")
@@ -40,8 +41,6 @@ func _ready():
 		
 	if upgrade_manager.has_upgrade("better_engine"):
 		engine_degradation = 0.00025
-	
-	MusicManager.set_music(Settings.music)
 func _on_body_entered(body):
 	if body is StaticBody3D:
 		print("Collision with: ", body.name)
@@ -226,4 +225,63 @@ func remove_scrap(change_amount):
 	else:
 		print("not enough scrap!")
 		return false
+
+@onready var chassis_label = $Hud/chassis
+@onready var brake_label = $Hud/brake
+@onready var wheels_label = $Hud/wheels
+@onready var engine_label = $Hud/engine
+
+func _process(delta):
+	if chassis_health == 100:
+		chassis_label.label_settings.font_color = Color.WHITE
+	elif chassis_health >= 75:
+		chassis_label.label_settings.font_color = Color.PINK
+	elif chassis_health >= 50:
+		chassis_label.label_settings.font_color = Color.HOT_PINK
+	elif chassis_health >= 25:
+		chassis_label.label_settings.font_color = Color.DEEP_PINK
+	elif chassis_health > 0:
+		chassis_label.label_settings.font_color = Color.RED
+	elif chassis_health == 0:
+		chassis_label.label_settings.font_color = Color.BLACK
+
+	if brake_health == 100:
+		brake_label.label_settings.font_color = Color.WHITE
+	elif brake_health >= 75:
+		brake_label.label_settings.font_color = Color.PINK
+	elif brake_health >= 50:
+		brake_label.label_settings.font_color = Color.HOT_PINK
+	elif brake_health >= 25:
+		brake_label.label_settings.font_color = Color.DEEP_PINK
+	elif brake_health > 0:
+		brake_label.label_settings.font_color = Color.RED
+	elif brake_health == 0:
+		brake_label.label_settings.font_color = Color.BLACK
+
+	if wheels_health == 100:
+		wheels_label.label_settings.font_color = Color.WHITE
+	elif wheels_health >= 75:
+		wheels_label.label_settings.font_color = Color.PINK
+	elif wheels_health >= 50:
+		wheels_label.label_settings.font_color = Color.HOT_PINK
+	elif wheels_health >= 25:
+		wheels_label.label_settings.font_color = Color.DEEP_PINK
+	elif wheels_health > 0:
+		wheels_label.label_settings.font_color = Color.RED
+	elif wheels_health == 0:
+		wheels_label.label_settings.font_color = Color.BLACK
+
+	if engine_health == 100:
+		engine_label.label_settings.font_color = Color.WHITE
+	elif engine_health >= 75:
+		engine_label.label_settings.font_color = Color.PINK
+	elif engine_health >= 50:
+		engine_label.label_settings.font_color = Color.HOT_PINK
+	elif engine_health >= 25:
+		engine_label.label_settings.font_color = Color.DEEP_PINK
+	elif engine_health > 0:
+		engine_label.label_settings.font_color = Color.RED
+	elif engine_health == 0:
+		engine_label.label_settings.font_color = Color.BLACK
+
 

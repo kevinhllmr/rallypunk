@@ -27,3 +27,8 @@ func _on_upgrade_pressed():
 func _on_settings_pressed():
 	$Settings.show_menu(true)
 	buttons.visible=false
+
+
+func _on_help_pressed():
+	$HelpMenu.show_menu(true)
+	buttons.visible=false
