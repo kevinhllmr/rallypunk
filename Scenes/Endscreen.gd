@@ -3,9 +3,9 @@ extends Node2D
 
 func _ready():
 	MusicManager.play_music("res://Sounds/Menu.wav")
+	MusicManager.set_music(Settings.music)
+	MusicManager.set_sfx(Settings.sfx)
 	PlayerStats.collectedXP += 500
-
-	# Format time as minutes:seconds:milliseconds
 	var formatted_time = format_time(PlayerStats.time)
 	$Background/VBoxContainer/time.text = formatted_time
 	print(PlayerStats.time)

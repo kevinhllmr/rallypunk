@@ -44,7 +44,7 @@ func _physics_process(delta):
 	# Handle gear shift pause and resume playback
 	if gear_shift_timer > 0:
 		gear_shift_timer -= delta
-		if gear_shift_timer <= 0:
+		if gear_shift_timer <= 0 && volume_db>=1.0:
 			play()  # Resume playback after pause
 	else:
 		if not is_playing() and volume_db>=1.0:

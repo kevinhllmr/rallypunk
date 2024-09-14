@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scenes/LevelMenu.gd" id="1_kb4pw"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="1_lb62y"]
 [ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_j4uw3"]
-[ext_resource type="Texture2D" uid="uid://db3v8onprxu7x" path="res://Graphics/Level-2-Selection.png" id="5_gu1wh"]
+[ext_resource type="Texture2D" uid="uid://befefgif2j022" path="res://Graphics/level1.png" id="5_cnr7c"]
+[ext_resource type="Texture2D" uid="uid://cxydprm58bblk" path="res://Graphics/level2.png" id="6_0jghr"]
 [ext_resource type="Texture2D" uid="uid://kaymleewqv6q" path="res://Graphics/istockphoto-1345388323-612x612.png" id="6_5demd"]
-[ext_resource type="Texture2D" uid="uid://ceus5dso7s1yb" path="res://Graphics/Level-1-Selection 2.png" id="6_qctyu"]
-[ext_resource type="Texture2D" uid="uid://segaoj1sda1i" path="res://Graphics/Level-3-Selection.png" id="7_80hg0"]
+[ext_resource type="Texture2D" uid="uid://0hbg7dr6vwyp" path="res://Graphics/level3.png" id="7_p5hoh"]
 
 [node name="Levelmenu" type="Node2D"]
 script = ExtResource("1_kb4pw")
@@ -47,41 +47,30 @@ text = "0 XP"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Level2" type="Button" parent="Background"]
-offset_left = -283.92
-offset_top = -101.667
-offset_right = 231.08
-offset_bottom = 473.333
-
-[node name="Label" type="Label" parent="Background/Level2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -138.0
-offset_top = -75.0
-offset_right = 138.0
+offset_left = -960.0
+offset_top = -125.0
+offset_right = -960.0
+offset_bottom = -717.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_lb62y")
-theme_override_font_sizes/font_size = 50
-text = "Level 2"
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
 
-[node name="Level1" type="Sprite2D" parent="Background/Level2"]
-position = Vector2(259.774, 158.333)
-scale = Vector2(0.246101, 0.247695)
-texture = ExtResource("5_gu1wh")
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
 
-[node name="Level1" type="Button" parent="Background"]
-offset_left = -896.721
-offset_top = -101.667
-offset_right = -305.721
-offset_bottom = 473.333
+[node name="Level1" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 button_mask = 3
+flat = true
 
-[node name="Label" type="Label" parent="Background/Level1"]
+[node name="Label" type="Label" parent="Background/MarginContainer/HBoxContainer/Level1"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -97,18 +86,43 @@ theme_override_fonts/font = ExtResource("1_lb62y")
 theme_override_font_sizes/font_size = 50
 text = "Level 1"
 
-[node name="Level1" type="Sprite2D" parent="Background/Level1"]
-position = Vector2(293.079, 165)
-scale = Vector2(0.290449, 0.260865)
-texture = ExtResource("6_qctyu")
+[node name="Level4" type="Sprite2D" parent="Background/MarginContainer/HBoxContainer/Level1"]
+position = Vector2(284.71, 208.333)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_cnr7c")
 
-[node name="Level3" type="Button" parent="Background"]
-offset_left = 253.946
-offset_top = -101.667
-offset_right = 944.946
-offset_bottom = 468.333
+[node name="Level2" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
 
-[node name="Label" type="Label" parent="Background/Level3"]
+[node name="Label" type="Label" parent="Background/MarginContainer/HBoxContainer/Level2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -75.0
+offset_right = 138.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 50
+text = "Level 2"
+
+[node name="Level1" type="Sprite2D" parent="Background/MarginContainer/HBoxContainer/Level2"]
+position = Vector2(286.167, 206.667)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_0jghr")
+
+[node name="Level3" type="Button" parent="Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
+
+[node name="Label" type="Label" parent="Background/MarginContainer/HBoxContainer/Level3"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -124,10 +138,10 @@ theme_override_fonts/font = ExtResource("1_lb62y")
 theme_override_font_sizes/font_size = 50
 text = "Level 3"
 
-[node name="Level1" type="Sprite2D" parent="Background/Level3"]
-position = Vector2(344.701, 160)
-scale = Vector2(0.344747, 0.246533)
-texture = ExtResource("7_80hg0")
+[node name="Level1" type="Sprite2D" parent="Background/MarginContainer/HBoxContainer/Level3"]
+position = Vector2(289.29, 206.667)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_p5hoh")
 
 [node name="Scrap" type="Label" parent="."]
 offset_left = 83.0
@@ -138,6 +152,6 @@ theme_override_fonts/font = ExtResource("1_lb62y")
 theme_override_font_sizes/font_size = 30
 text = "Scrap: 0"
 
-[connection signal="pressed" from="Background/Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="Background/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="Background/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level3" to="." method="_on_level_3_pressed"]

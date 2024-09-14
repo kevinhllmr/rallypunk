@@ -192,16 +192,20 @@ func get_engine_health() -> int:
 
 func pick_up_scrap():
 	if upgrade_manager.has_upgrade("scrap_multiplier_2"):
-		scrap_count += 2
+		add_scrap(2)
 	else:
-		scrap_count += 1
-	update_scrap_count()
+		add_scrap(1)
 	
 func pick_up_golden_scrap():
 	if upgrade_manager.has_upgrade("scrap_multiplier_2"):
-		scrap_count += 10
+		add_scrap(10)
 	else:
-		scrap_count += 5
+		add_scrap(5)
+	
+func add_scrap(amount):
+	scrap_count += amount
+	PlayerStats.collectedScrap += amount
+	PlayerStats.collectedXP += amount*100
 	update_scrap_count()
 	
 func get_scrap_count() -> int:

@@ -91,12 +91,12 @@ func saveTime():
 			bestTime = save_data2[currentLevel]
 	
 	# If bestTime is 0 (no time saved yet) or if current time is less than the best time, update it
-	if bestTime == 0 or bestTime > time:
-		var save_file = FileAccess.open("user://savegame.dat", FileAccess.READ_WRITE)
-		var save_data = save_file.get_var()
-		save_file.close()
-		save_data[currentLevel] = time
-		save_file = FileAccess.open("user://savegame.dat", FileAccess.WRITE)
-		save_file.store_var(save_data)
-		save_file.close()
-		time = 0
+		if bestTime == 0 or bestTime > time:
+			var save_file = FileAccess.open("user://savegame.dat", FileAccess.READ_WRITE)
+			var save_data = save_file.get_var()
+			save_file.close()
+			save_data[currentLevel] = time
+			save_file = FileAccess.open("user://savegame.dat", FileAccess.WRITE)
+			save_file.store_var(save_data)
+			save_file.close()
+			time = 0
