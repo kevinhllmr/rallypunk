@@ -12,6 +12,7 @@ var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
 var chassis_degradation = 1
+var starting = true
 
 var speed = 0
 var last_velocity = Vector3.ZERO
@@ -36,7 +37,7 @@ func _ready():
 func _on_body_entered(body):
 	if body is StaticBody3D:
 		print("Collision with: ", body.name)
-		
+
 func _physics_process(delta):
 	speed = linear_velocity.length()
 	traction(speed)
@@ -56,7 +57,13 @@ func _physics_process(delta):
 	var fwd_mps = -linear_velocity.dot(transform.basis.z)
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
-	
+
+	if starting == true:
+		linear_velocity.z = 0
+		if Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_select"):
+			print ("Brake unlocked")
+			starting = false
+
 	if Input.is_action_pressed("ui_down"):
 		print("fwd_mps: ",fwd_mps)
 	# Increase engine force at low speeds to make the initial acceleration faster.
@@ -81,7 +88,7 @@ func _physics_process(delta):
 				engine_health = 0
 			#print(engine_health)
 	else:
-		if not Input.is_action_pressed("ui_select"):
+		if not Input.is_action_pressed("ui_select") && starting == false:
 			brake = 0
 		
 	if Input.is_action_pressed("ui_up"):
@@ -146,7 +153,7 @@ func traction(speed):
 func _integrate_forces(state):
 	var current_velocity = state.get_linear_velocity()
 	var collision_impact = (current_velocity - last_velocity).length()
-	if collision_impact > 2.77:  # 10 km/h in m/s
+	if collision_impact > 2.77 && starting == false:  # 10 km/h in m/s
 		apply_damage(collision_impact)
 	last_velocity = current_velocity
 
