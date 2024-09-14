@@ -12,6 +12,8 @@ var chassis_degradation = 1
 var engine_degradation = 0.001
 var brake_degradation = 0.003
 var wheels_degradation = 0.003
+var chassis_degradation = 1
+var starting = true
 
 var speed = 0
 var last_velocity = Vector3.ZERO
@@ -44,7 +46,7 @@ func _ready():
 func _on_body_entered(body):
 	if body is StaticBody3D:
 		print("Collision with: ", body.name)
-		
+
 func _physics_process(delta):
 	speed = linear_velocity.length()
 	traction(speed)
@@ -66,73 +68,97 @@ func _physics_process(delta):
 	var fwd_mps = -linear_velocity.dot(transform.basis.z)
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	steer_target *= STEER_LIMIT
-	
+
+	#Starting check, holds car in position until input
+	if starting == true:
+		linear_velocity.z = 0
+		if Input.is_action_just_pressed("ui_up") || Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_select"):
+			#print ("Brake unlocked")
+			starting = false
+
+	#Brake and reverse with "Down" button
 	if Input.is_action_pressed("ui_down"):
 		print("fwd_mps: ",fwd_mps)
-	# Increase engine force at low speeds to make the initial acceleration faster.
-
-		if fwd_mps >= 5:
+		#If the car is fast enough, it will brake
+		if fwd_mps >= 5 && engine_health >=20 || fwd_mps >=0 && engine_health < 20:
 			brake = 1 * (round(brake_health)/100)
-			#Schaden für Bremsen
+			#Damage for brakes
 			brake_health = brake_health-(brake_degradation*speed)
 			if brake_health < 0:
 				brake_health = 0
 			#print(brake_health)
+		#Else it will accelerate (backwards)
 		else:
+			#Offroad check, slower acceleration if not on street
 			if surface_type != "off-road" || upgrade_manager.has_upgrade("off-road"):
 				engine_force = clamp(engine_force_value * 3 / speed, 0, 300)*(round(engine_health)/100)
 			else:
 				engine_force = clamp(engine_force_value / speed, 0, 20)*(round(engine_health)/100)
-			#Schaden für Motor
+				#Damage to wheels when accelerating offroad
+				wheels_health = wheels_health-(wheels_degradation*speed)
+				if wheels_health < 0:
+					wheels_health = 0
+			#Damage for the engine when accelerating
 			engine_health = engine_health-(engine_degradation*speed)
 			if engine_health < 0:
 				engine_health = 0
 			#print(engine_health)
+	#Sets brake to 0 if not used anywhere else (maybe set in physics process directly instead)
 	else:
-		if not Input.is_action_just_pressed("ui_select"):
+		if not Input.is_action_pressed("ui_select") && starting == false:
 			brake = 0
-		
-	if Input.is_action_pressed("ui_up"):
-		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= -5:
-			if speed < 30 and speed != 0:
 
-				if surface_type != "off-road" || upgrade_manager.has_upgrade("off-road"):
-					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
-				else:
-					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)*(round(engine_health)/100)
-			else:
-				engine_force = -clamp(engine_force_value * 1 / speed, 0, 30)*(round(engine_health)/100)
-			#Schaden für Motor
-			engine_health = engine_health-(engine_degradation*speed)
-			if engine_health < 0:
-				engine_health = 0
-			#print(engine_health)
-		else:
+	#Brake and accelerate with "Up" button
+	if Input.is_action_pressed("ui_up"):
+		#If the car is fast enough (reverse), it will brake
+		if fwd_mps <= -5 && engine_health >=20 || fwd_mps <=0 && engine_health < 20:
 			brake = 1 * (round(brake_health)/100)
-			#Schaden für Bremsen
+			#Damage for brakes
 			brake_health = brake_health-(brake_degradation*speed)
 			if brake_health < 0:
 				brake_health = 0
 			#print(brake_health)
-
+		#Else it will accelerate (2 modes)
+		else:
+			#Higher acceleration at lower speed (lower gear), lower acceleration on higher speed (higher gear)
+			if speed < 30:
+				#Offroad check, lower acceleration when not on road
+				if surface_type != "off-road" || upgrade_manager.has_upgrade("off-road"):
+					engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)*(round(engine_health)/100)
+				else:
+					engine_force = -clamp(engine_force_value * 3 / speed, 0, 30)*(round(engine_health)/100)
+					#Damage to wheels when accelerating offroad
+					wheels_health = wheels_health-(wheels_degradation*speed)
+					if wheels_health < 0:
+						wheels_health = 0
+			else:
+				engine_force = -clamp(engine_force_value * 1 / speed, 0, 30)*(round(engine_health)/100)
+			#Damage to engine when accelerating
+			engine_health = engine_health-(engine_degradation*speed)
+			if engine_health < 0:
+				engine_health = 0
+			#print(engine_health)
+	#Sets engine_force to 0 if not used anywhere else (maybe set in physics process directly instead)
 	else:
 		if not Input.is_action_pressed("ui_down"):
 			engine_force = 0
-		
+
+	#Handbrake with "Spacebar", decrease friction when used and sets brake higher
 	if Input.is_action_pressed("ui_select"):
-		brake=3
+		brake= 2 + 3 * (round(wheels_health)/100)
 		$wheal2.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
 		$wheal3.wheel_friction_slip=0.2 + 0.6 * (round(wheels_health)/100)
-		#Schaden für Räder wenn Handbremse gezogen wird, vllt lieber noch ne Geschwindigkeitsabfrage machen (oder linearer Geschwindigkeit sonst Abtrag in der Luft)
+		#Damage for wheels when handbrake is used
 		wheels_health = wheels_health-(wheels_degradation*speed)
 		if wheels_health < 0:
 			wheels_health = 0
+	#set friction back to normal
 	else:
-		$wheal2.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
-		$wheal3.wheel_friction_slip=0.5 + 2.5 * (round(wheels_health)/100)
+		$wheal2.wheel_friction_slip=0.75 + 2.25 * (round(wheels_health)/100)
+		$wheal3.wheel_friction_slip=0.75 + 2.25 * (round(wheels_health)/100)
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
+#Upgrades for traction
 func traction(speed):
 	if upgrade_manager.has_upgrade("traction") && !upgrade_manager.has_upgrade("traction_2"):
 		apply_central_force(Vector3.DOWN*speed*2)
@@ -148,21 +174,22 @@ func traction(speed):
 	
 	apply_central_force(Vector3.DOWN*speed)
 
+#Checks for velocity for damage calculation, and impact
 func _integrate_forces(state):
 	var current_velocity = state.get_linear_velocity()
 	var collision_impact = (current_velocity - last_velocity).length()
-	if collision_impact > 2.77:  # 10 km/h in m/s
+	if collision_impact > 2.77 && starting == false:  # 10 km/h in m/s
 		apply_damage(collision_impact)
 	last_velocity = current_velocity
 
-# Aufgerufen wenn Kollision auftritt
+#Called if there is a collision
 func _on_body_shape_entered(body_id, body, body_shape, area_shape):
 	if speed > 10:
 		apply_damage(speed)
-#Schadensanwendung für Kollisionen, erst Schaden an Chassis, dann geht alles auf Motor
+#Damage calculation, first damages chassis, then engine after
 func apply_damage(impact):
 	var damage = (impact / 2)
-	chassis_health -= damage
+	chassis_health -= damage * chassis_degradation
 	if chassis_health < 0:
 		chassis_health = 0
 		engine_health -= damage
