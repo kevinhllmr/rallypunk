@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://quw31bc15tjd"]
+[gd_scene load_steps=26 format=3 uid="uid://quw31bc15tjd"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_30w24"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_k5jtn"]
@@ -61,6 +61,12 @@ size = Vector3(2004.36, 415.968, 990.847)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oiwyo"]
 size = Vector3(16.287, 16.2014, 14.341)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wgukv"]
+size = Vector3(12.4439, 533.639, 6208.81)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w3cas"]
+size = Vector3(25.5222, 808.46, 6333.26)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_30w24")
@@ -233,5 +239,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 849.593, 29.6694, -7045.65)
 
 [node name="Start" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 497, 180.408, -382.348)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1192.93, 238.993, -221.542)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.31, 19.66, 167.908)
+shape = SubResource("BoxShape3D_wgukv")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1192.93, 238.993, -8411.93)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.31, -59.0614, 167.908)
+shape = SubResource("BoxShape3D_wgukv")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2266.54, 238.993, -7020.69)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.046, 10.9006, -1960.07)
+shape = SubResource("BoxShape3D_w3cas")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2266.54, 238.993, -3878.21)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.046, 10.9006, -1960.07)
+shape = SubResource("BoxShape3D_w3cas")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 212.631, 238.993, -7020.69)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.046, 10.9006, -1960.07)
+shape = SubResource("BoxShape3D_w3cas")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 212.631, 238.993, -3878.21)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.046, 10.9006, -1960.07)
+shape = SubResource("BoxShape3D_w3cas")
 
 [connection signal="transitioned" from="FinishLine/TransitionScreen" to="FinishLine" method="_on_transition_screen_transitioned"]

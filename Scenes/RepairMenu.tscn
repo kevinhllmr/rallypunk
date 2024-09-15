@@ -235,7 +235,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
-text = "Chassis"
+text = "Chassis 100%"
 
 [node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2"]
 layout_mode = 2
@@ -268,6 +268,60 @@ text = "Buy"
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
+[node name="MarginContainer8" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ItemContainer6" type="HBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DescriptionC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ItemName" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/DescriptionC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_vcw1g")
+theme_override_font_sizes/font_size = 15
+text = "Engine 25%"
+
+[node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Cost" type="Label" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/CostC"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_vcw1g")
+theme_override_font_sizes/font_size = 15
+text = "1 s"
+
+[node name="BuyC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+
+[node name="Buy5" type="Button" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC"]
+custom_minimum_size = Vector2(56, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_i6gdd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_vcw1g")
+theme_override_font_sizes/font_size = 12
+text = "Buy"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="MarginContainer4" type="MarginContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -289,7 +343,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
-text = "Engine"
+text = "Engine 100%"
 
 [node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5"]
 layout_mode = 2
@@ -343,7 +397,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
-text = "Brakes"
+text = "Brakes 100%"
 
 [node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4"]
 layout_mode = 2
@@ -397,7 +451,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vcw1g")
 theme_override_font_sizes/font_size = 15
-text = "Wheels"
+text = "Wheels 100%"
 
 [node name="CostC" type="VBoxContainer" parent="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3"]
 layout_mode = 2
@@ -521,6 +575,7 @@ layout_mode = 2
 [connection signal="ready" from="VBC/CloseBContainer/Close" to="." method="_on_close_ready"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer/BuyC/Repair" to="." method="_on_repair_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer2/BuyC/Buy1" to="." method="_on_buy_1_pressed"]
+[connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC/Buy5" to="." method="_on_buy_5_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/BuyC/Buy4" to="." method="_on_buy_4_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer4/BuyC/Buy3" to="." method="_on_buy_3_pressed"]
 [connection signal="pressed" from="VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer3/BuyC/Buy2" to="." method="_on_buy_2_pressed"]
