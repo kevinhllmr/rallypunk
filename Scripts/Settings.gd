@@ -111,8 +111,8 @@ func load_settings():
 	else:
 		resolution = 2
 		window_mode = 0
-		music = 100
-		sfx = 100
+		music = 50
+		sfx = 50
 		
 func show_menu(visible: bool):
 	self.visible = visible
