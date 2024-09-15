@@ -67,3 +67,8 @@ func play_scrap():
 	if (stream):
 		audio_sfx.stream = stream
 		audio_sfx.play()
+func play_repairshop():
+	var stream = ResourceLoader.load("res://Sounds/Repairshop.wav")
+	if (stream):
+		audio_sfx.stream = stream
+		audio_sfx.play()
