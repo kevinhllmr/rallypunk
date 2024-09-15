@@ -11,8 +11,8 @@ func _ready():
 	print(PlayerStats.time)
 	PlayerStats.saveTime()
 
-	$Background/VBoxContainer/collected_Scrap.text = "Scrap: " + str(PlayerStats.collectedScrap)
-	$Background/VBoxContainer/collected_XP.text = "XP: " + str(PlayerStats.collectedXP) 
+	$Background/VBoxContainer/collected_Scrap.text = str(PlayerStats.collectedScrap) + " Scrap"
+	$Background/VBoxContainer/collected_XP.text = str(PlayerStats.collectedXP) + " XP"
 	PlayerStats.addScrap()
 	PlayerStats.addXP()
 	print(str(PlayerStats.uprank))
