@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bexjopfowqek2"]
+[gd_scene load_steps=10 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
 [ext_resource type="Texture2D" uid="uid://be66fmvq27x0w" path="res://Graphics/MenuThumbnail-2.png" id="2_2m6lk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="5_sc8jh"]
 [ext_resource type="Script" path="res://Scripts/player_stats.gd" id="6_j66xh"]
 [ext_resource type="PackedScene" uid="uid://6ibicot6xxya" path="res://Scenes/help_menu.tscn" id="7_nu6u4"]
+[ext_resource type="PackedScene" uid="uid://rk4fols1d4d" path="res://Scenes/Credits.tscn" id="8_sjjvd"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_jo1o7")
@@ -56,6 +57,14 @@ text = "help"
 flat = true
 alignment = 0
 
+[node name="credits" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_04wai")
+theme_override_font_sizes/font_size = 90
+text = "credits"
+flat = true
+alignment = 0
+
 [node name="exit" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
@@ -79,6 +88,9 @@ visible = false
 [node name="HelpMenu" parent="." instance=ExtResource("7_nu6u4")]
 visible = false
 
+[node name="credits" parent="." instance=ExtResource("8_sjjvd")]
+visible = false
+
 [node name="Playerstats" type="Node" parent="."]
 script = ExtResource("6_j66xh")
 
@@ -86,4 +98,5 @@ script = ExtResource("6_j66xh")
 [connection signal="pressed" from="Sprite2D/VBoxContainer/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="Sprite2D/VBoxContainer/credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Sprite2D/VBoxContainer/exit" to="." method="_on_exit_pressed"]

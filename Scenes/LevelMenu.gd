@@ -4,7 +4,7 @@ extends Node2D
 @onready var level1 = preload("res://Scenes/scene_tiles.tscn") as PackedScene
 @onready var level2 = preload("res://Scenes/level2.tscn") as PackedScene
 @onready var level3 = preload("res://Scenes/level3.tscn") as PackedScene
-
+@onready var start = load("res://Scenes/StartScreen.tscn") as PackedScene
 func _ready():
 	Engine.time_scale = 0
 	Settings.load_settings()
@@ -36,3 +36,7 @@ func _on_level_1_pressed():
 	PlayerStats.currentLevel = "res://Scenes/scene_tiles.tscn"
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(level1)
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_packed(start)

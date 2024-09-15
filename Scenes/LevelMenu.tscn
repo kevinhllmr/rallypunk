@@ -52,9 +52,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -960.0
-offset_top = -125.0
+offset_top = -220.0
 offset_right = -960.0
-offset_bottom = -717.0
+offset_bottom = -793.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -143,6 +143,16 @@ position = Vector2(289.29, 206.667)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_p5hoh")
 
+[node name="Button" type="Button" parent="Background"]
+offset_left = -893.391
+offset_top = 426.667
+offset_right = -751.391
+offset_bottom = 488.667
+theme_override_fonts/font = ExtResource("1_lb62y")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+flat = true
+
 [node name="Scrap" type="Label" parent="."]
 offset_left = 83.0
 offset_top = 52.0
@@ -155,3 +165,4 @@ text = "Scrap: 0"
 [connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/HBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Background/Button" to="." method="_on_button_pressed"]

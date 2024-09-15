@@ -32,3 +32,8 @@ func _on_settings_pressed():
 func _on_help_pressed():
 	$HelpMenu.show_menu(true)
 	buttons.visible=false
+
+
+func _on_credits_pressed():
+	$credits.show_menu(true)
+	buttons.visible=false

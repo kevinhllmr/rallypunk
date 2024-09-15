@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Endscreen.gd" id="1_tnqmw"]
 [ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_leil6"]
+[ext_resource type="Texture2D" uid="uid://bxojklyq0hb2a" path="res://trace.svg" id="4_1yjd4"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="4_7jter"]
-[ext_resource type="Texture2D" uid="uid://kaymleewqv6q" path="res://Graphics/istockphoto-1345388323-612x612.png" id="5_cbu4t"]
 
 [node name="Levelmenu" type="Node2D"]
 script = ExtResource("1_tnqmw")
@@ -25,7 +25,7 @@ text = "Scrap: 0"
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(743.077, -369.231)
 scale = Vector2(0.307692, 0.307692)
-texture = ExtResource("5_cbu4t")
+texture = ExtResource("4_1yjd4")
 
 [node name="rank" type="Label" parent="Background/Sprite2D"]
 anchors_preset = -1
@@ -143,5 +143,6 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("4_7jter")
 theme_override_font_sizes/font_size = 40
 text = "Next"
+flat = true
 
 [connection signal="pressed" from="Background/start" to="." method="_on_start_pressed"]
