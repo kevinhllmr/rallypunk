@@ -9,7 +9,9 @@ func _process(delta):
 	distanceFog()
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
-	
+		var buttons = $PauseMenu/VBoxContainer
+		$PauseMenu/Settings.show_menu(false)
+		buttons.visible=true
 
 func distanceFog():
 	var fog_volume = $Path3D2/PathFollow3D
