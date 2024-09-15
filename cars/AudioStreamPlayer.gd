@@ -13,7 +13,7 @@ func _ready():
 	Settings.load_settings()
 
 func _physics_process(delta):
-	volume_db = Settings.sfx
+	volume_db = Settings.sfx - 30
 	print(volume_db)
 	var factor = 0.6
 	var constant = 0
