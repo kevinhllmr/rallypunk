@@ -2,14 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-
-uid="uid://befg1385fts1t"
-path="res://.godot/imported/Repairshop.wav-c7b846da3d65d7f81f9f7af211dd9778.sample"
+uid="uid://dhi6q0u03b7os"
+path="res://.godot/imported/idle.wav-5ead6731568e080a59b4c6f1ea7e92c5.sample"
 
 [deps]
 
-source_file="res://Sounds/Repairshop.wav"
-dest_files=["res://.godot/imported/Repairshop.wav-c7b846da3d65d7f81f9f7af211dd9778.sample"]
+source_file="res://Sounds/idle.wav"
+dest_files=["res://.godot/imported/idle.wav-5ead6731568e080a59b4c6f1ea7e92c5.sample"]
 
 [params]
 

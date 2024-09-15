@@ -2,14 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-
-uid="uid://befg1385fts1t"
-path="res://.godot/imported/Repairshop.wav-c7b846da3d65d7f81f9f7af211dd9778.sample"
+uid="uid://c6ume6hewqlu4"
+path="res://.godot/imported/onlow.wav-336fbe89539ba2afb24967ff50888881.sample"
 
 [deps]
 
-source_file="res://Sounds/Repairshop.wav"
-dest_files=["res://.godot/imported/Repairshop.wav-c7b846da3d65d7f81f9f7af211dd9778.sample"]
+source_file="res://Sounds/onlow.wav"
+dest_files=["res://.godot/imported/onlow.wav-336fbe89539ba2afb24967ff50888881.sample"]
 
 [params]
 
