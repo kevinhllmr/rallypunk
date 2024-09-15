@@ -31,7 +31,7 @@ func _physics_process(delta):
 	_handle_sound()
 
 	# Smooth volume transition if settings change
-	volume_db = Settings.sfx
+	volume_db = Settings.sfx -30
 	_update_volume(volume_db)
 
 # Accelerate the car
