@@ -9,9 +9,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		Settings.load_settings()
 		print(Settings.sfx)
-		if Settings.sfx >= 1.0:
-			
-			play_button()
+		play_button()
 
 
 func play_music(stream_path: String):
@@ -58,12 +56,18 @@ func _on_audio_stream_player_2d_finished():
 	
 func play_button():
 	var stream = ResourceLoader.load("res://Sounds/buttonClick.wav")
-	if (stream):
+	if stream and Settings.sfx >1.0:
 		audio_sfx.stream = stream
 		audio_sfx.play()
 
 func play_scrap():
 	var stream = ResourceLoader.load("res://Sounds/scrapCollected.wav")
-	if (stream):
+	if stream and Settings.sfx >1.0:
+		audio_sfx.stream = stream
+		audio_sfx.play()
+		
+func play_repair():
+	var stream = ResourceLoader.load("res://Sounds/Repairshop.wav")
+	if stream and Settings.sfx >1.0:
 		audio_sfx.stream = stream
 		audio_sfx.play()
