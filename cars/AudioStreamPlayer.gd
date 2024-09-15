@@ -13,7 +13,7 @@ func _ready():
 	Settings.load_settings()
 
 func _physics_process(delta):
-	volume_db = Settings.sfx - 30
+	volume_db = Settings.sfx - 40
 	print(volume_db)
 	var factor = 0.6
 	var constant = 0
@@ -44,9 +44,9 @@ func _physics_process(delta):
 	# Handle gear shift pause and resume playback
 	if gear_shift_timer > 0:
 		gear_shift_timer -= delta
-		if gear_shift_timer <= 0 and volume_db >= 1.0:
+		if gear_shift_timer <= 0 and volume_db + 40 >= 1.0:
 			play()  # Resume playback after pause
 	else:
-		if not is_playing() and volume_db >= 1.0:
+		if not is_playing() and volume_db + 40 >= 1.0:
 			play()
 			
