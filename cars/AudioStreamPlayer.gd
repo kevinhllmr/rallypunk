@@ -1,52 +1,100 @@
-extends AudioStreamPlayer
+extends Node
 
-@onready var car = $".."
-@onready var gear = $"../Hud/Gear"
+@onready var idle_sound = $Idle
+@onready var offlow_sound = $offlow
+@onready var onlow_sound = $onlow
 
-var current_gear = 1
-var max_gears = 5
+var current_speed = 0.0
+var max_speed = 100.0
+var acceleration = 10.0
+var deceleration = 5.0
 var is_accelerating = false
-var gear_shift_timer = 0.0  # Timer to control the brief pause for gear shift
-var gear_shift_pause_duration = 0.03  # Duration of the pause in seconds
+
+# Volume from settings
+var volume_db = -20.0
+
+func _ready():
+	Settings.load_settings()  # Load settings
+	volume_db = Settings.sfx/7.5
+	_update_volume(volume_db)
 
 func _physics_process(delta):
-	Settings.load_settings()
+	# Check if accelerating or decelerating
+	if Input.is_action_pressed("ui_up"):
+		_accelerate(delta)
+	elif Input.is_action_pressed("ui_down"):
+		_decelerate(delta)
+	else:
+		_idle()
+
+	# Adjust sounds based on speed
+	_handle_sound()
+
+	# Smooth volume transition if settings change
 	volume_db = Settings.sfx
-	var factor = 0.6
-	var constant = 0
-	var speed = car.speed * factor
-	print(volume_db)
-	# Determine the gear based on speed
-	var new_gear = clamp(floor(speed / 3) + 1, 1, max_gears)  # Divide speed to determine gear, clamp between 1 and max_gears
-	
-	# Check for gear change and initiate a brief pause
-	if new_gear != current_gear:
-		current_gear = new_gear
-		gear.text = str(current_gear)
-		gear_shift_timer = gear_shift_pause_duration  # Start the pause timer
-		stop()  # Stop playback to simulate gear shift pause
+	_update_volume(volume_db)
 
-	# Adjust pitch scale for the sound
-	if current_gear > 1:  # Prevent division by zero for the first gear
-		pitch_scale = constant + speed / (5 * (current_gear - 1))  # Dynamic pitch scaling
-	else:
-		pitch_scale = constant
+# Accelerate the car
+func _accelerate(delta):
+	is_accelerating = true
+	current_speed = min(current_speed + acceleration * delta, max_speed)
 
-	# Smooth volume change with proper type conversion
-	if(volume_db <= 1.0):
-		stop()
+# Decelerate the car
+func _decelerate(delta):
+	is_accelerating = false
+	current_speed = max(current_speed - deceleration * delta, 0)
+
+# Handle idle state
+func _idle():
+	if current_speed > 0:
+		_decelerate(1 / 60)  # Natural deceleration
 	else:
-		play()
-		if Input.is_action_pressed("ui_up"):
-			volume_db = (lerp(volume_db, float(-20), 0.1)/ 7.5)-20  # Gradually increase volume
-		else:
-			volume_db = (lerp(volume_db, float(-30), 0.05)/7.5)-20 # Gradually decrease volume
+		current_speed = 0
+		is_accelerating = false
+
+# Handle sound transitions and dynamic pitch scaling
+func _handle_sound():
+	var speed_ratio = current_speed / max_speed  # Ratio of current speed to max speed
 	
-	# Handle gear shift pause and resume playback
-	if gear_shift_timer > 0:
-		gear_shift_timer -= delta
-		if gear_shift_timer <= 0 && volume_db>=1.0:
-			play()  # Resume playback after pause
+	# Adjust pitch dynamically based on speed
+	idle_sound.pitch_scale = 1.0 + speed_ratio * 0.2  # Idle pitch slightly changes with speed
+	onlow_sound.pitch_scale = 1.0 + speed_ratio * 0.5  # Low throttle pitch increases with speed
+	offlow_sound.pitch_scale = 1.0 + speed_ratio * 0.3  # Off throttle sound also adjusts
+
+	# Fade volumes for smooth transitions
+	var fade_duration = 0.1  # Seconds for fade duration
+	if current_speed == 0:
+		# Play idle sound
+		if not idle_sound.is_playing():
+			_stop_all()
+			idle_sound.play()
+	elif is_accelerating:
+		# Play low on-throttle sound (onlow)
+		if not onlow_sound.is_playing():
+			_stop_all()
+			onlow_sound.play()
 	else:
-		if not is_playing() and volume_db>=1.0:
-			play()
+		# Play off-throttle sound
+		if not offlow_sound.is_playing():
+			_stop_all()
+			offlow_sound.play()
+
+	# Smooth volume fading based on state
+	if idle_sound.is_playing():
+		idle_sound.volume_db = lerp(idle_sound.volume_db, volume_db, fade_duration)
+	if onlow_sound.is_playing():
+		onlow_sound.volume_db = lerp(onlow_sound.volume_db, volume_db, fade_duration)
+	if offlow_sound.is_playing():
+		offlow_sound.volume_db = lerp(offlow_sound.volume_db, volume_db, fade_duration)
+
+# Stop all sounds
+func _stop_all():
+	idle_sound.stop()
+	offlow_sound.stop()
+	onlow_sound.stop()
+
+# Adjust sound volume
+func _update_volume(volume_db):
+	idle_sound.volume_db = volume_db
+	offlow_sound.volume_db = volume_db
+	onlow_sound.volume_db = volume_db

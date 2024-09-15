@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=27 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://m4vr1twlel64" path="res://UI Elements/ScrapBG.png" id="5_obpt6"]
 [ext_resource type="PackedScene" uid="uid://cb5ubkdsckji7" path="res://Scenes/RepairMenu.tscn" id="6_h0tlw"]
 [ext_resource type="Texture2D" uid="uid://cq62umfk4jpax" path="res://UI Elements/car-icon.png" id="6_xtflj"]
-[ext_resource type="AudioStream" uid="uid://ccdepjp6i8nu4" path="res://Sounds/4000.ogg" id="7_mdsms"]
 [ext_resource type="Script" path="res://cars/AudioStreamPlayer.gd" id="8_8wai4"]
+[ext_resource type="AudioStream" uid="uid://dhi6q0u03b7os" path="res://Sounds/idle.wav" id="9_dcnv4"]
 [ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="11_ddqbi"]
+[ext_resource type="AudioStream" uid="uid://bkg8vsqgdwf78" path="res://Sounds/offlow.wav" id="11_p63jl"]
+[ext_resource type="AudioStream" uid="uid://t833osigngnl" path="res://Sounds/onhigh.wav" id="12_wvdv2"]
+[ext_resource type="AudioStream" uid="uid://c6ume6hewqlu4" path="res://Sounds/onlow.wav" id="13_67dky"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f1bt5"]
 font_size = 32
@@ -225,12 +228,32 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101013, 0.625977, 0.193787)
 shape = SubResource("BoxShape3D_00ayj")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
-stream = ExtResource("7_mdsms")
+[node name="Sound-System" type="Node" parent="." index="13"]
+script = ExtResource("8_8wai4")
+
+[node name="Idle" type="AudioStreamPlayer" parent="Sound-System" index="0"]
+stream = ExtResource("9_dcnv4")
 volume_db = -30.276
 pitch_scale = 1.05
 mix_target = 2
-script = ExtResource("8_8wai4")
+
+[node name="offlow" type="AudioStreamPlayer" parent="Sound-System" index="1"]
+stream = ExtResource("11_p63jl")
+volume_db = -30.276
+pitch_scale = 1.05
+mix_target = 2
+
+[node name="onhigh" type="AudioStreamPlayer" parent="Sound-System" index="2"]
+stream = ExtResource("12_wvdv2")
+volume_db = -30.276
+pitch_scale = 1.05
+mix_target = 2
+
+[node name="onlow" type="AudioStreamPlayer" parent="Sound-System" index="3"]
+stream = ExtResource("13_67dky")
+volume_db = -30.276
+pitch_scale = 1.05
+mix_target = 2
 
 [node name="RepairShopPanel" parent="." index="14" instance=ExtResource("6_h0tlw")]
 visible = false
@@ -238,4 +261,7 @@ visible = false
 [node name="UpgradeMenu" parent="." index="15" instance=ExtResource("11_ddqbi")]
 visible = false
 
-[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
+[connection signal="finished" from="Sound-System/Idle" to="Sound-System/Idle" method="_on_finished"]
+[connection signal="finished" from="Sound-System/offlow" to="Sound-System/offlow" method="_on_finished"]
+[connection signal="finished" from="Sound-System/onhigh" to="Sound-System/onhigh" method="_on_finished"]
+[connection signal="finished" from="Sound-System/onlow" to="Sound-System/onlow" method="_on_finished"]
