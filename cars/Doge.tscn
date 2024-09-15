@@ -184,6 +184,7 @@ vertical_alignment = 1
 show_percentage = false
 
 [node name="Gear" type="Label" parent="Hud" index="9"]
+visible = false
 offset_left = 1099.0
 offset_top = 595.0
 offset_right = 1298.0

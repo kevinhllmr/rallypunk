@@ -9,30 +9,28 @@ var max_speed = 100.0
 var acceleration = 10.0
 var deceleration = 5.0
 var is_accelerating = false
-
-# Volume from settings
-var volume_db = -20.0
-
+var volume_db = Settings.sfx
 func _ready():
 	Settings.load_settings()  # Load settings
-	volume_db = Settings.sfx/7.5
-	_update_volume(volume_db)
-
 func _physics_process(delta):
-	# Check if accelerating or decelerating
-	if Input.is_action_pressed("ui_up"):
-		_accelerate(delta)
-	elif Input.is_action_pressed("ui_down"):
-		_decelerate(delta)
+	
+	if Settings.sfx <= 1.0:
+		_stop_all()
+		volume_db = (Settings.sfx-90)/4
+		pass
 	else:
-		_idle()
+		volume_db = (Settings.sfx-90)/4
+		if Input.is_action_pressed("ui_up"):
+			_accelerate(delta)
+		elif Input.is_action_pressed("ui_down"):
+			_decelerate(delta)
+		else:
+			_idle()
 
 	# Adjust sounds based on speed
-	_handle_sound()
+		_handle_sound()
 
-	# Smooth volume transition if settings change
-	volume_db = Settings.sfx -30
-	_update_volume(volume_db)
+		_update_volume(volume_db)
 
 # Accelerate the car
 func _accelerate(delta):
