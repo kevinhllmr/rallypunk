@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
-[ext_resource type="Texture2D" uid="uid://be66fmvq27x0w" path="res://Graphics/MenuThumbnail-2.png" id="2_2m6lk"]
+[ext_resource type="Texture2D" uid="uid://bp0dm8yx06uqm" path="res://Graphics/Titlescreen.png" id="2_imgjq"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="3_04wai"]
 [ext_resource type="Texture2D" uid="uid://chqvn1ywdxgvj" path="res://Unknowngtx.png" id="4_uj7wk"]
 [ext_resource type="PackedScene" uid="uid://csm1kajj2v5k2" path="res://Scenes/Settings.tscn" id="5_31ua7"]
@@ -14,21 +14,21 @@
 script = ExtResource("1_jo1o7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(574.426, 320.624)
-scale = Vector2(0.285436, 0.291125)
-texture = ExtResource("2_2m6lk")
+position = Vector2(583.36, 328.354)
+scale = Vector2(0.607605, 0.619715)
+texture = ExtResource("2_imgjq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Sprite2D"]
-offset_left = -1925.0
-offset_top = -1050.0
-offset_right = -856.0
-offset_bottom = -407.0
+offset_left = -882.0
+offset_top = -499.0
+offset_right = -17.0
+offset_bottom = 406.0
 theme_override_constants/separation = 20
 
 [node name="start" type="Button" parent="Sprite2D/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "Start"
 flat = true
 alignment = 0
@@ -36,7 +36,7 @@ alignment = 0
 [node name="upgrade" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "Upgrade"
 flat = true
 alignment = 0
@@ -44,7 +44,7 @@ alignment = 0
 [node name="settings" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "Settings"
 flat = true
 alignment = 0
@@ -52,7 +52,7 @@ alignment = 0
 [node name="help" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "help"
 flat = true
 alignment = 0
@@ -60,7 +60,7 @@ alignment = 0
 [node name="credits" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "credits"
 flat = true
 alignment = 0
@@ -68,7 +68,7 @@ alignment = 0
 [node name="exit" type="Button" parent="Sprite2D/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_04wai")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 50
 text = "exit
 "
 flat = true

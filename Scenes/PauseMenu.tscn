@@ -65,13 +65,11 @@ theme_override_font_sizes/font_size = 40
 text = "Quit"
 flat = true
 
-
-[node name="Settings" parent="." instance=ExtResource("3_6v63g")]
+[node name="Settings2" parent="." instance=ExtResource("3_6v63g")]
 visible = false
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/restart" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/toMenu" to="." method="_on_to_menu_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/toMenu" to="." method="_on_to_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

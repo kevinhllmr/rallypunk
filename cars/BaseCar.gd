@@ -29,6 +29,7 @@ func _ready():
 	raycast.enabled = true
 	PlayerStats.time = 0
 	PlayerStats.collectedScrap = 0
+	PlayerStats.collectedXP = 0
 	MusicManager.set_sfx(Settings.sfx)
 	MusicManager.set_music(Settings.music)
 	

@@ -27,7 +27,7 @@ func set_music(volume_db: float):
 		stop_music()
 	else:
 		if(audio_music.playing):
-			audio_music.volume_db = volume_db / 7.5
+			audio_music.volume_db = (volume_db-100) / 7.5
 		elif(defaultpath != null):
 			play_music(defaultpath)
 			
@@ -67,12 +67,8 @@ func play_scrap():
 		audio_sfx.play()
 		
 func play_repair():
-	var stream = ResourceLoader.load("res://Sounds/Repairshop.wav")
+	var stream = ResourceLoader.load("res://Sounds/Repairshop2.wav")
 	if stream and Settings.sfx >1.0:
 		audio_sfx.stream = stream
 		audio_sfx.play()
-func play_repairshop():
-	var stream = ResourceLoader.load("res://Sounds/Repairshop.wav")
-	if (stream):
-		audio_sfx.stream = stream
-		audio_sfx.play()
+

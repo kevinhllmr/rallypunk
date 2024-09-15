@@ -17,6 +17,7 @@ func _on_to_menu_pressed():
 
 
 func _on_restart_pressed():
+	main.pauseMenu()
 	get_tree().change_scene_to_packed(restart)
 
 
@@ -24,3 +25,9 @@ func _on_settings_pressed():
 	var buttons = $VBoxContainer
 	$Settings.show_menu(true)
 	buttons.visible=false
+
+func _buttons_visible():
+	var buttons = $VBoxContainer
+	if(buttons.visible == false):
+		buttons.visible = true
+

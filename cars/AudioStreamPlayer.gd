@@ -4,23 +4,26 @@ extends Node
 @onready var offlow_sound = $offlow
 @onready var onlow_sound = $onlow
 
-var current_speed = 0.0
-var max_speed = 100.0
+
+var max_speed = 110.0
 var acceleration = 10.0
 var deceleration = 5.0
 var is_accelerating = false
+var current_speed = 0
 
 var volume_db = Settings.sfx
 func _ready():
-	Settings.load_settings()  # Load settings
-func _physics_process(delta):
+	Settings.load_settings()
 	
+func _physics_process(delta):
+	current_speed = $"..".speed
+	current_speed *= 3.6
 	if Settings.sfx <= 1.0:
 		_stop_all()
-		volume_db = (Settings.sfx-90)/4
+		volume_db = (Settings.sfx-180)/4
 		pass
 	else:
-		volume_db = (Settings.sfx-90)/4
+		volume_db = (Settings.sfx-180)/4
 		if Input.is_action_pressed("ui_up"):
 			_accelerate(delta)
 		elif Input.is_action_pressed("ui_down"):

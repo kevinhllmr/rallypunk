@@ -54,14 +54,16 @@ func _on_buy_1_pressed():
 	if car:
 		if car.remove_scrap(chassis_cost):
 			car.chassis_health = 100
+			MusicManager.play_repair()
 		else:
 			notEnough()
-		
+	
 func _on_buy_2_pressed():
 	var car = get_parent()
 	if car:
 		if car.remove_scrap(wheels_cost):
 			car.wheels_health = 100
+			MusicManager.play_repair()
 		else:
 			notEnough()
 
@@ -71,6 +73,7 @@ func _on_buy_3_pressed():
 	if car:
 		if car.remove_scrap(brakes_cost):
 			car.brake_health = 100
+			MusicManager.play_repair()
 		else:
 			notEnough()
 
@@ -80,6 +83,7 @@ func _on_buy_4_pressed():
 	if car:
 		if car.remove_scrap(engine_cost):
 			car.engine_health = 100
+			MusicManager.play_repair()
 		else:
 			notEnough()
 
@@ -88,6 +92,7 @@ func _on_buy_5_pressed():
 	if car:
 		if car.remove_scrap(1):
 			car.engine_health = min(car.engine_health + 25, 100)
+			MusicManager.play_repair()
 		else:
 			notEnough()
 
