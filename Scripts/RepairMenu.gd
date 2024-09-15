@@ -45,7 +45,6 @@ func _on_repair_pressed():
 			car.chassis_health = 100
 			car.wheels_health = 100
 			car.brake_health = 100
-			MusicManager.play_repairshop()
 		else:
 			notEnough()
 
@@ -55,7 +54,6 @@ func _on_buy_1_pressed():
 	if car:
 		if car.remove_scrap(chassis_cost):
 			car.chassis_health = 100
-			MusicManager.play_repairshop()
 		else:
 			notEnough()
 		
@@ -64,7 +62,6 @@ func _on_buy_2_pressed():
 	if car:
 		if car.remove_scrap(wheels_cost):
 			car.wheels_health = 100
-			MusicManager.play_repairshop()
 		else:
 			notEnough()
 
@@ -74,7 +71,6 @@ func _on_buy_3_pressed():
 	if car:
 		if car.remove_scrap(brakes_cost):
 			car.brake_health = 100
-			MusicManager.play_repairshop()
 		else:
 			notEnough()
 
@@ -84,9 +80,17 @@ func _on_buy_4_pressed():
 	if car:
 		if car.remove_scrap(engine_cost):
 			car.engine_health = 100
-			MusicManager.play_repairshop()
 		else:
 			notEnough()
+
+func _on_buy_5_pressed():
+	var car = get_parent()
+	if car:
+		if car.remove_scrap(1):
+			car.engine_health = min(car.engine_health + 25, 100)
+		else:
+			notEnough()
+
 
 func update_cost():	
 	var car = get_parent()
@@ -172,14 +176,20 @@ func update_cost():
 	
 	var buy4 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/BuyC/Buy4
 	var cost4 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer5/CostC/Cost
+	var buy5 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/BuyC/Buy5
+	var cost5 = $VBC/ShopContainer/ScrollContainer/VBoxContainer/ItemContainer6/CostC/Cost
 	var eh = car.engine_health
 	
 	if eh == 100:
 		buy4.visible = false
 		cost4.visible = false
+		buy5.visible = false
+		cost5.visible = false
 	else: 
 		buy4.visible = true
 		cost4.visible = true
+		buy5.visible = true
+		cost5.visible = true
 		
 	if eh < 100 && eh >= 75:
 		engine_cost = 1
@@ -191,7 +201,7 @@ func update_cost():
 		engine_cost = 3
 		
 	if eh < 25:
-		engine_cost = 4
+		engine_cost = 4		
 			
 	cost4.text = str(engine_cost) + " S"
 	
