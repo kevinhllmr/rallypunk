@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bexjopfowqek2"]
+[gd_scene load_steps=9 format=3 uid="uid://bexjopfowqek2"]
 
 [ext_resource type="Script" path="res://Scripts/StartScreen.gd" id="1_jo1o7"]
 [ext_resource type="Texture2D" uid="uid://bp0dm8yx06uqm" path="res://Graphics/Titlescreen.png" id="2_imgjq"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="3_04wai"]
-[ext_resource type="Texture2D" uid="uid://chqvn1ywdxgvj" path="res://Unknowngtx.png" id="4_uj7wk"]
 [ext_resource type="PackedScene" uid="uid://csm1kajj2v5k2" path="res://Scenes/Settings.tscn" id="5_31ua7"]
 [ext_resource type="PackedScene" uid="uid://d2ldcv2c4xsh7" path="res://Scenes/UpgradeMenu.tscn" id="5_sc8jh"]
 [ext_resource type="Script" path="res://Scripts/player_stats.gd" id="6_j66xh"]
@@ -77,7 +76,6 @@ alignment = 0
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(1170, 590)
-texture = ExtResource("4_uj7wk")
 
 [node name="Settings" parent="." instance=ExtResource("5_31ua7")]
 visible = false

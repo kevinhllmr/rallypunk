@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Endscreen.gd" id="1_tnqmw"]
 [ext_resource type="Texture2D" uid="uid://cgt34fbypunff" path="res://Graphics/menubackground.png" id="2_leil6"]
-[ext_resource type="Texture2D" uid="uid://bxojklyq0hb2a" path="res://trace.svg" id="4_1yjd4"]
+[ext_resource type="Texture2D" uid="uid://bxojklyq0hb2a" path="res://Graphics/trace.svg" id="4_1yjd4"]
 [ext_resource type="FontFile" uid="uid://dtreqxrld72uy" path="res://Graphics/High Speed.ttf" id="4_7jter"]
 
 [node name="Levelmenu" type="Node2D"]

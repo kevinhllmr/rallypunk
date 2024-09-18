@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="2_pfrbg"]
 [ext_resource type="PackedScene" uid="uid://bqr68f8s121kc" path="res://Scenes/RepairShop_Desert.tscn" id="5_2w03t"]
-[ext_resource type="PackedScene" uid="uid://deqglkdimb37x" path="res://terrain_006.tscn" id="8_12t3d"]
 [ext_resource type="Script" path="res://Scripts/RepairShop.gd" id="8_37jrt"]
 [ext_resource type="Script" path="res://Scripts/ItemSpawner.gd" id="8_d1rq0"]
 [ext_resource type="PackedScene" uid="uid://dgv8m3ryvp0l" path="res://Scenes/TransitionScreen.tscn" id="8_g335n"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="8_j768l"]
 [ext_resource type="Script" path="res://Scripts/FogDamage.gd" id="9_j1v3u"]
+[ext_resource type="PackedScene" uid="uid://deqglkdimb37x" path="res://Graphics/terrain_0061.tscn" id="9_mxite"]
 [ext_resource type="PackedScene" uid="uid://b1fvyuqtg3w6b" path="res://Scenes/PauseMenu.tscn" id="11_anxlf"]
 [ext_resource type="Script" path="res://Scripts/FinishLine.gd" id="11_ton7g"]
 [ext_resource type="PackedScene" uid="uid://dd4m85ilus2n3" path="res://Scenes/Finishline_002.glb" id="12_m8rbf"]
@@ -96,7 +96,7 @@ curve = SubResource("Curve3D_dajaj")
 script = ExtResource("8_d1rq0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ItemPath"]
-transform = Transform3D(0.00990275, -0.134117, 0.990909, -7.45049e-09, 0.99095, 0.134124, -0.999938, -0.00132821, 0.00981332, 366.838, -14.9437, -185.819)
+transform = Transform3D(0.00990274, -0.134117, 0.990909, -7.45048e-09, 0.99095, 0.134124, -0.999938, -0.00132821, 0.00981332, 366.838, -14.9437, -185.819)
 
 [node name="RepairShop" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.614, -18.388, -313.934)
@@ -133,7 +133,7 @@ transform = Transform3D(-0.745696, 0, 0.666285, 0, 1, 0, -0.666285, 0, -0.745696
 
 [node name="TransitionScreen" parent="FinishLine" instance=ExtResource("8_g335n")]
 
-[node name="Terrain_007" parent="." instance=ExtResource("8_12t3d")]
+[node name="Terrain_007" parent="." instance=ExtResource("9_mxite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -40, 2.08165e-12)
 
 [node name="Path3D2" type="Path3D" parent="."]
